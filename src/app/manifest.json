@@ -1,6 +1,6 @@
 {
 	"background_color": "#ffffff",
-	"description": "استوديو متقدم لتصاميم الديكور الداخلي والأثاث ثلاثي الأبعاد",
+	"description": "وكالة متخصصة في التسويق الرقمي والبرمجة.",
 	"dir": "rtl",
 	"display": "standalone",
 	"icons": [
@@ -17,9 +17,9 @@
 		}
 	],
 	"lang": "ar",
-	"name": "Interior | 3D Interior Design Studio",
+	"name": "Digital | Marketing and Programming Agency.",
 	"orientation": "portrait",
-	"short_name": "Interior",
+	"short_name": "Digital",
 	"start_url": "/",
-	"theme_color": "#facc15"
+	"theme_color": "#f7dc6f"
 }
