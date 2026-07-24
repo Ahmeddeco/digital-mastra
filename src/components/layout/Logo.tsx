@@ -1,11 +1,23 @@
-import { LayoutDashboard } from "lucide-react"
+"use client"
+
+import { useCurrentLocale } from "@/locales/client.locale"
+import Image from "next/image"
 import Link from "next/link"
 
 export default function Logo() {
+	const locale = useCurrentLocale()
+
 	return (
-		<Link href={"/"} className="flex items-end gap-1 ">
-			<LayoutDashboard size={36} className="dark:text-primary" />
-			<h1 className="capitalize!  leading-none"> Interior</h1>
+		<Link href="/" className="flex items-end justify-center gap-1">
+			<div className="relative h-10 w-fit aspect-square ">
+				<Image
+					src={"/icons/logo.webp"}
+					alt={"logo"}
+					fill
+					className={`object-contain ${locale === "en" ? "object-right" : "object-left"}`}
+				/>
+			</div>
+			<h2 className="lowercase ">{locale === "en" ? "igital" : "ديجيتال"}</h2>
 		</Link>
 	)
 }

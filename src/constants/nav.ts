@@ -1,5 +1,6 @@
-import { Code, Home, MapPin, Newspaper, Smartphone, } from "lucide-react"
+import { Home, MapPin, Newspaper, Server, Smartphone, } from "lucide-react"
 import { FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
+import { IoCodeSlashOutline } from "react-icons/io5"
 import { RiRobot3Line, RiShoppingBag4Line } from "react-icons/ri"
 
 
@@ -12,7 +13,7 @@ export const frontNavLinks = [
   {
     title: { ar: "البرمجة", en: "Development" },
     href: "/Development",
-    icon: Code
+    icon: IoCodeSlashOutline
   },
   {
     title: { ar: "التسويق الرقمي", en: "marketing" },
@@ -28,6 +29,11 @@ export const frontNavLinks = [
     title: { ar: "ديكو بوت", en: "deco bot" },
     href: "/bot",
     icon: RiRobot3Line
+  },
+  {
+    title: { ar: "سيرفر", en: "server" },
+    href: "/server",
+    icon: Server
   },
 ]
 

@@ -82,7 +82,7 @@ export function generateStaticParams() {
 }
 
 /* ------------------------------- RootLayout ------------------------------- */
-export default async function LocaleLayout({
+export default async function RootLayout({
 	children,
 	params,
 }: Readonly<{

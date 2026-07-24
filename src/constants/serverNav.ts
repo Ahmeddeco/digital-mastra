@@ -1,4 +1,6 @@
-import { ChartNoAxesCombined, Factory, Newspaper, Palette, Server, Shapes, Sofa, SwatchBook, Users } from "lucide-react"
+import { ChartNoAxesCombined, Newspaper, Server, Users } from "lucide-react"
+import { IoCodeSlashOutline } from "react-icons/io5"
+import { RiShoppingBag4Line } from "react-icons/ri"
 
 export const serverNav = [
   {
@@ -12,34 +14,14 @@ export const serverNav = [
     icon: Users
   },
   {
-    title: { ar: "المصانع", en: "factories" },
-    href: "/server/factories",
-    icon: Factory
+    title: { ar: "البرمجة", en: "Development" },
+    href: "/server/Development",
+    icon: IoCodeSlashOutline
   },
   {
-    title: { ar: "الألوان", en: "colors" },
-    href: "/server/colors",
-    icon: SwatchBook
-  },
-  {
-    title: { ar: "الفئات", en: "classes" },
-    href: "/server/classes",
-    icon: Shapes
-  },
-  {
-    title: { ar: "الإستايلات", en: "styles" },
-    href: "/server/styles",
-    icon: Palette
-  },
-  {
-    title: { ar: "المنتجات", en: "products" },
-    href: "/server/products",
-    icon: Sofa
-  },
-  {
-    title: { ar: "التصميمات", en: "designs" },
-    href: "/server/designs",
-    icon: SwatchBook
+    title: { ar: "التسويق الرقمي", en: "marketing" },
+    href: "/server/marketing",
+    icon: RiShoppingBag4Line
   },
   {
     title: { ar: "مقالاتنا", en: "articles" },
