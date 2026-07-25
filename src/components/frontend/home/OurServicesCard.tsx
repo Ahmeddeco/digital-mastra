@@ -8,14 +8,15 @@ type OurServicesCardProps = {
 	title1: string
 	icon: LucideIcon
 	color: Color
+	className?: string
 }
 
-export default function OurServicesCard({ color, icon, title1 }: OurServicesCardProps) {
+export default function OurServicesCard({ color, icon, title1, className }: OurServicesCardProps) {
 	return (
 		<>
-			<Card className="aspect-square flex flex-col justify-center items-center hover:rotate-1 hover:scale-105 duration-500 ease-in-out">
+			<Card className={`${className} aspect-video flex flex-col justify-center items-center `}>
 				<CardContent>
-					<div className="flex flex-col items-center justify-center gap-8 ">
+					<div className="flex flex-col items-center justify-center gap-6 ">
 						<div className={`${color} rounded-full p-6`}>{React.createElement(icon)}</div>
 						<h6 className="capitalize text-center">{title1}</h6>
 					</div>

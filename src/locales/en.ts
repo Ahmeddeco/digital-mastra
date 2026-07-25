@@ -41,8 +41,7 @@ export const enDic = {
 
     ourServices: {
       title: " Our Services",
-      subTitle: " perfect and fast",
-      subTitleBr: " movement",
+      subTitle: " perfect and fast movement",
       p1: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptate consectetur saepe soluta laboriosam suscipit sit voluptas libero pariatur quae dolorem tenetur voluptatibus voluptatem repudiandae ratione provident rerum at ea veritatis numquam!",
       p2: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptate consectetur saepe soluta laboriosam suscipit sit voluptas libero pariatur quae dolorem tenetur voluptatibus voluptatem repudiandae ratione provident rerum at ea veritatis numquam!",
       ourServicesCard: {
@@ -62,27 +61,6 @@ export const enDic = {
         },
       },
     },
-
-    ourPrtfolioCard: {
-      title: " Our Portfolio",
-      subTitle: " what do we do",
-      p: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptate consectetur saepe soluta laboriosam suscipit sit voluptas libero pariatur.",
-      cards: [
-        {
-          id: " 1",
-          image: "/images/marketing/marketing.webp",
-          title: " marketing",
-          href: " /marketing",
-        },
-        {
-          id: " 2",
-          image: "/images/home/web-developer.webp",
-          title: " Development",
-          href: " /development",
-        },
-      ]
-    },
-
     testimonial: {
       title: " Testimonial",
       subTitle: " people talk about us",
