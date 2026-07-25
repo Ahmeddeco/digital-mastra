@@ -15,7 +15,7 @@ export default async function Testimonial({ params }: { params: Promise<{ locale
 			</div>
 			<div className="grid lg:grid-cols-3 grid-cols-1 gap-6 pt-4 lg:pt-12">
 				{dict.homePage.testimonial.Cards.map(({ clientName, clientPosition, id, image, message }) => (
-					<Card key={id} className="transition-all ease-in-out duration-500 hover:scale-105 hover:rotate-1">
+					<Card key={id} className=" transition-all ease-in-out duration-500 hover:scale-105 hover:rotate-1">
 						<CardContent>
 							<div className="flex flex-col gap-4">
 								<div className="flex items-center gap-2">
@@ -26,10 +26,10 @@ export default async function Testimonial({ params }: { params: Promise<{ locale
 									{/* ------------------------------ Name & Title ------------------------------ */}
 									<div className="flex flex-col gap-0">
 										<h4>{clientName}</h4>
-										<h6>{clientPosition}</h6>
+										<p>{clientPosition}</p>
 									</div>
 								</div>
-								<h6 className="text-pretty line-clamp-2">{message}</h6>
+								<p className="text-pretty line-clamp-4">{message}</p>
 							</div>
 						</CardContent>
 					</Card>

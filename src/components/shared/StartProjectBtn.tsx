@@ -1,6 +1,6 @@
 import { getDictionary } from "@/locales/dictionaries"
 import Link from "next/link"
-import React from "react"
+import { VscDebugStart } from "react-icons/vsc"
 import { Button } from "../ui/button"
 
 export default async function StartProjectBtn({ params }: { params: Promise<{ locale: "en" | "ar" }> }) {
@@ -9,7 +9,10 @@ export default async function StartProjectBtn({ params }: { params: Promise<{ lo
 
 	return (
 		<Link href="/projects/start">
-			<Button>{dict.startProjectBtn.title}</Button>
+			<Button>
+				<VscDebugStart />
+				{dict.startProjectBtn.title}
+			</Button>
 		</Link>
 	)
 }

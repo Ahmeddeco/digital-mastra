@@ -8,22 +8,22 @@ export default async function OurServices({ params }: { params: Promise<{ locale
 	const dict = await getDictionary(locale)
 
 	return (
-		<section className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+		<section className="flex flex-col lg:flex-row-reverse gap-8 lg:gap-16">
 			{/* ---------------------------------- Text ---------------------------------- */}
 			<div className="w-full lg:w-1/2 flex flex-col gap-6">
 				<div className="flex flex-col gap-2">
 					<h4>{dict.homePage.ourServices.title}</h4>
 					<h2 className={` capitalize`}>{dict.homePage.ourServices.subTitle}</h2>
+					<p className="max-w-xl"> {dict.homePage.ourServices.p1}</p>
+					<p className="max-w-xl"> {dict.homePage.ourServices.p2}</p>
 				</div>
-				<h6 className="max-w-2xl"> {dict.homePage.ourServices.p1}</h6>
-				<h6 className="max-w-2xl"> {dict.homePage.ourServices.p2}</h6>
-				<Button className="w-fit">
-					<ArrowRight /> Read More
+				<Button size={"full"}>
+					<ArrowRight /> {locale === "en" ? "Read More" : "إقرأ المزيد"}
 				</Button>
 			</div>
-			
+
 			{/* --------------------------------- Cards ---------------------------------- */}
-			<div className="w-full lg:w-1/2 grid grid-cols-2 gap-6 ">
+			<div className="w-full lg:w-1/2 grid grid-cols-2 gap-6 items-center justify-center ">
 				<OurServicesCard
 					title1={dict.homePage.ourServices.ourServicesCard.card1.title1}
 					icon={Monitor}

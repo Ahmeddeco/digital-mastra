@@ -216,7 +216,7 @@
 	}
 	h6,
 	.prose h6 {
-		@apply text-sm lg:text-base font-light capitalize text-center lg:text-start text-pretty;
+		@apply text-sm lg:text-base font-light capitalize  text-pretty;
 	}
 	p,
 	.prose p {

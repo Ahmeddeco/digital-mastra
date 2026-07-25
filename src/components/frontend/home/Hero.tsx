@@ -10,9 +10,9 @@ export default async function Hero({ params }: { params: Promise<{ locale: "en" 
 	const dict = await getDictionary(locale)
 
 	return (
-		<section className="flex flex-col items-center gap-12 min-h-[80vh] h-auto relative ">
+		<section className="flex flex-col items-center gap-24 lg:gap-6 min-h-[80vh] h-auto relative  ">
 			{/* ---------------------------------- title ---------------------------------- */}
-			<div className="flex flex-col gap-6 items-center">
+			<div className="flex flex-col gap-6 items-center w-full">
 				<h2 className={` text-center capitalize `}>
 					{dict.homePage.homeHero.h1} <br /> {dict.homePage.homeHero.h1Br}
 				</h2>
@@ -39,7 +39,7 @@ export default async function Hero({ params }: { params: Promise<{ locale: "en" 
 				<div className="size-8 lg:size-12 bg-chart-2 rounded-full lg:absolute hidden right-4 lg:-left-24 -bottom-8 lg:-bottom-2 -z-50" />
 
 				{/* ------------------------------ Top Left Card ----------------------------- */}
-				<Card className="z-40 absolute w-fit -top-4 lg:top-12 -left-2 lg:-left-12">
+				<Card className="z-40 absolute w-fit -top-12 lg:top-12 -left-4 lg:-left-12">
 					<CardContent className="flex flex-col items-center justify-center">
 						<div className="flex items-center gap-2">
 							<StarIcon fill="gold" stroke="gold" />
