@@ -1,6 +1,5 @@
-import { ChartNoAxesCombined, Newspaper, Server, Users } from "lucide-react"
+import { ChartNoAxesCombined, Newspaper, Server, Type, User, Users } from "lucide-react"
 import { IoCodeSlashOutline } from "react-icons/io5"
-import { RiShoppingBag4Line } from "react-icons/ri"
 
 export const serverNav = [
   {
@@ -11,17 +10,22 @@ export const serverNav = [
   {
     title: { ar: "الأشخاص", en: "users" },
     href: "/server/users",
+    icon: User
+  },
+  {
+    title: { ar: "العملاء", en: "clients" },
+    href: "/server/clients",
     icon: Users
   },
   {
-    title: { ar: "البرمجة", en: "Development" },
-    href: "/server/Development",
-    icon: IoCodeSlashOutline
+    title: { ar: "نوع المشروع", en: "Project Type" },
+    href: "/server/type",
+    icon: Type
   },
   {
-    title: { ar: "التسويق الرقمي", en: "marketing" },
-    href: "/server/marketing",
-    icon: RiShoppingBag4Line
+    title: { ar: "التسويق الرقمي", en: "projects" },
+    href: "/server/projects",
+    icon: IoCodeSlashOutline
   },
   {
     title: { ar: "مقالاتنا", en: "articles" },

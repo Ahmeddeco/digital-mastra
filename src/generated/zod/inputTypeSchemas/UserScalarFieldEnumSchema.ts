@@ -1,5 +1,5 @@
 import { z } from 'zod';
 
-export const UserScalarFieldEnumSchema = z.enum(['id','name','email','emailVerified','image','role','createdAt','updatedAt']);
+export const UserScalarFieldEnumSchema = z.enum(['id','name','email','emailVerified','image','idImage','role','createdAt','updatedAt','mobile']);
 
 export default UserScalarFieldEnumSchema;

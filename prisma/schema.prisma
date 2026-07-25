@@ -77,20 +77,96 @@ model Verification {
 model User {
   id            String    @id
   name          String
-  email         String
+  email         String    @unique
   emailVerified Boolean   @default(false)
   image         String?
+  idImage       String?   @map("id_image")
   role          Role      @default(user)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
+  mobile        String?   @unique
+  clients       Client[]
 
-  @@unique([email])
+  @@index([email])
+  @@index([name])
+  @@index([mobile])
   @@map("user")
 }
 
 enum Role {
   user
   admin
+  programmer
+  marketer
+}
+
+model ProjectType {
+  id        String    @id @default(cuid())
+  title     String    @unique
+  projects  Project[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Client {
+  id           String    @id @default(cuid())
+  owner        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  company      String
+  tel          String    @unique
+  secondaryTel String?   @unique @map("secondary_tel")
+  email        String?   @unique
+  lat          Float?
+  lng          Float?
+  city         String?
+  state        String?
+  country      String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  projects     Project[]
+  userId       String
+
+  @@index([userId])
+  @@index([tel])
+  @@index([company])
+}
+
+model Project {
+  id            String        @id @default(cuid())
+  slug          String        @unique
+  titleAr       String        @map("title_ar")
+  titleEn       String        @map("title_en")
+  descriptionAr String?       @map("description_ar")
+  descriptionEn String?       @map("description_en")
+  painPointsAr  String?       @map("pain_points_ar") @db.Text
+  painPointsEn  String?       @map("pain_points_en") @db.Text
+  solutionsAr   String?       @map("solutions_ar") @db.Text
+  solutionsEn   String?       @map("solutions_en") @db.Text
+  mainImage     String        @map("main_image")
+  images        String[]
+  types         ProjectType[]
+  status        ProjectStatus @default(draft)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  client        Client        @relation(fields: [clientId], references: [id])
+  clientId      String
+
+  @@index([titleAr])
+  @@index([slug])
+  @@index([clientId])
+  @@index([titleEn])
+  @@index([createdAt])
+}
+
+enum ProjectStatus {
+  draft       @map("draft") // مسودة: إعداد المقترح ونطاق العمل
+  onboarding  @map("onboarding") // تهيئة: مرحلة تجهيز الصلاحيات وملفات العميل
+  inProgress  @map("in_progress") // قيد التنفيذ: بدء العمل الفعلي
+  inReview    @map("in_review") // قيد المراجعة: مراجعة الجودة أو موافقة العميل
+  onHold      @map("on_hold") // مُعلق: إيقاف مؤقت لأسباب مالية أو إدارية
+  blocked     @map("blocked") // مُعطل: متوقف على متطلبات معلقة عند العميل
+  completed   @map("completed") // مكتمل: تم التسليم والقبول النهائي
+  cancelled   @map("cancelled") // ملغى: تم cancellation للمشروع
+  maintenance @map("maintenance") // صيانة: دعم فني أو عقود تسويق شهرية (Retainer)
 }

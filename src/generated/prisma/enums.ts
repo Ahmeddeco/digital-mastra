@@ -11,7 +11,24 @@
 
 export const Role = {
   user: 'user',
-  admin: 'admin'
+  admin: 'admin',
+  programmer: 'programmer',
+  marketer: 'marketer'
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const ProjectStatus = {
+  draft: 'draft',
+  onboarding: 'onboarding',
+  inProgress: 'inProgress',
+  inReview: 'inReview',
+  onHold: 'onHold',
+  blocked: 'blocked',
+  completed: 'completed',
+  cancelled: 'cancelled',
+  maintenance: 'maintenance'
+} as const
+
+export type ProjectStatus = (typeof ProjectStatus)[keyof typeof ProjectStatus]
