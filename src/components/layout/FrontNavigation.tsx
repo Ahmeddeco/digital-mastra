@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "../ui/button"
 import React from "react"
-import { useCurrentLocale } from "@/locales/client.locale"
+import { useCurrentLocale } from "@/locales/client"
 
 export default function FrontNavigation() {
 	const pathName = usePathname()

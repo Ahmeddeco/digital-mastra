@@ -31,7 +31,7 @@ import Image from "next/image"
 import { FileIcon } from "lucide-react"
 import { Badge } from "../ui/badge"
 import { RiRobot3Line } from "react-icons/ri"
-import { useCurrentLocale } from "@/locales/client.locale"
+import { useCurrentLocale } from "@/locales/client"
 
 type Props = {
 	apiRoute: string

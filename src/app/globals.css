@@ -51,7 +51,7 @@
 	--radius-3xl: calc(var(--radius) * 2.2);
 	--radius-4xl: calc(var(--radius) * 2.6);
 	--font-serif: Geist Mono, monospace;
-	--radius: 0px;
+	--radius: 0.4rem;
 	--tracking-tighter: calc(var(--tracking-normal) - 0.05em);
 	--tracking-tight: calc(var(--tracking-normal) - 0.025em);
 	--tracking-wide: calc(var(--tracking-normal) + 0.025em);
@@ -101,7 +101,6 @@
 	--chart-3: oklch(0.5261 0.1705 314.6534);
 	--chart-4: oklch(0.7115 0.131 174.1956);
 	--chart-5: oklch(0.6318 0.1156 174.5181);
-	--radius: 0px;
 	--sidebar: oklch(0.9761 0 0);
 	--sidebar-foreground: oklch(0.3211 0 0);
 	--sidebar-primary: oklch(0.8955 0.1322 95.6535);
@@ -166,7 +165,6 @@
 	--sidebar-border: oklch(0.4495 0 0);
 	--sidebar-ring: oklch(0.8422 0.1255 83.8529);
 	--destructive-foreground: oklch(1 0 0);
-	--radius: 0px;
 	--font-sans: Geist Mono, monospace;
 	--font-serif: Geist Mono, monospace;
 	--font-mono: Geist Mono, monospace;

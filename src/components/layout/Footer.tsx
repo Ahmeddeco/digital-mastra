@@ -4,8 +4,8 @@ import Logo from "./Logo"
 import { Copyright } from "lucide-react"
 import Socials from "./Socials"
 import { Badge } from "../ui/badge"
-import { useCurrentLocale } from "@/locales/client.locale"
 import { Separator } from "../ui/separator"
+import { useCurrentLocale } from "@/locales/client"
 
 export default function Footer() {
 	const locale = useCurrentLocale()

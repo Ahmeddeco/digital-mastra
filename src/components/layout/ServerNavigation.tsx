@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Button } from "../ui/button"
 import React from "react"
 import { serverNav } from "@/constants/serverNav"
-import { useCurrentLocale } from "@/locales/client.locale"
+import { useCurrentLocale } from "@/locales/client"
 
 export default function ServerNavigation() {
 	const pathName = usePathname()

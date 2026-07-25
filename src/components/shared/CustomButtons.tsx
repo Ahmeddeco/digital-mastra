@@ -7,13 +7,16 @@ import { IoBagCheckOutline } from "react-icons/io5"
 import React from "react"
 import Link from "next/link"
 import { FaWhatsapp } from "react-icons/fa6"
-import { useCurrentLocale } from "@/locales/client.locale"
+import { useCurrentLocale } from "@/locales/client"
+
+type ButtonSize = React.ComponentPropsWithoutRef<typeof Button>["size"]
+type ButtonVariant = React.ComponentPropsWithoutRef<typeof Button>["variant"]
 
 type SubmitButtonType = {
 	title: string
 	type?: "button" | "submit" | "reset" | undefined
-	size?: "default" | "sm" | "lg" | "full" | "icon" | null | undefined
-	variant?: "link" | "default" | "secondary" | "destructive" | "outline" | "ghost" | undefined
+	size?: ButtonSize
+	variant?: ButtonVariant
 	icon: LucideIcon
 }
 

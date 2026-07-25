@@ -1,10 +1,14 @@
 "use client"
 
-import { useCurrentLocale } from "@/locales/client.locale"
+import { useCurrentLocale } from "@/locales/client"
 import Image from "next/image"
 import Link from "next/link"
 
-export default function Logo() {
+type Props = {
+	reverse?: boolean
+}
+
+export default function Logo({ reverse = false }: Props) {
 	const locale = useCurrentLocale()
 
 	return (
@@ -17,7 +21,7 @@ export default function Logo() {
 					className={`object-contain ${locale === "en" ? "object-right" : "object-left"}`}
 				/>
 			</div>
-			<h2 className="lowercase ">{locale === "en" ? "igital" : "ديجيتال"}</h2>
+			<h2 className={`${reverse && "text-background"}  lowercase `}>{locale === "en" ? "igital" : "ديجيتال"}</h2>
 		</Link>
 	)
 }
