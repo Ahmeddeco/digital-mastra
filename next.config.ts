@@ -14,6 +14,7 @@ export default withPWA({
     remotePatterns: [
       { protocol: "https", hostname: "i.pravatar.cc" },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
+      { protocol: "https", hostname: "6elzo5uqan.ufs.sh" },
     ]
   },
   devIndicators: false,

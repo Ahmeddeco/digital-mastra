@@ -149,10 +149,10 @@ export type ProjectTypeScalarFieldEnum = (typeof ProjectTypeScalarFieldEnum)[key
 
 export const ClientScalarFieldEnum = {
   id: 'id',
-  company: 'company',
+  companyName: 'companyName',
+  logo: 'logo',
   tel: 'tel',
   secondaryTel: 'secondaryTel',
-  email: 'email',
   lat: 'lat',
   lng: 'lng',
   city: 'city',

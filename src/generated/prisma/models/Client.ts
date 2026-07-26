@@ -38,10 +38,10 @@ export type ClientSumAggregateOutputType = {
 
 export type ClientMinAggregateOutputType = {
   id: string | null
-  company: string | null
+  companyName: string | null
+  logo: string | null
   tel: string | null
   secondaryTel: string | null
-  email: string | null
   lat: number | null
   lng: number | null
   city: string | null
@@ -54,10 +54,10 @@ export type ClientMinAggregateOutputType = {
 
 export type ClientMaxAggregateOutputType = {
   id: string | null
-  company: string | null
+  companyName: string | null
+  logo: string | null
   tel: string | null
   secondaryTel: string | null
-  email: string | null
   lat: number | null
   lng: number | null
   city: string | null
@@ -70,10 +70,10 @@ export type ClientMaxAggregateOutputType = {
 
 export type ClientCountAggregateOutputType = {
   id: number
-  company: number
+  companyName: number
+  logo: number
   tel: number
   secondaryTel: number
-  email: number
   lat: number
   lng: number
   city: number
@@ -98,10 +98,10 @@ export type ClientSumAggregateInputType = {
 
 export type ClientMinAggregateInputType = {
   id?: true
-  company?: true
+  companyName?: true
+  logo?: true
   tel?: true
   secondaryTel?: true
-  email?: true
   lat?: true
   lng?: true
   city?: true
@@ -114,10 +114,10 @@ export type ClientMinAggregateInputType = {
 
 export type ClientMaxAggregateInputType = {
   id?: true
-  company?: true
+  companyName?: true
+  logo?: true
   tel?: true
   secondaryTel?: true
-  email?: true
   lat?: true
   lng?: true
   city?: true
@@ -130,10 +130,10 @@ export type ClientMaxAggregateInputType = {
 
 export type ClientCountAggregateInputType = {
   id?: true
-  company?: true
+  companyName?: true
+  logo?: true
   tel?: true
   secondaryTel?: true
-  email?: true
   lat?: true
   lng?: true
   city?: true
@@ -233,10 +233,10 @@ export type ClientGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 
 export type ClientGroupByOutputType = {
   id: string
-  company: string
+  companyName: string
+  logo: string | null
   tel: string
   secondaryTel: string | null
-  email: string | null
   lat: number | null
   lng: number | null
   city: string | null
@@ -272,10 +272,10 @@ export type ClientWhereInput = {
   OR?: Prisma.ClientWhereInput[]
   NOT?: Prisma.ClientWhereInput | Prisma.ClientWhereInput[]
   id?: Prisma.StringFilter<"Client"> | string
-  company?: Prisma.StringFilter<"Client"> | string
+  companyName?: Prisma.StringFilter<"Client"> | string
+  logo?: Prisma.StringNullableFilter<"Client"> | string | null
   tel?: Prisma.StringFilter<"Client"> | string
   secondaryTel?: Prisma.StringNullableFilter<"Client"> | string | null
-  email?: Prisma.StringNullableFilter<"Client"> | string | null
   lat?: Prisma.FloatNullableFilter<"Client"> | number | null
   lng?: Prisma.FloatNullableFilter<"Client"> | number | null
   city?: Prisma.StringNullableFilter<"Client"> | string | null
@@ -290,10 +290,10 @@ export type ClientWhereInput = {
 
 export type ClientOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  company?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
+  logo?: Prisma.SortOrderInput | Prisma.SortOrder
   tel?: Prisma.SortOrder
   secondaryTel?: Prisma.SortOrderInput | Prisma.SortOrder
-  email?: Prisma.SortOrderInput | Prisma.SortOrder
   lat?: Prisma.SortOrderInput | Prisma.SortOrder
   lng?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -310,11 +310,11 @@ export type ClientWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   tel?: string
   secondaryTel?: string
-  email?: string
   AND?: Prisma.ClientWhereInput | Prisma.ClientWhereInput[]
   OR?: Prisma.ClientWhereInput[]
   NOT?: Prisma.ClientWhereInput | Prisma.ClientWhereInput[]
-  company?: Prisma.StringFilter<"Client"> | string
+  companyName?: Prisma.StringFilter<"Client"> | string
+  logo?: Prisma.StringNullableFilter<"Client"> | string | null
   lat?: Prisma.FloatNullableFilter<"Client"> | number | null
   lng?: Prisma.FloatNullableFilter<"Client"> | number | null
   city?: Prisma.StringNullableFilter<"Client"> | string | null
@@ -325,14 +325,14 @@ export type ClientWhereUniqueInput = Prisma.AtLeast<{
   userId?: Prisma.StringFilter<"Client"> | string
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   projects?: Prisma.ProjectListRelationFilter
-}, "id" | "tel" | "secondaryTel" | "email">
+}, "id" | "tel" | "secondaryTel">
 
 export type ClientOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  company?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
+  logo?: Prisma.SortOrderInput | Prisma.SortOrder
   tel?: Prisma.SortOrder
   secondaryTel?: Prisma.SortOrderInput | Prisma.SortOrder
-  email?: Prisma.SortOrderInput | Prisma.SortOrder
   lat?: Prisma.SortOrderInput | Prisma.SortOrder
   lng?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -353,10 +353,10 @@ export type ClientScalarWhereWithAggregatesInput = {
   OR?: Prisma.ClientScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ClientScalarWhereWithAggregatesInput | Prisma.ClientScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Client"> | string
-  company?: Prisma.StringWithAggregatesFilter<"Client"> | string
+  companyName?: Prisma.StringWithAggregatesFilter<"Client"> | string
+  logo?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
   tel?: Prisma.StringWithAggregatesFilter<"Client"> | string
   secondaryTel?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
-  email?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
   lat?: Prisma.FloatNullableWithAggregatesFilter<"Client"> | number | null
   lng?: Prisma.FloatNullableWithAggregatesFilter<"Client"> | number | null
   city?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
@@ -369,10 +369,10 @@ export type ClientScalarWhereWithAggregatesInput = {
 
 export type ClientCreateInput = {
   id?: string
-  company: string
+  companyName: string
+  logo?: string | null
   tel: string
   secondaryTel?: string | null
-  email?: string | null
   lat?: number | null
   lng?: number | null
   city?: string | null
@@ -386,10 +386,10 @@ export type ClientCreateInput = {
 
 export type ClientUncheckedCreateInput = {
   id?: string
-  company: string
+  companyName: string
+  logo?: string | null
   tel: string
   secondaryTel?: string | null
-  email?: string | null
   lat?: number | null
   lng?: number | null
   city?: string | null
@@ -403,10 +403,10 @@ export type ClientUncheckedCreateInput = {
 
 export type ClientUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  companyName?: Prisma.StringFieldUpdateOperationsInput | string
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -420,10 +420,10 @@ export type ClientUpdateInput = {
 
 export type ClientUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  companyName?: Prisma.StringFieldUpdateOperationsInput | string
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -437,10 +437,10 @@ export type ClientUncheckedUpdateInput = {
 
 export type ClientCreateManyInput = {
   id?: string
-  company: string
+  companyName: string
+  logo?: string | null
   tel: string
   secondaryTel?: string | null
-  email?: string | null
   lat?: number | null
   lng?: number | null
   city?: string | null
@@ -453,10 +453,10 @@ export type ClientCreateManyInput = {
 
 export type ClientUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  companyName?: Prisma.StringFieldUpdateOperationsInput | string
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -468,10 +468,10 @@ export type ClientUpdateManyMutationInput = {
 
 export type ClientUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  companyName?: Prisma.StringFieldUpdateOperationsInput | string
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -494,10 +494,10 @@ export type ClientOrderByRelationAggregateInput = {
 
 export type ClientCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  company?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
+  logo?: Prisma.SortOrder
   tel?: Prisma.SortOrder
   secondaryTel?: Prisma.SortOrder
-  email?: Prisma.SortOrder
   lat?: Prisma.SortOrder
   lng?: Prisma.SortOrder
   city?: Prisma.SortOrder
@@ -515,10 +515,10 @@ export type ClientAvgOrderByAggregateInput = {
 
 export type ClientMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  company?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
+  logo?: Prisma.SortOrder
   tel?: Prisma.SortOrder
   secondaryTel?: Prisma.SortOrder
-  email?: Prisma.SortOrder
   lat?: Prisma.SortOrder
   lng?: Prisma.SortOrder
   city?: Prisma.SortOrder
@@ -531,10 +531,10 @@ export type ClientMaxOrderByAggregateInput = {
 
 export type ClientMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  company?: Prisma.SortOrder
+  companyName?: Prisma.SortOrder
+  logo?: Prisma.SortOrder
   tel?: Prisma.SortOrder
   secondaryTel?: Prisma.SortOrder
-  email?: Prisma.SortOrder
   lat?: Prisma.SortOrder
   lng?: Prisma.SortOrder
   city?: Prisma.SortOrder
@@ -621,10 +621,10 @@ export type ClientUpdateOneRequiredWithoutProjectsNestedInput = {
 
 export type ClientCreateWithoutOwnerInput = {
   id?: string
-  company: string
+  companyName: string
+  logo?: string | null
   tel: string
   secondaryTel?: string | null
-  email?: string | null
   lat?: number | null
   lng?: number | null
   city?: string | null
@@ -637,10 +637,10 @@ export type ClientCreateWithoutOwnerInput = {
 
 export type ClientUncheckedCreateWithoutOwnerInput = {
   id?: string
-  company: string
+  companyName: string
+  logo?: string | null
   tel: string
   secondaryTel?: string | null
-  email?: string | null
   lat?: number | null
   lng?: number | null
   city?: string | null
@@ -682,10 +682,10 @@ export type ClientScalarWhereInput = {
   OR?: Prisma.ClientScalarWhereInput[]
   NOT?: Prisma.ClientScalarWhereInput | Prisma.ClientScalarWhereInput[]
   id?: Prisma.StringFilter<"Client"> | string
-  company?: Prisma.StringFilter<"Client"> | string
+  companyName?: Prisma.StringFilter<"Client"> | string
+  logo?: Prisma.StringNullableFilter<"Client"> | string | null
   tel?: Prisma.StringFilter<"Client"> | string
   secondaryTel?: Prisma.StringNullableFilter<"Client"> | string | null
-  email?: Prisma.StringNullableFilter<"Client"> | string | null
   lat?: Prisma.FloatNullableFilter<"Client"> | number | null
   lng?: Prisma.FloatNullableFilter<"Client"> | number | null
   city?: Prisma.StringNullableFilter<"Client"> | string | null
@@ -698,10 +698,10 @@ export type ClientScalarWhereInput = {
 
 export type ClientCreateWithoutProjectsInput = {
   id?: string
-  company: string
+  companyName: string
+  logo?: string | null
   tel: string
   secondaryTel?: string | null
-  email?: string | null
   lat?: number | null
   lng?: number | null
   city?: string | null
@@ -714,10 +714,10 @@ export type ClientCreateWithoutProjectsInput = {
 
 export type ClientUncheckedCreateWithoutProjectsInput = {
   id?: string
-  company: string
+  companyName: string
+  logo?: string | null
   tel: string
   secondaryTel?: string | null
-  email?: string | null
   lat?: number | null
   lng?: number | null
   city?: string | null
@@ -746,10 +746,10 @@ export type ClientUpdateToOneWithWhereWithoutProjectsInput = {
 
 export type ClientUpdateWithoutProjectsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  companyName?: Prisma.StringFieldUpdateOperationsInput | string
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -762,10 +762,10 @@ export type ClientUpdateWithoutProjectsInput = {
 
 export type ClientUncheckedUpdateWithoutProjectsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  companyName?: Prisma.StringFieldUpdateOperationsInput | string
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -778,10 +778,10 @@ export type ClientUncheckedUpdateWithoutProjectsInput = {
 
 export type ClientCreateManyOwnerInput = {
   id?: string
-  company: string
+  companyName: string
+  logo?: string | null
   tel: string
   secondaryTel?: string | null
-  email?: string | null
   lat?: number | null
   lng?: number | null
   city?: string | null
@@ -793,10 +793,10 @@ export type ClientCreateManyOwnerInput = {
 
 export type ClientUpdateWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  companyName?: Prisma.StringFieldUpdateOperationsInput | string
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -809,10 +809,10 @@ export type ClientUpdateWithoutOwnerInput = {
 
 export type ClientUncheckedUpdateWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  companyName?: Prisma.StringFieldUpdateOperationsInput | string
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -825,10 +825,10 @@ export type ClientUncheckedUpdateWithoutOwnerInput = {
 
 export type ClientUncheckedUpdateManyWithoutOwnerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  company?: Prisma.StringFieldUpdateOperationsInput | string
+  companyName?: Prisma.StringFieldUpdateOperationsInput | string
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -871,10 +871,10 @@ export type ClientCountOutputTypeCountProjectsArgs<ExtArgs extends runtime.Types
 
 export type ClientSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  company?: boolean
+  companyName?: boolean
+  logo?: boolean
   tel?: boolean
   secondaryTel?: boolean
-  email?: boolean
   lat?: boolean
   lng?: boolean
   city?: boolean
@@ -890,10 +890,10 @@ export type ClientSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 
 export type ClientSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  company?: boolean
+  companyName?: boolean
+  logo?: boolean
   tel?: boolean
   secondaryTel?: boolean
-  email?: boolean
   lat?: boolean
   lng?: boolean
   city?: boolean
@@ -907,10 +907,10 @@ export type ClientSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
 
 export type ClientSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  company?: boolean
+  companyName?: boolean
+  logo?: boolean
   tel?: boolean
   secondaryTel?: boolean
-  email?: boolean
   lat?: boolean
   lng?: boolean
   city?: boolean
@@ -924,10 +924,10 @@ export type ClientSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 
 export type ClientSelectScalar = {
   id?: boolean
-  company?: boolean
+  companyName?: boolean
+  logo?: boolean
   tel?: boolean
   secondaryTel?: boolean
-  email?: boolean
   lat?: boolean
   lng?: boolean
   city?: boolean
@@ -938,7 +938,7 @@ export type ClientSelectScalar = {
   userId?: boolean
 }
 
-export type ClientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "company" | "tel" | "secondaryTel" | "email" | "lat" | "lng" | "city" | "state" | "country" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["client"]>
+export type ClientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyName" | "logo" | "tel" | "secondaryTel" | "lat" | "lng" | "city" | "state" | "country" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["client"]>
 export type ClientInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   projects?: boolean | Prisma.Client$projectsArgs<ExtArgs>
@@ -959,10 +959,10 @@ export type $ClientPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    company: string
+    companyName: string
+    logo: string | null
     tel: string
     secondaryTel: string | null
-    email: string | null
     lat: number | null
     lng: number | null
     city: string | null
@@ -1397,10 +1397,10 @@ export interface Prisma__ClientClient<T, Null = never, ExtArgs extends runtime.T
  */
 export interface ClientFieldRefs {
   readonly id: Prisma.FieldRef<"Client", 'String'>
-  readonly company: Prisma.FieldRef<"Client", 'String'>
+  readonly companyName: Prisma.FieldRef<"Client", 'String'>
+  readonly logo: Prisma.FieldRef<"Client", 'String'>
   readonly tel: Prisma.FieldRef<"Client", 'String'>
   readonly secondaryTel: Prisma.FieldRef<"Client", 'String'>
-  readonly email: Prisma.FieldRef<"Client", 'String'>
   readonly lat: Prisma.FieldRef<"Client", 'Float'>
   readonly lng: Prisma.FieldRef<"Client", 'Float'>
   readonly city: Prisma.FieldRef<"Client", 'String'>

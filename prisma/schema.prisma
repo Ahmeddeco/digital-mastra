@@ -113,10 +113,10 @@ model ProjectType {
 model Client {
   id           String    @id @default(cuid())
   owner        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  company      String
+  companyName  String    @map("company_name")
+  logo         String?
   tel          String    @unique
   secondaryTel String?   @unique @map("secondary_tel")
-  email        String?   @unique
   lat          Float?
   lng          Float?
   city         String?
@@ -129,7 +129,7 @@ model Client {
 
   @@index([userId])
   @@index([tel])
-  @@index([company])
+  @@index([companyName])
 }
 
 model Project {

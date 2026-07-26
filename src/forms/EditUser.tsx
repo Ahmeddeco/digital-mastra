@@ -30,8 +30,6 @@ export default function EditUser({ user }: Props) {
 		shouldRevalidate: "onInput",
 	})
 
-	console.log("user from EditUser", user)
-
 	return (
 		<Form id={form.id} action={action} onSubmit={form.onSubmit} className="space-y-6">
 			<Input type="hidden" value={user.id} name="id" />

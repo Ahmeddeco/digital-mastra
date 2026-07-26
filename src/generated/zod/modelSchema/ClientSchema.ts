@@ -6,10 +6,10 @@ import { z } from 'zod';
 
 export const ClientSchema = z.object({
   id: z.string(),
-  company: z.string(),
+  companyName: z.string(),
+  logo: z.string().nullish(),
   tel: z.string(),
   secondaryTel: z.string().nullish(),
-  email: z.string().nullish(),
   lat: z.number().nullish(),
   lng: z.number().nullish(),
   city: z.string().nullish(),

@@ -1,6 +1,5 @@
 "use cache"
 
-import { Role } from "@/generated/prisma/enums"
 import prisma from "@/lib/prisma"
 import { cacheLife, cacheTag } from "next/cache"
 
@@ -42,8 +41,8 @@ export const getOneUser = async (id: string) => {
   }
 }
 
-/* ----------------------- getAllUsersForFactoriesPage ---------------------- */
-export const getAllUsersForFactoriesPage = async () => {
+/* ----------------------- getAllUsersForSelect ---------------------- */
+export const getAllUsersForSelect = async () => {
   cacheLife("hours")
   cacheTag('users')
 
@@ -59,18 +58,3 @@ export const getAllUsersForFactoriesPage = async () => {
 }
 
 
-// /* ------------------------------ getAllAuthors ----------------------------- */
-// export const getAllAuthors = async () => {
-//   cacheLife("hours")
-//   cacheTag('users')
-
-//   try {
-//     return await prisma.user.findMany({
-//       where: { role: { in: ["admin", "designer"] } },
-//       select: { id: true, name: true },
-//       orderBy: { name: "asc" }
-//     })
-//   } catch (error) {
-//     console.error(error)
-//   }
-// }
