@@ -8,7 +8,7 @@ export default async function StartProjectBtn({ params }: { params: Promise<{ lo
 	const dict = await getDictionary(locale)
 
 	return (
-		<Link href="/projects/start">
+		<Link href="/start">
 			<Button>
 				<VscDebugStart />
 				{dict.startProjectBtn.title}

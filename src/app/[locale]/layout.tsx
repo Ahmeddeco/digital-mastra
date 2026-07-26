@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import "../globals.css"
 import { ThemeProvider } from "@/components/theme/theme-provider"
-import { Toaster } from "@/components/ui/sonner"
-import { CircleAlert, CircleCheckBig, CircleX } from "lucide-react"
-import Footer from "@/components/layout/Footer"
 import localFont from "next/font/local"
 import { DirectionProvider } from "@/components/ui/direction"
 import { TooltipProvider } from "@/components/ui/tooltip"
@@ -103,18 +100,7 @@ export default async function RootLayout({
 					<UploadthingSSRPlugin />
 					<TooltipProvider>
 						<DirectionProvider dir={locale === "ar" ? "rtl" : "ltr"}>{children}</DirectionProvider>
-						<Toaster
-							theme="system"
-							richColors
-							duration={5000}
-							icons={{
-								success: <CircleCheckBig />,
-								warning: <CircleAlert />,
-								error: <CircleX />,
-							}}
-						/>
 					</TooltipProvider>
-					<Footer />
 				</ThemeProvider>
 			</body>
 		</html>

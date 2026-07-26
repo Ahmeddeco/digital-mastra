@@ -19,6 +19,15 @@ export const Role = {
 export type Role = (typeof Role)[keyof typeof Role]
 
 
+export const ProjectCategory = {
+  development: 'development',
+  marketing: 'marketing',
+  design: 'design'
+} as const
+
+export type ProjectCategory = (typeof ProjectCategory)[keyof typeof ProjectCategory]
+
+
 export const ProjectStatus = {
   draft: 'draft',
   onboarding: 'onboarding',

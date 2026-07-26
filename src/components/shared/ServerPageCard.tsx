@@ -39,7 +39,7 @@ export default function ServerPageCard({
 				</CardAction>
 			</CardHeader>
 			<Separator />
-			<CardContent className="h-full ">{children}</CardContent>
+			<CardContent className="h-full  ">{children}</CardContent>
 		</Card>
 	)
 }

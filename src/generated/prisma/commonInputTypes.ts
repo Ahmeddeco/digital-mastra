@@ -165,6 +165,23 @@ export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumRoleFilter<$PrismaModel>
 }
 
+export type EnumProjectCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProjectCategory | Prisma.EnumProjectCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.ProjectCategory[] | Prisma.ListEnumProjectCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProjectCategory[] | Prisma.ListEnumProjectCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProjectCategoryFilter<$PrismaModel> | $Enums.ProjectCategory
+}
+
+export type EnumProjectCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProjectCategory | Prisma.EnumProjectCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.ProjectCategory[] | Prisma.ListEnumProjectCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProjectCategory[] | Prisma.ListEnumProjectCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProjectCategoryWithAggregatesFilter<$PrismaModel> | $Enums.ProjectCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumProjectCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumProjectCategoryFilter<$PrismaModel>
+}
+
 export type FloatNullableFilter<$PrismaModel = never> = {
   equals?: number | Prisma.FloatFieldRefInput<$PrismaModel> | null
   in?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
@@ -371,6 +388,23 @@ export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumRoleFilter<$PrismaModel>
   _max?: Prisma.NestedEnumRoleFilter<$PrismaModel>
+}
+
+export type NestedEnumProjectCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProjectCategory | Prisma.EnumProjectCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.ProjectCategory[] | Prisma.ListEnumProjectCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProjectCategory[] | Prisma.ListEnumProjectCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProjectCategoryFilter<$PrismaModel> | $Enums.ProjectCategory
+}
+
+export type NestedEnumProjectCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProjectCategory | Prisma.EnumProjectCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.ProjectCategory[] | Prisma.ListEnumProjectCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProjectCategory[] | Prisma.ListEnumProjectCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProjectCategoryWithAggregatesFilter<$PrismaModel> | $Enums.ProjectCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumProjectCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumProjectCategoryFilter<$PrismaModel>
 }
 
 export type NestedFloatNullableFilter<$PrismaModel = never> = {

@@ -27,12 +27,12 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: "e
 			</div>
 
 			{/* ---------------------------------- Image --------------------------------- */}
-			<div className="lg:w-1/2 w-full lg:min-h-96 h-auto relative aspect-square lg:aspect-video">
+			<div className="lg:w-1/2 w-full lg:min-h-96 h-auto relative aspect-square lg:aspect-video rounded-2xl drop-shadow-xl shadow-xl">
 				<Image
 					src={dict.homePage.aboutUs.image}
 					alt={"about us"}
 					fill
-					className="aspect-square lg:aspect-video rounded-2xl shadow-2xl object-cover"
+					className="aspect-square lg:aspect-video rounded-2xl  object-cover"
 				/>
 			</div>
 		</section>

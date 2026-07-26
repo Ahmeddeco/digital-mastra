@@ -27,58 +27,48 @@ import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
-import { getAllClients } from "@/dl/clients.data"
-import { getAllClientsType } from "@/types/client.type"
-import MapDialog from "@/components/shared/MapDialog"
-import { deleteClientAction } from "@/actions/client.action"
+import { getAllUsers } from "@/dl/users.data"
+import { deleteUserAction } from "@/actions/user.action"
 
-export default async function StylesPage({
-	searchParams,
-	params,
-}: {
-	searchParams: Promise<{ page: string; size: string }>
-	params: Promise<{ locale: "en" | "ar" }>
-}) {
+export default async function StylesPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
 	await isAllowedRoles([Role.admin])
 
-	const locale = (await params).locale
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1
 	const pageSize = +size || 10
-	const clients: getAllClientsType = await getAllClients(pageSize, pageNumber)
+	const types = await getAllUsers(pageSize, pageNumber)
 
 	return (
 		<ServerPageCard
-			btnTitle="add client"
+			btnTitle="add project type"
 			icon={PlusCircle}
-			title={"all clients"}
-			description={"All clients in the database."}
-			href={"/server/clients/add"}
+			title={"all project types"}
+			description={"All project types in the database."}
+			href={"/server/types/add"}
 		>
-			{!clients?.data.length ? (
-				<EmptyCard href={"/server/clients/add"} linkTitle={"add client"} />
+			{!types?.data.length ? (
+				<EmptyCard href={"/server/types/add"} linkTitle={"add project types"} />
 			) : (
 				<Table>
 					{/* ---------------------------- TableHeader ---------------------------- */}
 					<TableHeader>
 						<TableRow>
-							<TableHead>{locale === "en" ? "image" : "الصورة"}</TableHead>
-							<TableHead>company Name</TableHead>
-							<TableHead>owner</TableHead>
-							<TableHead>tel</TableHead>
-							<TableHead>location</TableHead>
+							<TableHead>image</TableHead>
+							<TableHead>name</TableHead>
+							<TableHead>role</TableHead>
+							<TableHead>mobile</TableHead>
 							<TableHead className="text-end">settings</TableHead>
 						</TableRow>
 					</TableHeader>
 					{/* ----------------------------- TableBody ----------------------------- */}
 					<TableBody>
-						{clients.data.map(({ id, logo, companyName, lat, lng, country, state, tel, owner }) => (
+						{types.data.map(({ id, mobile, name, role, image }) => (
 							<TableRow key={id}>
 								<TableCell>
-									{logo ? (
+									{image ? (
 										<Image
-											src={logo}
-											alt={companyName ?? "user"}
+											src={image}
+											alt={name ?? "user"}
 											width={48}
 											height={48}
 											className="rounded-lg object-cover aspect-square"
@@ -87,12 +77,9 @@ export default async function StylesPage({
 										<ImageOff size={48} />
 									)}
 								</TableCell>
-								<TableCell className="capitalize ">{companyName}</TableCell>
-								<TableCell className="capitalize ">{owner.name}</TableCell>
-								<TableCell>{tel}</TableCell>
-								<TableCell>
-									<MapDialog lat={String(lat) ?? ""} lng={String(lng) ?? ""} title={`${country} - ${state}`} />{" "}
-								</TableCell>
+								<TableCell className="capitalize ">{name}</TableCell>
+								<TableCell className="capitalize ">{role}</TableCell>
+								<TableCell>{mobile}</TableCell>
 
 								{/* -------------------------------- settings -------------------------------- */}
 								<TableCell className="text-end">
@@ -102,8 +89,8 @@ export default async function StylesPage({
 										</DropdownMenuTrigger>
 										<DropdownMenuContent align="start" className="space-y-2">
 											<DropdownMenuItem asChild>
-												<Button variant={"secondary"} size={"full"} asChild>
-													<Link href={`/server/clients/edit/${id}`}>edit</Link>
+												<Button variant={"outline"} size={"full"} asChild>
+													<Link href={`/server/users/edit/${id}`}>edit</Link>
 												</Button>
 											</DropdownMenuItem>
 											{/* ---------------------------- delete --------------------------- */}
@@ -126,7 +113,7 @@ export default async function StylesPage({
 															<Button asChild>
 																<DialogClose>cancel</DialogClose>
 															</Button>
-															<Form action={deleteClientAction}>
+															<Form action={deleteUserAction}>
 																<Input type="hidden" name="id" value={id} />
 																<Button variant={"destructive"} type="submit">
 																	delete
@@ -151,7 +138,7 @@ export default async function StylesPage({
 									{pageNumber > 1 && <PaginationPrevious href={`?size=${pageSize}&page=${pageNumber - 1}`} />}
 								</PaginationItem>
 								{/* ------------------------- PaginationLink ------------------------ */}
-								{Array.from({ length: clients.totalPages ?? 1 }).map((_, index) => (
+								{Array.from({ length: types.totalPages ?? 1 }).map((_, index) => (
 									<PaginationItem key={index}>
 										<PaginationLink href={`?size=${pageSize}&page=${index + 1}`} isActive={pageNumber === index + 1}>
 											{index + 1}
@@ -160,7 +147,7 @@ export default async function StylesPage({
 								))}
 								<PaginationItem>
 									{/* ----------------------------- Next ----------------------------- */}
-									{pageNumber < clients.totalPages && (
+									{pageNumber < types.totalPages && (
 										<PaginationNext href={`?size=${pageSize}&page=${pageNumber + 1}`} />
 									)}
 								</PaginationItem>

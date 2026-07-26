@@ -25,14 +25,8 @@ export default async function Hero({ params }: { params: Promise<{ locale: "en" 
 			</div>
 
 			{/* ---------------------------------- Image --------------------------------- */}
-			<div className="relative w-full lg:w-9/12 lg:aspect-video aspect-square shadow-2xl rounded-2xl ">
-				<Image
-					src={dict.homePage.homeHero.image}
-					alt={"hero"}
-					fill
-					className="object-cover rounded-2xl shadow-2xl"
-					priority
-				/>
+			<div className="relative w-full lg:w-9/12 lg:aspect-video aspect-square drop-shadow-xl shadow-xl rounded-2xl ">
+				<Image src={dict.homePage.homeHero.image} alt={"hero"} fill className="object-cover rounded-2xl " priority />
 
 				{/* ------------------------------ Image Circles ----------------------------- */}
 				<div className="size-8 lg:size-12 bg-chart-1 rounded-full absolute lg:right-4 -left-4 -bottom-4 -z-50 " />

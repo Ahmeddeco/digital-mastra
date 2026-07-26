@@ -57,7 +57,7 @@ export default async function StylesPage({ searchParams }: { searchParams: Promi
 							<TableHead>name</TableHead>
 							<TableHead>role</TableHead>
 							<TableHead>mobile</TableHead>
-							<TableHead className="text-left">settings</TableHead>
+							<TableHead className="text-end">settings</TableHead>
 						</TableRow>
 					</TableHeader>
 					{/* ----------------------------- TableBody ----------------------------- */}
@@ -82,7 +82,7 @@ export default async function StylesPage({ searchParams }: { searchParams: Promi
 								<TableCell>{mobile}</TableCell>
 
 								{/* -------------------------------- settings -------------------------------- */}
-								<TableCell className="text-left">
+								<TableCell className="text-end">
 									<DropdownMenu>
 										<DropdownMenuTrigger>
 											<MoreVertical />

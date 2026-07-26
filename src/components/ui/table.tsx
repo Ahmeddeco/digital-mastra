@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import { cn } from "@/lib/utils"
 
 function Table({ className, ...props }: React.ComponentProps<"table">) {
@@ -48,7 +47,8 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
 		<th
 			data-slot="table-head"
 			className={cn(
-				"h-12 px-3 capitalize text-left align-middle font-semibold whitespace-nowrap text-foreground [&:has([role=checkbox])]:pr-0",
+				// تم تغيير text-left إلى text-start و pr-0 إلى pe-0
+				"h-12 px-3 capitalize text-start align-middle font-semibold whitespace-nowrap text-foreground [&:has([role=checkbox])]:pe-0",
 				className,
 			)}
 			{...props}
@@ -60,7 +60,7 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
 	return (
 		<td
 			data-slot="table-cell"
-			className={cn("p-3 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0", className)}
+			className={cn("p-3 align-middle whitespace-nowrap [&:has([role=checkbox])]:pe-0", className)}
 			{...props}
 		/>
 	)

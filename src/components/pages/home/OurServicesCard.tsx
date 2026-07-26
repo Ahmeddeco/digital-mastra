@@ -14,7 +14,9 @@ type OurServicesCardProps = {
 export default function OurServicesCard({ color, icon, title1, className }: OurServicesCardProps) {
 	return (
 		<>
-			<Card className={`${className} lg:aspect-video aspect-square flex flex-col justify-center items-center `}>
+			<Card
+				className={`${className} lg:aspect-video aspect-square flex flex-col justify-center items-center drop-shadow-xl shadow-xl`}
+			>
 				<CardContent>
 					<div className="flex flex-col items-center justify-center gap-6 ">
 						<div className={`${color} rounded-full p-6`}>{React.createElement(icon)}</div>

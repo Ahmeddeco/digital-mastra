@@ -18,8 +18,8 @@ export const serverNav = [
     icon: Users
   },
   {
-    title: { ar: "نوع المشروع", en: "Project Type" },
-    href: "/server/type",
+    title: { ar: "أنواع المشروعات", en: "Project Types" },
+    href: "/server/types",
     icon: Type
   },
   {
