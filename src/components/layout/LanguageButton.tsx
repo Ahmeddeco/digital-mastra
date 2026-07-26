@@ -10,8 +10,8 @@ export default function LanguageButton() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button size={"icon"} variant={"ghost"}>
-					<Languages className="size-7" />
+				<Button size={"icon-lg"} variant={"ghost"}>
+					<Languages />
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="center">

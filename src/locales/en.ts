@@ -90,13 +90,6 @@ export const enDic = {
         },
       ]
     },
-
-    contactUs: {
-      title: " interesting",
-      titleBr: " with us?",
-      p: " Help you to reach your business goal",
-      btn: " Get Started now",
-    },
   },
 
   marketingPage: {

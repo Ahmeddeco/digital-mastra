@@ -90,13 +90,6 @@ export const arDic = {
         }
       ]
     },
-
-    contactUs: {
-      title: " استمتع",
-      titleBr: " بالتواصل معنا",
-      p: " نحن نساعدك في الوصول الاى أهدافك الاستثمارية",
-      btn: " إبدأ معنا الآن"
-    }
   },
 
   marketingPage: {

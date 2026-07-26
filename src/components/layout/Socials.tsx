@@ -6,12 +6,7 @@ export default function Socials() {
 	return (
 		<nav className="flex items-center justify-center gap-8">
 			{socials.map(({ href, icon }) => (
-				<Link
-					href={href}
-					key={href}
-					target="_blank"
-					className="dark:hover:text-primary hover:text-secondary  ease-in-out duration-500"
-				>
+				<Link href={href} key={href} target="_blank" className="hover:text-primary ease-in-out duration-500">
 					{React.createElement(icon, { size: 24 })}
 				</Link>
 			))}

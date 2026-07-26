@@ -12,8 +12,8 @@ export default function Logo({ reverse = false }: Props) {
 	const locale = useCurrentLocale()
 
 	return (
-		<Link href="/" className="flex items-end justify-center gap-1">
-			<div className="relative h-10 w-fit aspect-square ">
+		<Link href="/" className="flex items-end justify-center gap-1 ">
+			<div className="relative size-9 ">
 				<Image
 					src={"/icons/logo.webp"}
 					alt={"logo"}
@@ -21,7 +21,9 @@ export default function Logo({ reverse = false }: Props) {
 					className={`object-contain ${locale === "en" ? "object-right" : "object-left"}`}
 				/>
 			</div>
-			<h2 className={`${reverse && "text-background"}  lowercase `}>{locale === "en" ? "igital" : "ديجيتال"}</h2>
+			<h3 className={`${reverse && "text-background"}  lowercase leading-tight `}>
+				{locale === "en" ? "igital" : "ديجيتال"}
+			</h3>
 		</Link>
 	)
 }

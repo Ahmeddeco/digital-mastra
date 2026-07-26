@@ -11,7 +11,7 @@ export default function Footer() {
 	const locale = useCurrentLocale()
 
 	return (
-		<footer className="bg-card border-t border-foreground py-16 px-6">
+		<footer className="bg-foreground text-background py-16 px-6 border-t-2 border-primary ">
 			<div className="container mx-auto">
 				<div className="flex flex-col gap-6 items-center justify-center">
 					<Logo />

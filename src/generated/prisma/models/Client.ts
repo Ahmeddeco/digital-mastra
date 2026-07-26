@@ -20,8 +20,20 @@ export type ClientModel = runtime.Types.Result.DefaultSelection<Prisma.$ClientPa
 
 export type AggregateClient = {
   _count: ClientCountAggregateOutputType | null
+  _avg: ClientAvgAggregateOutputType | null
+  _sum: ClientSumAggregateOutputType | null
   _min: ClientMinAggregateOutputType | null
   _max: ClientMaxAggregateOutputType | null
+}
+
+export type ClientAvgAggregateOutputType = {
+  lat: number | null
+  lng: number | null
+}
+
+export type ClientSumAggregateOutputType = {
+  lat: number | null
+  lng: number | null
 }
 
 export type ClientMinAggregateOutputType = {
@@ -30,8 +42,8 @@ export type ClientMinAggregateOutputType = {
   tel: string | null
   secondaryTel: string | null
   email: string | null
-  lat: string | null
-  lng: string | null
+  lat: number | null
+  lng: number | null
   city: string | null
   state: string | null
   country: string | null
@@ -46,8 +58,8 @@ export type ClientMaxAggregateOutputType = {
   tel: string | null
   secondaryTel: string | null
   email: string | null
-  lat: string | null
-  lng: string | null
+  lat: number | null
+  lng: number | null
   city: string | null
   state: string | null
   country: string | null
@@ -73,6 +85,16 @@ export type ClientCountAggregateOutputType = {
   _all: number
 }
 
+
+export type ClientAvgAggregateInputType = {
+  lat?: true
+  lng?: true
+}
+
+export type ClientSumAggregateInputType = {
+  lat?: true
+  lng?: true
+}
 
 export type ClientMinAggregateInputType = {
   id?: true
@@ -161,6 +183,18 @@ export type ClientAggregateArgs<ExtArgs extends runtime.Types.Extensions.Interna
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: ClientAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: ClientSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: ClientMinAggregateInputType
@@ -191,6 +225,8 @@ export type ClientGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   _count?: ClientCountAggregateInputType | true
+  _avg?: ClientAvgAggregateInputType
+  _sum?: ClientSumAggregateInputType
   _min?: ClientMinAggregateInputType
   _max?: ClientMaxAggregateInputType
 }
@@ -201,8 +237,8 @@ export type ClientGroupByOutputType = {
   tel: string
   secondaryTel: string | null
   email: string | null
-  lat: string | null
-  lng: string | null
+  lat: number | null
+  lng: number | null
   city: string | null
   state: string | null
   country: string | null
@@ -210,6 +246,8 @@ export type ClientGroupByOutputType = {
   updatedAt: Date
   userId: string
   _count: ClientCountAggregateOutputType | null
+  _avg: ClientAvgAggregateOutputType | null
+  _sum: ClientSumAggregateOutputType | null
   _min: ClientMinAggregateOutputType | null
   _max: ClientMaxAggregateOutputType | null
 }
@@ -238,8 +276,8 @@ export type ClientWhereInput = {
   tel?: Prisma.StringFilter<"Client"> | string
   secondaryTel?: Prisma.StringNullableFilter<"Client"> | string | null
   email?: Prisma.StringNullableFilter<"Client"> | string | null
-  lat?: Prisma.StringNullableFilter<"Client"> | string | null
-  lng?: Prisma.StringNullableFilter<"Client"> | string | null
+  lat?: Prisma.FloatNullableFilter<"Client"> | number | null
+  lng?: Prisma.FloatNullableFilter<"Client"> | number | null
   city?: Prisma.StringNullableFilter<"Client"> | string | null
   state?: Prisma.StringNullableFilter<"Client"> | string | null
   country?: Prisma.StringNullableFilter<"Client"> | string | null
@@ -277,8 +315,8 @@ export type ClientWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ClientWhereInput[]
   NOT?: Prisma.ClientWhereInput | Prisma.ClientWhereInput[]
   company?: Prisma.StringFilter<"Client"> | string
-  lat?: Prisma.StringNullableFilter<"Client"> | string | null
-  lng?: Prisma.StringNullableFilter<"Client"> | string | null
+  lat?: Prisma.FloatNullableFilter<"Client"> | number | null
+  lng?: Prisma.FloatNullableFilter<"Client"> | number | null
   city?: Prisma.StringNullableFilter<"Client"> | string | null
   state?: Prisma.StringNullableFilter<"Client"> | string | null
   country?: Prisma.StringNullableFilter<"Client"> | string | null
@@ -304,8 +342,10 @@ export type ClientOrderByWithAggregationInput = {
   updatedAt?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   _count?: Prisma.ClientCountOrderByAggregateInput
+  _avg?: Prisma.ClientAvgOrderByAggregateInput
   _max?: Prisma.ClientMaxOrderByAggregateInput
   _min?: Prisma.ClientMinOrderByAggregateInput
+  _sum?: Prisma.ClientSumOrderByAggregateInput
 }
 
 export type ClientScalarWhereWithAggregatesInput = {
@@ -317,8 +357,8 @@ export type ClientScalarWhereWithAggregatesInput = {
   tel?: Prisma.StringWithAggregatesFilter<"Client"> | string
   secondaryTel?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
   email?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
-  lat?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
-  lng?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
+  lat?: Prisma.FloatNullableWithAggregatesFilter<"Client"> | number | null
+  lng?: Prisma.FloatNullableWithAggregatesFilter<"Client"> | number | null
   city?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
   state?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
   country?: Prisma.StringNullableWithAggregatesFilter<"Client"> | string | null
@@ -333,8 +373,8 @@ export type ClientCreateInput = {
   tel: string
   secondaryTel?: string | null
   email?: string | null
-  lat?: string | null
-  lng?: string | null
+  lat?: number | null
+  lng?: number | null
   city?: string | null
   state?: string | null
   country?: string | null
@@ -350,8 +390,8 @@ export type ClientUncheckedCreateInput = {
   tel: string
   secondaryTel?: string | null
   email?: string | null
-  lat?: string | null
-  lng?: string | null
+  lat?: number | null
+  lng?: number | null
   city?: string | null
   state?: string | null
   country?: string | null
@@ -367,8 +407,8 @@ export type ClientUpdateInput = {
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lng?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -384,8 +424,8 @@ export type ClientUncheckedUpdateInput = {
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lng?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -401,8 +441,8 @@ export type ClientCreateManyInput = {
   tel: string
   secondaryTel?: string | null
   email?: string | null
-  lat?: string | null
-  lng?: string | null
+  lat?: number | null
+  lng?: number | null
   city?: string | null
   state?: string | null
   country?: string | null
@@ -417,8 +457,8 @@ export type ClientUpdateManyMutationInput = {
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lng?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -432,8 +472,8 @@ export type ClientUncheckedUpdateManyInput = {
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lng?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -468,6 +508,11 @@ export type ClientCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
 }
 
+export type ClientAvgOrderByAggregateInput = {
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
+}
+
 export type ClientMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   company?: Prisma.SortOrder
@@ -498,6 +543,11 @@ export type ClientMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+}
+
+export type ClientSumOrderByAggregateInput = {
+  lat?: Prisma.SortOrder
+  lng?: Prisma.SortOrder
 }
 
 export type ClientScalarRelationFilter = {
@@ -547,6 +597,14 @@ export type ClientUncheckedUpdateManyWithoutOwnerNestedInput = {
   deleteMany?: Prisma.ClientScalarWhereInput | Prisma.ClientScalarWhereInput[]
 }
 
+export type NullableFloatFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type ClientCreateNestedOneWithoutProjectsInput = {
   create?: Prisma.XOR<Prisma.ClientCreateWithoutProjectsInput, Prisma.ClientUncheckedCreateWithoutProjectsInput>
   connectOrCreate?: Prisma.ClientCreateOrConnectWithoutProjectsInput
@@ -567,8 +625,8 @@ export type ClientCreateWithoutOwnerInput = {
   tel: string
   secondaryTel?: string | null
   email?: string | null
-  lat?: string | null
-  lng?: string | null
+  lat?: number | null
+  lng?: number | null
   city?: string | null
   state?: string | null
   country?: string | null
@@ -583,8 +641,8 @@ export type ClientUncheckedCreateWithoutOwnerInput = {
   tel: string
   secondaryTel?: string | null
   email?: string | null
-  lat?: string | null
-  lng?: string | null
+  lat?: number | null
+  lng?: number | null
   city?: string | null
   state?: string | null
   country?: string | null
@@ -628,8 +686,8 @@ export type ClientScalarWhereInput = {
   tel?: Prisma.StringFilter<"Client"> | string
   secondaryTel?: Prisma.StringNullableFilter<"Client"> | string | null
   email?: Prisma.StringNullableFilter<"Client"> | string | null
-  lat?: Prisma.StringNullableFilter<"Client"> | string | null
-  lng?: Prisma.StringNullableFilter<"Client"> | string | null
+  lat?: Prisma.FloatNullableFilter<"Client"> | number | null
+  lng?: Prisma.FloatNullableFilter<"Client"> | number | null
   city?: Prisma.StringNullableFilter<"Client"> | string | null
   state?: Prisma.StringNullableFilter<"Client"> | string | null
   country?: Prisma.StringNullableFilter<"Client"> | string | null
@@ -644,8 +702,8 @@ export type ClientCreateWithoutProjectsInput = {
   tel: string
   secondaryTel?: string | null
   email?: string | null
-  lat?: string | null
-  lng?: string | null
+  lat?: number | null
+  lng?: number | null
   city?: string | null
   state?: string | null
   country?: string | null
@@ -660,8 +718,8 @@ export type ClientUncheckedCreateWithoutProjectsInput = {
   tel: string
   secondaryTel?: string | null
   email?: string | null
-  lat?: string | null
-  lng?: string | null
+  lat?: number | null
+  lng?: number | null
   city?: string | null
   state?: string | null
   country?: string | null
@@ -692,8 +750,8 @@ export type ClientUpdateWithoutProjectsInput = {
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lng?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -708,8 +766,8 @@ export type ClientUncheckedUpdateWithoutProjectsInput = {
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lng?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -724,8 +782,8 @@ export type ClientCreateManyOwnerInput = {
   tel: string
   secondaryTel?: string | null
   email?: string | null
-  lat?: string | null
-  lng?: string | null
+  lat?: number | null
+  lng?: number | null
   city?: string | null
   state?: string | null
   country?: string | null
@@ -739,8 +797,8 @@ export type ClientUpdateWithoutOwnerInput = {
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lng?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -755,8 +813,8 @@ export type ClientUncheckedUpdateWithoutOwnerInput = {
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lng?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -771,8 +829,8 @@ export type ClientUncheckedUpdateManyWithoutOwnerInput = {
   tel?: Prisma.StringFieldUpdateOperationsInput | string
   secondaryTel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lng?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  lng?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -905,8 +963,8 @@ export type $ClientPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     tel: string
     secondaryTel: string | null
     email: string | null
-    lat: string | null
-    lng: string | null
+    lat: number | null
+    lng: number | null
     city: string | null
     state: string | null
     country: string | null
@@ -1343,8 +1401,8 @@ export interface ClientFieldRefs {
   readonly tel: Prisma.FieldRef<"Client", 'String'>
   readonly secondaryTel: Prisma.FieldRef<"Client", 'String'>
   readonly email: Prisma.FieldRef<"Client", 'String'>
-  readonly lat: Prisma.FieldRef<"Client", 'String'>
-  readonly lng: Prisma.FieldRef<"Client", 'String'>
+  readonly lat: Prisma.FieldRef<"Client", 'Float'>
+  readonly lng: Prisma.FieldRef<"Client", 'Float'>
   readonly city: Prisma.FieldRef<"Client", 'String'>
   readonly state: Prisma.FieldRef<"Client", 'String'>
   readonly country: Prisma.FieldRef<"Client", 'String'>
