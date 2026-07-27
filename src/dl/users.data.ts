@@ -47,11 +47,26 @@ export const getAllUsersForSelect = async () => {
   cacheTag('users')
 
   try {
-    const data = await prisma.user.findMany({
+    return await prisma.user.findMany({
       select: { id: true, name: true },
       orderBy: { name: "asc" }
     })
-    return data
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+/* ---------------------- getAllNotMemberUsersForSelect --------------------- */
+export const getAllNotMemberUsersForSelect = async () => {
+  cacheLife("hours")
+  cacheTag('users')
+
+  try {
+    return await prisma.user.findMany({
+      where: { clientMembers: { none: {} } },
+      select: { id: true, name: true },
+      orderBy: { name: "asc" }
+    })
   } catch (error) {
     console.error(error)
   }

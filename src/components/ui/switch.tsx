@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 function Switch({
 	className,
 	size = "default",
+	dir,
 	...props
 }: React.ComponentProps<typeof SwitchPrimitive.Root> & {
 	size?: "sm" | "default"
@@ -16,15 +17,26 @@ function Switch({
 		<SwitchPrimitive.Root
 			data-slot="switch"
 			data-size={size}
+			dir={dir}
 			className={cn(
-				"peer group/switch relative inline-flex shrink-0 items-center rounded-full border-2 transition-all outline-none after:absolute after:-inset-x-3 after:-inset-y-2 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-[size=default]:h-5 data-[size=default]:w-11 data-[size=sm]:h-4 data-[size=sm]:w-7 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-checked:border-primary data-checked:bg-primary data-unchecked: data-unchecked:bg-input/90 data-disabled:cursor-not-allowed data-disabled:opacity-50",
+				"peer group/switch relative inline-flex shrink-0 items-center rounded-full border border-primary/40 transition-all outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 data-[size=default]:h-6 data-[size=default]:w-11 data-[size=sm]:h-4 data-[size=sm]:w-7 data-checked:bg-primary data-unchecked:bg-input data-disabled:cursor-not-allowed data-disabled:opacity-50",
 				className,
 			)}
 			{...props}
 		>
 			<SwitchPrimitive.Thumb
 				data-slot="switch-thumb"
-				className="pointer-events-none block rounded-full bg-background shadow-sm ring-0 transition-transform not-dark:bg-clip-padding group-data-[size=default]/switch:h-4 group-data-[size=default]/switch:w-6 group-data-[size=sm]/switch:h-3 group-data-[size=sm]/switch:w-4 data-checked:translate-x-[calc(100%-8px)] dark:data-checked:bg-primary-foreground data-unchecked:translate-x-0 dark:data-unchecked:bg-foreground"
+				className={cn(
+					// جعل الـ Thumb دائرياً تاماً بأبعاد متساوية (h-5 w-5 للحجم العادي) و (h-3 w-3 للحجم الصغير)
+					"pointer-events-none block rounded-full bg-background shadow-lg ring-0 transition-transform",
+					"group-data-[size=default]/switch:h-5 group-data-[size=default]/switch:w-5",
+					"group-data-[size=sm]/switch:h-3 group-data-[size=sm]/switch:w-3",
+
+					// التحكم في تحريك الدائرة بشكل مثالي لللغات RTL و LTR
+					"group-data-[size=default]/switch:data-checked:ltr:translate-x-5 group-data-[size=default]/switch:data-checked:rtl:-translate-x-5",
+					"group-data-[size=sm]/switch:data-checked:ltr:translate-x-3 group-data-[size=sm]/switch:data-checked:rtl:-translate-x-3",
+					"data-unchecked:translate-x-0",
+				)}
 			/>
 		</SwitchPrimitive.Root>
 	)

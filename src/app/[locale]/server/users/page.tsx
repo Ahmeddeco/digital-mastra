@@ -30,7 +30,7 @@ import { Role } from "@/generated/prisma/enums"
 import { getAllUsers } from "@/dl/users.data"
 import { deleteUserAction } from "@/actions/user.action"
 
-export default async function StylesPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
+export default async function UsersPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
 	await isAllowedRoles([Role.admin])
 
 	const { page, size } = await searchParams

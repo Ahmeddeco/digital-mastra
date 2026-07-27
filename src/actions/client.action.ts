@@ -15,35 +15,30 @@ export const addClientAction = async (prevState: unknown, formData: FormData) =>
     return submission.reply()
   }
 
-
-  console.log('submission from addClientAction', submission)
-
   try {
     await prisma.client.upsert({
-      where: { tel: submission.value.tel! },
+      where: { workTel: submission.value.workTel },
       create: {
         companyName: submission.value.companyName,
-        tel: submission.value.tel,
+        industry: submission.value.industry,
+        website: submission.value.website,
+        workTel: submission.value.workTel,
         secondaryTel: submission.value.secondaryTel,
         logo: submission.value.logo,
         country: submission.value.country,
         state: submission.value.state,
         city: submission.value.city,
-        userId: submission.value.userId,
-        lat: Number(submission.value.lat),
-        lng: Number(submission.value.lng),
       },
       update: {
         companyName: submission.value.companyName,
-        tel: submission.value.tel,
+        industry: submission.value.industry,
+        website: submission.value.website,
+        workTel: submission.value.workTel,
         secondaryTel: submission.value.secondaryTel,
         logo: submission.value.logo,
         country: submission.value.country,
         state: submission.value.state,
         city: submission.value.city,
-        userId: submission.value.userId,
-        lat: Number(submission.value.lat),
-        lng: Number(submission.value.lng),
       }
     })
   } catch (error) {
@@ -72,15 +67,14 @@ export const editClientAction = async (prevState: unknown, formData: FormData) =
       },
       data: {
         companyName: submission.value.companyName,
-        tel: submission.value.tel,
+        industry: submission.value.industry,
+        website: submission.value.website,
+        workTel: submission.value.workTel,
         secondaryTel: submission.value.secondaryTel,
         logo: submission.value.logo,
         country: submission.value.country,
         state: submission.value.state,
         city: submission.value.city,
-        userId: submission.value.userId,
-        lat: Number(submission.value.lat),
-        lng: Number(submission.value.lng),
       }
     })
   } catch (error) {
@@ -97,10 +91,9 @@ export const editClientAction = async (prevState: unknown, formData: FormData) =
 export const deleteClientAction = async (formData: FormData) => {
   const id = formData.get("id")
   try {
-    await prisma.client.delete({
-      where: {
-        id: id as string
-      }
+    await prisma.client.update({
+      where: { id: id as string },
+      data: { isArchived: true, deletedAt: new Date() }
     })
   } catch (error) {
     console.error(error)

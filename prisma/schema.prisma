@@ -118,13 +118,13 @@ model Client {
   industry     String?
   logo         String?
   taxId        String?        @map("tax_id")
-  tel          String
+  workTel      String?        @unique @map("work_tel")
   secondaryTel String?        @map("secondary_tel")
   website      String?
   city         String?
   state        String?
   country      String?
-  isArchived   Boolean        @default(false) @map("is_archived") // عميل متوقف/سابق
+  isArchived   Boolean?       @default(false) @map("is_archived") // عميل متوقف/سابق
   deletedAt    DateTime?      @map("deleted_at") // محذوف لسلة المهملات
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
@@ -132,20 +132,22 @@ model Client {
   projects     Project[]
 
   @@index([companyName])
-  @@index([tel])
+  @@index([workTel])
   @@index([isArchived])
   @@index([deletedAt])
   @@map("client")
 }
 
 model ClientMember {
-  id        String  @id @default(cuid())
-  clientId  String  @map("client_id")
-  userId    String  @map("user_id")
+  id        String   @id @default(cuid())
   position  String?
-  isPrimary Boolean @default(false) @map("is_primary")
-  client    Client  @relation(fields: [clientId], references: [id], onDelete: Cascade)
-  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  isPrimary Boolean? @default(false) @map("is_primary")
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  clientId  String   @map("client_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String   @map("user_id")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@unique([clientId, userId])
   @@map("client_member")
@@ -186,7 +188,7 @@ model Project {
   endDate     DateTime?        @map("end_date")
   services    ProjectService[]
   metadata    Json?
-  isArchived  Boolean          @default(false) @map("is_archived") // مشروع مكتمل ومؤرشف
+  isArchived  Boolean?         @default(false) @map("is_archived") // مشروع مكتمل ومؤرشف
   deletedAt   DateTime?        @map("deleted_at") // مشروع تم إلغاؤه وحذفه صوريًا
   createdAt   DateTime         @default(now())
   updatedAt   DateTime         @updatedAt

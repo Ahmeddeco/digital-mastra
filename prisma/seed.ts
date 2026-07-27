@@ -63,7 +63,7 @@ async function main() {
       industry: 'تجارة وتوزيع اللحوم والمنتجات الطازجة',
       logo: 'https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?auto=format&fit=crop&q=80&w=300',
       taxId: '100-200-300',
-      tel: '+20133200100',
+      workTel: '+20133200100',
       secondaryTel: '+20133200101',
       website: 'https://daktoret-lahma.com',
       city: 'بنها',

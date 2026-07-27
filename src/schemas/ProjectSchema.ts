@@ -12,7 +12,7 @@ export const ProjectSchema = z.object({
   startDate: z.date().nullish(),
   endDate: z.date().nullish(),
   metadata: JsonValueSchema.nullable(),
-  isArchived: z.boolean(),
+  isArchived: z.boolean().nullish(),
   deletedAt: z.date().nullish(),
 })
 

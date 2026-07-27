@@ -5,7 +5,7 @@ export const ClientMemberSchema = z.object({
   clientId: z.string(),
   userId: z.string(),
   position: z.string().nullish(),
-  isPrimary: z.boolean(),
+  isPrimary: z.boolean().nullish(),
 })
 
 export type ClientMember = z.infer<typeof ClientMemberSchema>

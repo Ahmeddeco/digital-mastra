@@ -9,19 +9,16 @@ import { Input } from "@/components/ui/input"
 import SubmitButton from "@/components/shared/SubmitButton"
 import { UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 import Phone from "@/components/shared/Phone"
-import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@/components/ui/select"
 import { editClientAction } from "@/actions/client.action"
 import ClientSchema from "@/schemas/ClientSchema"
-import { getAllUsersForSelectType } from "@/types/user.type"
-import Gps from "@/components/navigation/Gps"
 import { getOneClientType } from "@/types/client.type"
+import CountryInput from "@/components/navigation/CountryInput"
 
 type Props = {
-	users: getAllUsersForSelectType
 	client: getOneClientType
 }
 
-export default function EditClient({ users, client }: Props) {
+export default function EditClient({ client }: Props) {
 	const [lastResult, action] = useActionState(editClientAction, undefined)
 	const [form, fields] = useForm({
 		lastResult,
@@ -32,27 +29,41 @@ export default function EditClient({ users, client }: Props) {
 		shouldRevalidate: "onInput",
 	})
 
-	console.log("client from EditClient", client)
-
 	return (
 		<Form id={form.id} action={action} onSubmit={form.onSubmit} className="space-y-6">
 			<Input type="hidden" value={client?.id} name="id" />
-			{/* ---------------------------------- companyName --------------------------------- */}
-			<Field>
-				<FieldLabel htmlFor={fields.companyName.name}>{fields.companyName.name}</FieldLabel>
-				<Input
-					type="text"
-					key={fields.companyName.key}
-					name={fields.companyName.name}
-					defaultValue={client?.companyName}
-				/>
-				<FieldError>{fields.companyName.errors}</FieldError>
-			</Field>
+			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+				{/* ---------------------------------- companyName --------------------------------- */}
+				<Field>
+					<FieldLabel htmlFor={fields.companyName.name}>{fields.companyName.name}</FieldLabel>
+					<Input
+						type="text"
+						key={fields.companyName.key}
+						name={fields.companyName.name}
+						defaultValue={client?.companyName}
+					/>
+					<FieldError>{fields.companyName.errors}</FieldError>
+				</Field>
 
-			{/* ----------------------------------- Tel ---------------------------------- */}
-			<div className="flex lg:flex-row flex-col gap-6">
-				{/* --------------------------------- tel --------------------------------- */}
-				<Phone name={fields.tel.name} defaultValue={client?.tel ?? ""} errors={fields.tel.errors} />
+				{/* ------------------------------ industry ------------------------------ */}
+				<Field>
+					<FieldLabel htmlFor={fields.industry.name}>{fields.industry.name}</FieldLabel>
+					<Input
+						type="text"
+						key={fields.industry.key}
+						name={fields.industry.name}
+						defaultValue={client?.industry ?? ""}
+					/>
+					<FieldError>{fields.industry.errors}</FieldError>
+				</Field>
+
+				{/* --------------------------------- workTel --------------------------------- */}
+				<Phone
+					name={fields.workTel.name}
+					defaultValue={client?.workTel ?? ""}
+					errors={fields.workTel.errors}
+					label="work tel"
+				/>
 
 				{/* --------------------------------- secondaryTel --------------------------------- */}
 				<Phone
@@ -63,37 +74,23 @@ export default function EditClient({ users, client }: Props) {
 				/>
 			</div>
 
-			{/* ---------------------------------- users ---------------------------------- */}
+			{/* --------------------------------- website -------------------------------- */}
 			<Field>
-				<FieldLabel htmlFor={fields.userId.name}>owner</FieldLabel>
-				<Select key={fields.userId.key} name={fields.userId.name} defaultValue={client?.owner.id}>
-					<SelectTrigger>
-						<SelectValue />
-					</SelectTrigger>
-					<SelectContent>
-						{users?.map(({ id, name }) => (
-							<SelectItem value={id} key={id}>
-								{name}
-							</SelectItem>
-						))}
-					</SelectContent>
-				</Select>
-				<FieldError>{fields.userId.errors}</FieldError>
+				<FieldLabel htmlFor={fields.website.name}>{fields.website.name}</FieldLabel>
+				<Input type="url" key={fields.website.key} name={fields.website.name} defaultValue={client?.website ?? ""} />
+				<FieldError>{fields.website.errors}</FieldError>
 			</Field>
+
+			{/* --------------------------------- address -------------------------------- */}
+			<CountryInput userCountry={client?.country ?? ""} userState={client?.state ?? ""} userCity={client?.city ?? ""} />
 
 			{/* ------------------------------------ logo -------------------------------- */}
 			<UploadOneImagesDropZone
 				imageName={fields.logo.name}
 				imageKey={fields.logo.key}
 				errors={fields.logo.errors}
-				label="logo"
 				dbImage={client?.logo ?? ""}
-			/>
-
-			{/* ----------------------------------- Gps ---------------------------------- */}
-			<Gps
-				addressDb={{ city: client?.city ?? "", country: client?.country ?? "", state: client?.state ?? "" }}
-				cord={{ cord: { lat: Number(client?.lat), lng: Number(client?.lng) } }}
+				label="logo"
 			/>
 
 			{/* ------------------------------- SubmitButton ----------------------------- */}

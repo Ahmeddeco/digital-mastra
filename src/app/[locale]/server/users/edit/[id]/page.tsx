@@ -6,9 +6,8 @@ import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 import { getOneUser } from "@/dl/users.data"
 
-export default async function EditClassPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function EditUserPage({ params }: { params: Promise<{ id: string }> }) {
 	await isAllowedRoles([Role.admin])
-
 	const id = (await params).id
 	const user = await getOneUser(id)
 

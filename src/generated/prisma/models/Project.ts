@@ -201,7 +201,7 @@ export type ProjectGroupByOutputType = {
   startDate: Date | null
   endDate: Date | null
   metadata: runtime.JsonValue | null
-  isArchived: boolean
+  isArchived: boolean | null
   deletedAt: Date | null
   createdAt: Date
   updatedAt: Date
@@ -238,7 +238,7 @@ export type ProjectWhereInput = {
   startDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   endDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   metadata?: Prisma.JsonNullableFilter<"Project">
-  isArchived?: Prisma.BoolFilter<"Project"> | boolean
+  isArchived?: Prisma.BoolNullableFilter<"Project"> | boolean | null
   deletedAt?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
@@ -257,7 +257,7 @@ export type ProjectOrderByWithRelationInput = {
   startDate?: Prisma.SortOrderInput | Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   metadata?: Prisma.SortOrderInput | Prisma.SortOrder
-  isArchived?: Prisma.SortOrder
+  isArchived?: Prisma.SortOrderInput | Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -279,7 +279,7 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   startDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   endDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   metadata?: Prisma.JsonNullableFilter<"Project">
-  isArchived?: Prisma.BoolFilter<"Project"> | boolean
+  isArchived?: Prisma.BoolNullableFilter<"Project"> | boolean | null
   deletedAt?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
@@ -298,7 +298,7 @@ export type ProjectOrderByWithAggregationInput = {
   startDate?: Prisma.SortOrderInput | Prisma.SortOrder
   endDate?: Prisma.SortOrderInput | Prisma.SortOrder
   metadata?: Prisma.SortOrderInput | Prisma.SortOrder
-  isArchived?: Prisma.SortOrder
+  isArchived?: Prisma.SortOrderInput | Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -320,7 +320,7 @@ export type ProjectScalarWhereWithAggregatesInput = {
   startDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Project"> | Date | string | null
   endDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Project"> | Date | string | null
   metadata?: Prisma.JsonNullableWithAggregatesFilter<"Project">
-  isArchived?: Prisma.BoolWithAggregatesFilter<"Project"> | boolean
+  isArchived?: Prisma.BoolNullableWithAggregatesFilter<"Project"> | boolean | null
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Project"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Project"> | Date | string
@@ -335,7 +335,7 @@ export type ProjectCreateInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean
+  isArchived?: boolean | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -354,7 +354,7 @@ export type ProjectUncheckedCreateInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean
+  isArchived?: boolean | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -371,7 +371,7 @@ export type ProjectUpdateInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -390,7 +390,7 @@ export type ProjectUncheckedUpdateInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -408,7 +408,7 @@ export type ProjectCreateManyInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean
+  isArchived?: boolean | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -423,7 +423,7 @@ export type ProjectUpdateManyMutationInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -439,7 +439,7 @@ export type ProjectUncheckedUpdateManyInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -596,7 +596,7 @@ export type ProjectCreateWithoutClientInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean
+  isArchived?: boolean | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -613,7 +613,7 @@ export type ProjectUncheckedCreateWithoutClientInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean
+  isArchived?: boolean | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -660,7 +660,7 @@ export type ProjectScalarWhereInput = {
   startDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   endDate?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   metadata?: Prisma.JsonNullableFilter<"Project">
-  isArchived?: Prisma.BoolFilter<"Project"> | boolean
+  isArchived?: Prisma.BoolNullableFilter<"Project"> | boolean | null
   deletedAt?: Prisma.DateTimeNullableFilter<"Project"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
@@ -675,7 +675,7 @@ export type ProjectCreateWithoutServicesInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean
+  isArchived?: boolean | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -693,7 +693,7 @@ export type ProjectUncheckedCreateWithoutServicesInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean
+  isArchived?: boolean | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -725,7 +725,7 @@ export type ProjectUpdateWithoutServicesInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -743,7 +743,7 @@ export type ProjectUncheckedUpdateWithoutServicesInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -759,7 +759,7 @@ export type ProjectCreateWithoutDemoInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean
+  isArchived?: boolean | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -777,7 +777,7 @@ export type ProjectUncheckedCreateWithoutDemoInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean
+  isArchived?: boolean | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -809,7 +809,7 @@ export type ProjectUpdateWithoutDemoInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -827,7 +827,7 @@ export type ProjectUncheckedUpdateWithoutDemoInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -843,7 +843,7 @@ export type ProjectCreateManyClientInput = {
   startDate?: Date | string | null
   endDate?: Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean
+  isArchived?: boolean | null
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -858,7 +858,7 @@ export type ProjectUpdateWithoutClientInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -875,7 +875,7 @@ export type ProjectUncheckedUpdateWithoutClientInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -892,7 +892,7 @@ export type ProjectUncheckedUpdateManyWithoutClientInput = {
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1030,7 +1030,7 @@ export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     startDate: Date | null
     endDate: Date | null
     metadata: runtime.JsonValue | null
-    isArchived: boolean
+    isArchived: boolean | null
     deletedAt: Date | null
     createdAt: Date
     updatedAt: Date

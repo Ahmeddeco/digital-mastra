@@ -1348,7 +1348,7 @@ export const ClientScalarFieldEnum = {
   industry: 'industry',
   logo: 'logo',
   taxId: 'taxId',
-  tel: 'tel',
+  workTel: 'workTel',
   secondaryTel: 'secondaryTel',
   website: 'website',
   city: 'city',
@@ -1365,10 +1365,12 @@ export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof 
 
 export const ClientMemberScalarFieldEnum = {
   id: 'id',
+  position: 'position',
+  isPrimary: 'isPrimary',
   clientId: 'clientId',
   userId: 'userId',
-  position: 'position',
-  isPrimary: 'isPrimary'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ClientMemberScalarFieldEnum = (typeof ClientMemberScalarFieldEnum)[keyof typeof ClientMemberScalarFieldEnum]

@@ -9,17 +9,11 @@ import { Input } from "@/components/ui/input"
 import SubmitButton from "@/components/shared/SubmitButton"
 import { UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 import Phone from "@/components/shared/Phone"
-import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@/components/ui/select"
 import { addClientAction } from "@/actions/client.action"
 import ClientSchema from "@/schemas/ClientSchema"
-import { getAllUsersForSelectType } from "@/types/user.type"
-import Gps from "@/components/navigation/Gps"
+import CountryInput from "@/components/navigation/CountryInput"
 
-type Props = {
-	users: getAllUsersForSelectType
-}
-
-export default function AddClient({ users }: Props) {
+export default function AddClient() {
 	const [lastResult, action] = useActionState(addClientAction, undefined)
 	const [form, fields] = useForm({
 		lastResult,
@@ -31,22 +25,38 @@ export default function AddClient({ users }: Props) {
 	})
 	return (
 		<Form id={form.id} action={action} onSubmit={form.onSubmit} className="space-y-6">
-			{/* ---------------------------------- companyName --------------------------------- */}
-			<Field>
-				<FieldLabel htmlFor={fields.companyName.name}>{fields.companyName.name}</FieldLabel>
-				<Input
-					type="text"
-					key={fields.companyName.key}
-					name={fields.companyName.name}
-					defaultValue={fields.companyName.initialValue}
-				/>
-				<FieldError>{fields.companyName.errors}</FieldError>
-			</Field>
+			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+				{/* ---------------------------------- companyName --------------------------------- */}
+				<Field>
+					<FieldLabel htmlFor={fields.companyName.name}>{fields.companyName.name}</FieldLabel>
+					<Input
+						type="text"
+						key={fields.companyName.key}
+						name={fields.companyName.name}
+						defaultValue={fields.companyName.initialValue}
+					/>
+					<FieldError>{fields.companyName.errors}</FieldError>
+				</Field>
 
-			{/* ----------------------------------- Tel ---------------------------------- */}
-			<div className="flex lg:flex-row flex-col gap-6">
-				{/* --------------------------------- tel --------------------------------- */}
-				<Phone name={fields.tel.name} defaultValue={fields.tel.initialValue!} errors={fields.tel.errors} />
+				{/* ------------------------------ industry ------------------------------ */}
+				<Field>
+					<FieldLabel htmlFor={fields.industry.name}>{fields.industry.name}</FieldLabel>
+					<Input
+						type="text"
+						key={fields.industry.key}
+						name={fields.industry.name}
+						defaultValue={fields.industry.initialValue}
+					/>
+					<FieldError>{fields.industry.errors}</FieldError>
+				</Field>
+
+				{/* --------------------------------- workTel --------------------------------- */}
+				<Phone
+					name={fields.workTel.name}
+					defaultValue={fields.workTel.initialValue!}
+					errors={fields.workTel.errors}
+					label="work tel"
+				/>
 
 				{/* --------------------------------- secondaryTel --------------------------------- */}
 				<Phone
@@ -57,23 +67,20 @@ export default function AddClient({ users }: Props) {
 				/>
 			</div>
 
-			{/* ---------------------------------- users ---------------------------------- */}
+			{/* --------------------------------- website -------------------------------- */}
 			<Field>
-				<FieldLabel htmlFor={fields.userId.name}>owner</FieldLabel>
-				<Select key={fields.userId.key} name={fields.userId.name} defaultValue={fields.userId.initialValue}>
-					<SelectTrigger>
-						<SelectValue />
-					</SelectTrigger>
-					<SelectContent>
-						{users?.map(({ id, name }) => (
-							<SelectItem value={id} key={id}>
-								{name}
-							</SelectItem>
-						))}
-					</SelectContent>
-				</Select>
-				<FieldError>{fields.userId.errors}</FieldError>
+				<FieldLabel htmlFor={fields.website.name}>{fields.website.name}</FieldLabel>
+				<Input
+					type="url"
+					key={fields.website.key}
+					name={fields.website.name}
+					defaultValue={fields.website.initialValue}
+				/>
+				<FieldError>{fields.website.errors}</FieldError>
 			</Field>
+
+			{/* --------------------------------- address -------------------------------- */}
+			<CountryInput />
 
 			{/* ------------------------------------ logo -------------------------------- */}
 			<UploadOneImagesDropZone
@@ -82,9 +89,6 @@ export default function AddClient({ users }: Props) {
 				errors={fields.logo.errors}
 				label="logo"
 			/>
-
-			{/* ----------------------------------- Gps ---------------------------------- */}
-			<Gps />
 
 			{/* ------------------------------- SubmitButton ----------------------------- */}
 			<SubmitButton text={"add client"} />

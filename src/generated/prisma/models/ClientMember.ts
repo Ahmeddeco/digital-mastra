@@ -26,52 +26,64 @@ export type AggregateClientMember = {
 
 export type ClientMemberMinAggregateOutputType = {
   id: string | null
-  clientId: string | null
-  userId: string | null
   position: string | null
   isPrimary: boolean | null
+  clientId: string | null
+  userId: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ClientMemberMaxAggregateOutputType = {
   id: string | null
-  clientId: string | null
-  userId: string | null
   position: string | null
   isPrimary: boolean | null
+  clientId: string | null
+  userId: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type ClientMemberCountAggregateOutputType = {
   id: number
-  clientId: number
-  userId: number
   position: number
   isPrimary: number
+  clientId: number
+  userId: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
 
 export type ClientMemberMinAggregateInputType = {
   id?: true
-  clientId?: true
-  userId?: true
   position?: true
   isPrimary?: true
+  clientId?: true
+  userId?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ClientMemberMaxAggregateInputType = {
   id?: true
-  clientId?: true
-  userId?: true
   position?: true
   isPrimary?: true
+  clientId?: true
+  userId?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type ClientMemberCountAggregateInputType = {
   id?: true
-  clientId?: true
-  userId?: true
   position?: true
   isPrimary?: true
+  clientId?: true
+  userId?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -149,10 +161,12 @@ export type ClientMemberGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 
 export type ClientMemberGroupByOutputType = {
   id: string
+  position: string | null
+  isPrimary: boolean | null
   clientId: string
   userId: string
-  position: string | null
-  isPrimary: boolean
+  createdAt: Date
+  updatedAt: Date
   _count: ClientMemberCountAggregateOutputType | null
   _min: ClientMemberMinAggregateOutputType | null
   _max: ClientMemberMaxAggregateOutputType | null
@@ -178,20 +192,24 @@ export type ClientMemberWhereInput = {
   OR?: Prisma.ClientMemberWhereInput[]
   NOT?: Prisma.ClientMemberWhereInput | Prisma.ClientMemberWhereInput[]
   id?: Prisma.StringFilter<"ClientMember"> | string
+  position?: Prisma.StringNullableFilter<"ClientMember"> | string | null
+  isPrimary?: Prisma.BoolNullableFilter<"ClientMember"> | boolean | null
   clientId?: Prisma.StringFilter<"ClientMember"> | string
   userId?: Prisma.StringFilter<"ClientMember"> | string
-  position?: Prisma.StringNullableFilter<"ClientMember"> | string | null
-  isPrimary?: Prisma.BoolFilter<"ClientMember"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"ClientMember"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ClientMember"> | Date | string
   client?: Prisma.XOR<Prisma.ClientScalarRelationFilter, Prisma.ClientWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type ClientMemberOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  position?: Prisma.SortOrderInput | Prisma.SortOrder
+  isPrimary?: Prisma.SortOrderInput | Prisma.SortOrder
   clientId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  position?: Prisma.SortOrderInput | Prisma.SortOrder
-  isPrimary?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   client?: Prisma.ClientOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
 }
@@ -202,20 +220,24 @@ export type ClientMemberWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ClientMemberWhereInput | Prisma.ClientMemberWhereInput[]
   OR?: Prisma.ClientMemberWhereInput[]
   NOT?: Prisma.ClientMemberWhereInput | Prisma.ClientMemberWhereInput[]
+  position?: Prisma.StringNullableFilter<"ClientMember"> | string | null
+  isPrimary?: Prisma.BoolNullableFilter<"ClientMember"> | boolean | null
   clientId?: Prisma.StringFilter<"ClientMember"> | string
   userId?: Prisma.StringFilter<"ClientMember"> | string
-  position?: Prisma.StringNullableFilter<"ClientMember"> | string | null
-  isPrimary?: Prisma.BoolFilter<"ClientMember"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"ClientMember"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ClientMember"> | Date | string
   client?: Prisma.XOR<Prisma.ClientScalarRelationFilter, Prisma.ClientWhereInput>
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "clientId_userId">
 
 export type ClientMemberOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  position?: Prisma.SortOrderInput | Prisma.SortOrder
+  isPrimary?: Prisma.SortOrderInput | Prisma.SortOrder
   clientId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
-  position?: Prisma.SortOrderInput | Prisma.SortOrder
-  isPrimary?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.ClientMemberCountOrderByAggregateInput
   _max?: Prisma.ClientMemberMaxOrderByAggregateInput
   _min?: Prisma.ClientMemberMinOrderByAggregateInput
@@ -226,64 +248,80 @@ export type ClientMemberScalarWhereWithAggregatesInput = {
   OR?: Prisma.ClientMemberScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ClientMemberScalarWhereWithAggregatesInput | Prisma.ClientMemberScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"ClientMember"> | string
+  position?: Prisma.StringNullableWithAggregatesFilter<"ClientMember"> | string | null
+  isPrimary?: Prisma.BoolNullableWithAggregatesFilter<"ClientMember"> | boolean | null
   clientId?: Prisma.StringWithAggregatesFilter<"ClientMember"> | string
   userId?: Prisma.StringWithAggregatesFilter<"ClientMember"> | string
-  position?: Prisma.StringNullableWithAggregatesFilter<"ClientMember"> | string | null
-  isPrimary?: Prisma.BoolWithAggregatesFilter<"ClientMember"> | boolean
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"ClientMember"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ClientMember"> | Date | string
 }
 
 export type ClientMemberCreateInput = {
   id?: string
   position?: string | null
-  isPrimary?: boolean
+  isPrimary?: boolean | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   client: Prisma.ClientCreateNestedOneWithoutMembersInput
   user: Prisma.UserCreateNestedOneWithoutClientMembersInput
 }
 
 export type ClientMemberUncheckedCreateInput = {
   id?: string
+  position?: string | null
+  isPrimary?: boolean | null
   clientId: string
   userId: string
-  position?: string | null
-  isPrimary?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ClientMemberUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPrimary?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.ClientUpdateOneRequiredWithoutMembersNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutClientMembersNestedInput
 }
 
 export type ClientMemberUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPrimary?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ClientMemberCreateManyInput = {
   id?: string
+  position?: string | null
+  isPrimary?: boolean | null
   clientId: string
   userId: string
-  position?: string | null
-  isPrimary?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ClientMemberUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPrimary?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ClientMemberUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPrimary?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ClientMemberListRelationFilter = {
@@ -303,26 +341,32 @@ export type ClientMemberClientIdUserIdCompoundUniqueInput = {
 
 export type ClientMemberCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  clientId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   position?: Prisma.SortOrder
   isPrimary?: Prisma.SortOrder
+  clientId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ClientMemberMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  clientId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   position?: Prisma.SortOrder
   isPrimary?: Prisma.SortOrder
+  clientId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ClientMemberMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  clientId?: Prisma.SortOrder
-  userId?: Prisma.SortOrder
   position?: Prisma.SortOrder
   isPrimary?: Prisma.SortOrder
+  clientId?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type ClientMemberCreateNestedManyWithoutUserInput = {
@@ -412,15 +456,19 @@ export type ClientMemberUncheckedUpdateManyWithoutClientNestedInput = {
 export type ClientMemberCreateWithoutUserInput = {
   id?: string
   position?: string | null
-  isPrimary?: boolean
+  isPrimary?: boolean | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   client: Prisma.ClientCreateNestedOneWithoutMembersInput
 }
 
 export type ClientMemberUncheckedCreateWithoutUserInput = {
   id?: string
-  clientId: string
   position?: string | null
-  isPrimary?: boolean
+  isPrimary?: boolean | null
+  clientId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ClientMemberCreateOrConnectWithoutUserInput = {
@@ -454,24 +502,30 @@ export type ClientMemberScalarWhereInput = {
   OR?: Prisma.ClientMemberScalarWhereInput[]
   NOT?: Prisma.ClientMemberScalarWhereInput | Prisma.ClientMemberScalarWhereInput[]
   id?: Prisma.StringFilter<"ClientMember"> | string
+  position?: Prisma.StringNullableFilter<"ClientMember"> | string | null
+  isPrimary?: Prisma.BoolNullableFilter<"ClientMember"> | boolean | null
   clientId?: Prisma.StringFilter<"ClientMember"> | string
   userId?: Prisma.StringFilter<"ClientMember"> | string
-  position?: Prisma.StringNullableFilter<"ClientMember"> | string | null
-  isPrimary?: Prisma.BoolFilter<"ClientMember"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"ClientMember"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"ClientMember"> | Date | string
 }
 
 export type ClientMemberCreateWithoutClientInput = {
   id?: string
   position?: string | null
-  isPrimary?: boolean
+  isPrimary?: boolean | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutClientMembersInput
 }
 
 export type ClientMemberUncheckedCreateWithoutClientInput = {
   id?: string
-  userId: string
   position?: string | null
-  isPrimary?: boolean
+  isPrimary?: boolean | null
+  userId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ClientMemberCreateOrConnectWithoutClientInput = {
@@ -502,101 +556,125 @@ export type ClientMemberUpdateManyWithWhereWithoutClientInput = {
 
 export type ClientMemberCreateManyUserInput = {
   id?: string
-  clientId: string
   position?: string | null
-  isPrimary?: boolean
+  isPrimary?: boolean | null
+  clientId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ClientMemberUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPrimary?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.ClientUpdateOneRequiredWithoutMembersNestedInput
 }
 
 export type ClientMemberUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  clientId?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPrimary?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ClientMemberUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  clientId?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPrimary?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ClientMemberCreateManyClientInput = {
   id?: string
-  userId: string
   position?: string | null
-  isPrimary?: boolean
+  isPrimary?: boolean | null
+  userId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type ClientMemberUpdateWithoutClientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPrimary?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutClientMembersNestedInput
 }
 
 export type ClientMemberUncheckedUpdateWithoutClientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPrimary?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ClientMemberUncheckedUpdateManyWithoutClientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userId?: Prisma.StringFieldUpdateOperationsInput | string
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isPrimary?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
 
 export type ClientMemberSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  clientId?: boolean
-  userId?: boolean
   position?: boolean
   isPrimary?: boolean
+  clientId?: boolean
+  userId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["clientMember"]>
 
 export type ClientMemberSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  clientId?: boolean
-  userId?: boolean
   position?: boolean
   isPrimary?: boolean
+  clientId?: boolean
+  userId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["clientMember"]>
 
 export type ClientMemberSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  clientId?: boolean
-  userId?: boolean
   position?: boolean
   isPrimary?: boolean
+  clientId?: boolean
+  userId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["clientMember"]>
 
 export type ClientMemberSelectScalar = {
   id?: boolean
-  clientId?: boolean
-  userId?: boolean
   position?: boolean
   isPrimary?: boolean
+  clientId?: boolean
+  userId?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type ClientMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "clientId" | "userId" | "position" | "isPrimary", ExtArgs["result"]["clientMember"]>
+export type ClientMemberOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "position" | "isPrimary" | "clientId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["clientMember"]>
 export type ClientMemberInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   client?: boolean | Prisma.ClientDefaultArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -618,10 +696,12 @@ export type $ClientMemberPayload<ExtArgs extends runtime.Types.Extensions.Intern
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    position: string | null
+    isPrimary: boolean | null
     clientId: string
     userId: string
-    position: string | null
-    isPrimary: boolean
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["clientMember"]>
   composites: {}
 }
@@ -1048,10 +1128,12 @@ export interface Prisma__ClientMemberClient<T, Null = never, ExtArgs extends run
  */
 export interface ClientMemberFieldRefs {
   readonly id: Prisma.FieldRef<"ClientMember", 'String'>
-  readonly clientId: Prisma.FieldRef<"ClientMember", 'String'>
-  readonly userId: Prisma.FieldRef<"ClientMember", 'String'>
   readonly position: Prisma.FieldRef<"ClientMember", 'String'>
   readonly isPrimary: Prisma.FieldRef<"ClientMember", 'Boolean'>
+  readonly clientId: Prisma.FieldRef<"ClientMember", 'String'>
+  readonly userId: Prisma.FieldRef<"ClientMember", 'String'>
+  readonly createdAt: Prisma.FieldRef<"ClientMember", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"ClientMember", 'DateTime'>
 }
     
 
