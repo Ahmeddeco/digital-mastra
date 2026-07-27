@@ -253,3 +253,17 @@ model Demo {
   @@index([isFeatured, category])
   @@index([deletedAt])
 }
+
+model Article {
+  id            String   @id @default(cuid())
+  titleAr       String   @map("title_ar")
+  titleEn       String   @map("title_en")
+  descriptionAr String   @map("description_ar")
+  descriptionEn String   @map("description_en")
+  articleBodyAr String   @map("article_body_ar") @db.Text
+  articleBodyEn String   @map("article_body_en") @db.Text
+  resources     String[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

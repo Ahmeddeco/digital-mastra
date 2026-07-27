@@ -91,3 +91,8 @@ export type ProjectService = Prisma.ProjectServiceModel
  * 
  */
 export type Demo = Prisma.DemoModel
+/**
+ * Model Article
+ * 
+ */
+export type Article = Prisma.ArticleModel

@@ -1,6 +1,6 @@
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
 import Image from "next/image"
-import { Separator } from "../ui/separator"
 
 type Props = {
 	className?: string

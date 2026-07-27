@@ -1,5 +1,5 @@
 "use client"
-import { Button } from "../ui/button"
+import { Button } from "../components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useChangeLocale } from "@/locales/client"
 import { Languages } from "lucide-react"

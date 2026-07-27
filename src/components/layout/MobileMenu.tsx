@@ -1,11 +1,11 @@
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetFooter } from "@/components/ui/sheet"
-import { Menu } from "lucide-react"
-import Logo from "./Logo"
-import { ThemeButton } from "../theme/ThemeButton"
 import UserButton from "@/auth/UserButton"
-import FrontNavigation from "./FrontNavigation"
-import LanguageButton from "./LanguageButton"
-import { Button } from "../ui/button"
+import FrontNavigation from "@/components/layout/FrontNavigation"
+import Logo from "@/components/layout/Logo"
+import { ThemeButton } from "@/components/theme/ThemeButton"
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetFooter } from "@/components/ui/sheet"
+import LanguageButton from "@/locales/LanguageButton"
+import { Menu } from "lucide-react"
 
 export default function MobileMenu() {
 	return (

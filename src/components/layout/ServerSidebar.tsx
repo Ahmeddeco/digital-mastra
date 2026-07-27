@@ -7,10 +7,10 @@ import {
 	SidebarFooter,
 } from "@/components/ui/sidebar"
 import Logo from "./Logo"
-import { ThemeButton } from "../theme/ThemeButton"
-import ServerNavigation from "./ServerNavigation"
 import UserButton from "@/auth/UserButton"
-import LanguageButton from "./LanguageButton"
+import ServerNavigation from "@/components/layout/ServerNavigation"
+import { ThemeButton } from "@/components/theme/ThemeButton"
+import LanguageButton from "@/locales/LanguageButton"
 
 type Props = {
 	locale: "ar" | "en"

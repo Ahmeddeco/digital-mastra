@@ -29,9 +29,9 @@ import { Message, MessageContent, MessageResponse } from "@/components/ai-elemen
 import { DefaultChatTransport } from "ai"
 import Image from "next/image"
 import { FileIcon } from "lucide-react"
-import { Badge } from "../ui/badge"
 import { RiRobot3Line } from "react-icons/ri"
 import { useCurrentLocale } from "@/locales/client"
+import { Badge } from "@/components/ui/badge"
 
 type Props = {
 	apiRoute: string

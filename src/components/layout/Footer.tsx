@@ -1,11 +1,11 @@
 "use client"
 
-import Logo from "./Logo"
 import { Copyright } from "lucide-react"
-import Socials from "./Socials"
-import { Badge } from "../ui/badge"
-import { Separator } from "../ui/separator"
 import { useCurrentLocale } from "@/locales/client"
+import Logo from "@/components/layout/Logo"
+import Socials from "@/components/layout/Socials"
+import { Separator } from "@/components/ui/separator"
+import { Badge } from "@/components/ui/badge"
 
 export default function Footer() {
 	const locale = useCurrentLocale()
@@ -24,7 +24,7 @@ export default function Footer() {
 
 					<Separator />
 
-					<Badge variant={"default"}>
+					<Badge variant={"default"} className="border-primary">
 						<Copyright />
 						2026 Ahmed Elgazzar. All rights reserved.
 					</Badge>

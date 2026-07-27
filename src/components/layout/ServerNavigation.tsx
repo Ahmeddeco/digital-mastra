@@ -1,12 +1,12 @@
 "use client"
 
-import { SidebarMenu } from "../ui/sidebar"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import { Button } from "../ui/button"
 import React from "react"
 import { serverNav } from "@/constants/serverNav"
 import { useCurrentLocale } from "@/locales/client"
+import { SidebarMenu } from "@/components/ui/sidebar"
+import { Button } from "@/components/ui/button"
 
 export default function ServerNavigation() {
 	const pathName = usePathname()

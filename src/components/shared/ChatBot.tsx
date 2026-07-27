@@ -1,10 +1,14 @@
 "use client"
 
 import { useState } from "react"
-import { PromptInput, PromptInputBody, PromptInputTextarea } from "@/components/ai-elements/prompt-input"
+import {
+	PromptInput,
+	PromptInputBody,
+	PromptInputMessage,
+	PromptInputTextarea,
+} from "@/components/ai-elements/prompt-input"
 import { useChat } from "@ai-sdk/react"
 import { DefaultChatTransport } from "ai"
-import { PromptInputMessage } from "../ai-elements/prompt-input"
 import {
 	Conversation,
 	ConversationContent,

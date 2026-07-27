@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { frontNavLinks } from "@/constants/nav"
 import { useCurrentLocale } from "@/locales/client"
-import { Button } from "../ui/button"
+import { Button } from "@/components/ui/button"
 
 export default function FrontNavigation() {
 	const pathName = usePathname()

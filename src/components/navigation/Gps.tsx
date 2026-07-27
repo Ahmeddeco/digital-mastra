@@ -7,8 +7,8 @@ import { toast } from "sonner"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { useCurrentLocale } from "@/locales/client"
-import { Field, FieldLabel } from "../ui/field"
 import { RiMapPinUserLine } from "react-icons/ri"
+import { Field, FieldLabel } from "@/components/ui/field"
 
 type Coordinates = {
 	lat: number

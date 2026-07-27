@@ -4,7 +4,8 @@ import prisma from "@/lib/prisma"
 async function main() {
   console.log('🧹 Clearing existing database records...')
 
-  // تنظيف البيانات بالتسلسل لتجنب مشاكل الـ Foreign Keys
+  // تنظيف البيانات بالتسلسل لتجنب مشاكل Foreign Keys
+  await prisma.article.deleteMany()
   await prisma.demo.deleteMany()
   await prisma.projectService.deleteMany()
   await prisma.project.deleteMany()
@@ -18,7 +19,7 @@ async function main() {
 
   console.log('🌱 Seeding Users...')
 
-  // 1. إنشاء المستخدمين (أعضاء الفريق والعملاء)
+  // 1. إنشاء المستخدمين
   await prisma.user.create({
     data: {
       name: 'أحمد محمد',
@@ -27,28 +28,6 @@ async function main() {
       image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
       role: Role.admin,
       mobile: '+201000000001',
-    },
-  })
-
-  await prisma.user.create({
-    data: {
-      name: 'محمود حسن',
-      email: 'mahmoud.dev@flux-agency.com',
-      emailVerified: true,
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
-      role: Role.programmer,
-      mobile: '+201000000002',
-    },
-  })
-
-  await prisma.user.create({
-    data: {
-      name: 'سارة خليل',
-      email: 'sara.design@flux-agency.com',
-      emailVerified: true,
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400',
-      role: Role.designer,
-      mobile: '+201000000003',
     },
   })
 
@@ -63,44 +42,15 @@ async function main() {
     },
   })
 
-  const userClientProduce = await prisma.user.create({
-    data: {
-      name: 'الحاج مصطفى العاصمي',
-      email: 'mostafa@fakahany-aasima.com',
-      emailVerified: true,
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400',
-      role: Role.user,
-      mobile: '+201111111102',
-    },
-  })
-
   console.log('🌱 Seeding Services...')
 
-  // 2. إنشاء الخدمات التشغيلية
+  // 2. إنشاء الخدمات
   const devService = await prisma.service.create({
     data: {
       nameAr: 'تطوير المنصات وتطبيقات الويب',
       nameEn: 'Web Platform & App Development',
       category: ProjectCategory.development,
       description: 'بناء منصات متكاملة وحلول ERP وتطبيقات Next.js وPWA عالية الأداء.',
-    },
-  })
-
-  const marketingService = await prisma.service.create({
-    data: {
-      nameAr: 'الحملات الإعلانية والتسويق الرقمي',
-      nameEn: 'Digital Marketing & Paid Ads',
-      category: ProjectCategory.marketing,
-      description: 'إدارة الحملات الإعلانية واستراتيجيات النمو وتوجيه العملاء المحتملين.',
-    },
-  })
-
-  const designService = await prisma.service.create({
-    data: {
-      nameAr: 'الهوية البصرية وتصميم المتاجر',
-      nameEn: 'Branding & Store Interior Design',
-      category: ProjectCategory.design,
-      description: 'تصميم الهويات التجارية والتصاميم المعمارية والمعارض الثلاثية الأبعاد.',
     },
   })
 
@@ -131,30 +81,7 @@ async function main() {
     },
   })
 
-  const clientProduceShop = await prisma.client.create({
-    data: {
-      companyName: 'فاكهاني العاصمة',
-      industry: 'تجارة التجزئة للخضراوات والفواكه',
-      logo: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&q=80&w=300',
-      taxId: '400-500-600',
-      tel: '+20482200200',
-      website: 'https://fakahany-aasima.com',
-      city: 'شبين الكوم',
-      state: 'المنوفية',
-      country: 'مصر',
-      members: {
-        create: [
-          {
-            userId: userClientProduce.id,
-            position: 'مالك المؤسسة',
-            isPrimary: true,
-          },
-        ],
-      },
-    },
-  })
-
-  console.log('🌱 Seeding Projects & Linked Demos...')
+  console.log('🌱 Seeding Projects & Demos...')
 
   // 4. إنشاء مشروع بلدي وربطه بـ Demo
   await prisma.project.create({
@@ -166,14 +93,7 @@ async function main() {
       status: ProjectStatus.inProgress,
       startDate: new Date('2026-01-15'),
       services: {
-        create: [
-          { serviceId: devService.id },
-          { serviceId: marketingService.id },
-        ],
-      },
-      metadata: {
-        techStack: ['Next.js 16', 'PostgreSQL', 'Prisma', 'Tailwind CSS 4', 'Mastra AI'],
-        targetAudience: 'B2C / B2B Meat Distributors',
+        create: [{ serviceId: devService.id }],
       },
       demo: {
         create: {
@@ -191,7 +111,6 @@ async function main() {
           mainImage: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&q=80&w=1200',
           images: [
             'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=1000',
-            'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=1000',
           ],
           liveUrl: 'https://balady-demo.flux-agency.com',
           isFeatured: true,
@@ -200,93 +119,69 @@ async function main() {
     },
   })
 
-  // 5. إنشاء مشروع فاكهاني العاصمة وربطه بـ Demo
-  await prisma.project.create({
-    data: {
-      code: 'FKH-2026',
-      title: 'الهوية البصرية وتطبيق الطلب السريع لفاكهاني العاصمة',
-      description: 'إعادة هيكلة الهوية الميدانية وإطلاق منصة طلب سريع لتوصيل الخضراوات والفواكه الطازجة.',
-      clientId: clientProduceShop.id,
-      status: ProjectStatus.completed,
-      startDate: new Date('2026-02-01'),
-      endDate: new Date('2026-05-10'),
-      isArchived: true,
-      services: {
-        create: [
-          { serviceId: devService.id },
-          { serviceId: designService.id },
-        ],
+  console.log('🌱 Seeding Articles...')
+
+  // 5. إضافة المقالات (Article)
+  await prisma.article.createMany({
+    data: [
+      {
+        titleAr: 'مقدمة في تطوير تطبيقات الويب الحديثة باستخدام Next.js',
+        titleEn: 'Introduction to Modern Web Development with Next.js',
+        descriptionAr: 'دليل شامل لأحدث التقنيات والأساليب المستخدمة في بناء تطبيقات ويب سريعة وآمنة.',
+        descriptionEn: 'A comprehensive guide to building fast and secure full-stack applications.',
+        articleBodyAr: 'تعتبر إطارات العمل الحديثة مثل Next.js نقلة نوعية في عالم تطوير الويب، حيث توفر دمجاً ممتازاً بين الـ Server-Side Rendering (SSR) والـ Client Components مما يحسن من أداء الموقع ومحركات البحث (SEO)...',
+        articleBodyEn: 'Modern frameworks like Next.js have revolutionized web development by seamlessly combining Server-Side Rendering (SSR) with Client Components for optimized SEO and performance...',
+        resources: ['https://nextjs.org/docs', 'https://react.dev'],
       },
-      demo: {
-        create: {
-          slug: 'fakahany-el-aasima-rebranding',
-          titleAr: 'تطوير هوية ومتجر فاكهاني العاصمة',
-          titleEn: 'Fakahany El Aasima E-Commerce & Brand Redesign',
-          category: ProjectCategory.design,
-          tags: ['Branding', 'PWA', 'React', 'UI/UX'],
-          descriptionAr: 'تصميم هوية بصرية مبهجة تعكس جودة المنتجات الطازجة مع بناء Progressive Web App للطلب السريع.',
-          descriptionEn: 'A vibrant brand identity redesign paired with a lightning-fast Progressive Web App built for quick local delivery.',
-          painPointsAr: 'اعتماد المتجر على الطلبات الهاتفية الشفهية مما تسبب في بطء وتداخل مواعيد التوصيل.',
-          painPointsEn: 'Over-reliance on phone orders causing delivery scheduling delays and inaccuracies.',
-          solutionsAr: 'بناء تطبيق PWA بواجهة عصرية تعتمد على الصور عالية الجودة وخيار السلة السريعة بنقرة واحدة.',
-          solutionsEn: 'Constructed an intuitive PWA with rich imagery and single-tap checkout logic.',
-          mainImage: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&q=80&w=1200',
-          images: [
-            'https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&q=80&w=1000',
-            'https://images.unsplash.com/photo-1573248197036-8a56c8a24322?auto=format&fit=crop&q=80&w=1000',
-          ],
-          liveUrl: 'https://fakahany.flux-agency.com',
-          isFeatured: true,
-        },
+      {
+        titleAr: 'تصميم قواعد البيانات العالية الكفاءة باستخدام Prisma ORM',
+        titleEn: 'Designing High-Performance Database Schemas with Prisma',
+        descriptionAr: 'كيفية إنشاء جداول وعلاقات مترابطة ومتطورة في قواعد البيانات دون التعقد المكتبي.',
+        descriptionEn: 'Learn how to build scalable and type-safe database schemas effortlessely.',
+        articleBodyAr: 'يساعد Prisma ORM المطورين على كتابة كود قاعدة بيانات آمن من حيث الأنماط (Type-safe) وسهل القراءة والتعامل، مما يقلل من الأخطاء أثناء التطوير ويسرع عملية الـ Seeding والـ Migrations...',
+        articleBodyEn: 'Prisma ORM simplifies database interactions by offering type safety, automated migrations, and effortless schema validation when integrated with TypeScript...',
+        resources: ['https://www.prisma.io/docs'],
       },
-    },
+      {
+        titleAr: 'استراتيجيات التسويق الرقمي وبناء العلامة التجارية للشركات',
+        titleEn: 'Digital Marketing Strategies & Corporate Branding',
+        descriptionAr: 'خطوات عمل للوصول إلى الجمهور المستهدف وزيادة مبيعات المنتجات والخدمات.',
+        descriptionEn: 'Actionable steps to reach your target audience and grow your brand identity effectively.',
+        articleBodyAr: 'يعتمد التسويق الرقمي الحديث على تحليل البيانات واستخدام الأدوات الذكية لتوجيه الحملات الإعلانية للعملاء الأكثر اهتماماً، مع صياغة هوية بصرية قوية تعكس قيم الشركة...',
+        articleBodyEn: 'Modern digital marketing relies on data analysis and precise audience targeting paired with a strong visual brand identity that effectively reflects company core values...',
+        resources: ['https://hubspot.com', 'https://google.com/analytics'],
+      },
+      {
+        titleAr: 'أسس تصميم واجهات المستخدم وتجربة المستخدم (UI/UX)',
+        titleEn: 'Fundamentals of UI/UX Design for Web and Mobile Applications',
+        descriptionAr: 'كيف تصمم واجهات جليّة وسلسة تجعل تجربة العميل مريحة وممتعة.',
+        descriptionEn: 'How to design seamless interfaces that deliver excellent user experiences.',
+        articleBodyAr: 'التصميم الجيد لا يقتصر فقط على الألوان الجذابة، بل يتعلق بكيفية تفاعل المستخدم مع التطبيق وسهولة الوصول إلى المعلومات دون تعقيد...',
+        articleBodyEn: 'Great design is not just about aesthetics; it focuses on usability, accessibility, and facilitating effortless user interaction with software...',
+        resources: ['https://figma.com', 'https://material.io'],
+      },
+      {
+        titleAr: 'أهمية الاختبارات المئتمتة (Automated Testing) في البرمجيات',
+        titleEn: 'The Importance of Automated Testing in Software Development',
+        descriptionAr: 'لماذا يجب عليك اعتماد أدوات مثل Vitest لضمان جودة تطبيقك واستقراره.',
+        descriptionEn: 'Why integrating tools like Vitest ensures product quality and long-term stability.',
+        articleBodyAr: 'تضمن كتابة Unit Tests و Integration Tests عدم حدوث أي انكسارات في التطبيق عند إضافة مميزات جديدة، مما يوفر الوقت والجهد على فريق التطوير...',
+        articleBodyEn: 'Writing unit and integration tests guarantees that new feature deployments do not break existing logic, saving development time and reducing software bugs...',
+        resources: ['https://vitest.dev/'],
+      },
+      {
+        titleAr: 'التحول الرقمي وأثره على إدارة الشركات والأعمال',
+        titleEn: 'Digital Transformation and Its Impact on Enterprise Operations',
+        descriptionAr: 'كيف تساهم الأنظمة المخصصة (ERP & CRM) في رفع كفاءة بيئة العمل.',
+        descriptionEn: 'How custom ERP and CRM systems enhance operational workflow and growth.',
+        articleBodyAr: 'يعد الانتقال من الإدارة التقليدية إلى الأنظمة الرقمية المترابطة خطوة أساسية لأي مؤسسة تسعى للتوسع وحفظ بيانات العملاء والمبيعات بدقة...',
+        articleBodyEn: 'Transitioning from legacy operations to integrated software platforms allows organizations to scale sustainably and track performance dynamically...',
+        resources: ['https://microservices.io'],
+      },
+    ],
   })
 
-  console.log('🌱 Seeding Standalone Demos...')
-
-  // 6. إنشاء نماذج Demo قائمة بذاتها (غير مرتبطة بـ Project) للمعاينة المباشرة
-  await prisma.demo.create({
-    data: {
-      slug: 'modern-furniture-ecommerce-demo',
-      titleAr: 'متجر الأثاث والتصميم الداخلي العصري',
-      titleEn: 'Modern Furniture Store & Interior Showcase Demo',
-      category: ProjectCategory.development,
-      tags: ['Next.js 16', 'Zustand', 'Tailwind CSS 4', 'PWA', '3D View'],
-      descriptionAr: 'نموذج عرض تفاعلي لمتجر أثاث مودرن يتيح تصفح قطع الأثاث واستعراض الغرف مع خاصية تجميع الطلبات وإدارتها.',
-      descriptionEn: 'An interactive demo store for modern furniture and interior products with customizable room bundles and smooth cart state management.',
-      painPointsAr: 'صعوبة تخيل العملاء للأثاث داخل منازلهم وضياع تفاصيل الخامات أثناء التصفح التقليدي.',
-      painPointsEn: 'Customers struggle to visualize furniture products in real spaces using static images.',
-      solutionsAr: 'توفير استعراض بدقة عالية مع معالجة سريعة لحالات السلة وإتاحة فلترة سريعة حساسة للتصنيف.',
-      solutionsEn: 'Delivered high-definition asset views, fast filtering, and seamless Zustand state persistence.',
-      mainImage: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1200',
-      images: [
-        'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1000',
-        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=1000',
-      ],
-      liveUrl: 'https://furniture-demo.flux-agency.com',
-      isFeatured: true,
-    },
-  })
-
-  await prisma.demo.create({
-    data: {
-      slug: 'digital-marketing-campaign-dashboard-demo',
-      titleAr: 'لوحة تحكم وتتبع حملات التسويق الرقمي',
-      titleEn: 'Digital Marketing Campaign Analytics Demo',
-      category: ProjectCategory.marketing,
-      tags: ['Meta Ads', 'Google Ads', 'Analytics', 'Recharts'],
-      descriptionAr: 'نموذج لوحة تحليلية لعرض نتائج ومؤشرات أداء الحملات الإعلانية ومعدل التحويل (ROAS).',
-      descriptionEn: 'A demo analytics dashboard for monitoring advertising campaigns performance, user acquisition costs, and conversion rates.',
-      mainImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200',
-      images: [
-        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000',
-      ],
-      liveUrl: 'https://marketing-dashboard.flux-agency.com',
-      isFeatured: false,
-    },
-  })
-
-  console.log('✅ Database successfully seeded!')
+  console.log('✅ Database successfully seeded with Users, Clients, Projects, Demos, and Articles!')
 }
 
 main()
