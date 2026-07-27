@@ -2,12 +2,13 @@
 
 import { useState, useCallback, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Loader2, MapPin } from "lucide-react"
+import { Loader2 } from "lucide-react"
 import { toast } from "sonner"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { useCurrentLocale } from "@/locales/client"
 import { Field, FieldLabel } from "../ui/field"
+import { RiMapPinUserLine } from "react-icons/ri"
 
 type Coordinates = {
 	lat: number
@@ -234,7 +235,7 @@ export default function Gps({ cord, addressDb }: Props) {
 
 					{/* ------------------------------- Location Button ----------------------------- */}
 					<Button onClick={getMyLocation} disabled={isLoading} type="button" size={"lg"}>
-						{isLoading ? <Loader2 className="animate-spin" /> : <MapPin />}
+						{isLoading ? <Loader2 className="animate-spin" /> : <RiMapPinUserLine />}
 						{isLoading
 							? locale === "en"
 								? "Location being determined and address being read."

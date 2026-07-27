@@ -1,5 +1,7 @@
-import { ChartNoAxesCombined, Newspaper, Server, Type, User, Users } from "lucide-react"
-import { IoCodeSlashOutline } from "react-icons/io5"
+import { ChartNoAxesCombined, IdCard, Newspaper, Server, User } from "lucide-react"
+import { FaCode, FaDisplay, } from "react-icons/fa6"
+import { RiCustomerService2Fill } from "react-icons/ri"
+import { GrUserSettings } from "react-icons/gr"
 
 export const serverNav = [
   {
@@ -15,17 +17,27 @@ export const serverNav = [
   {
     title: { ar: "العملاء", en: "clients" },
     href: "/server/clients",
-    icon: Users
+    icon: GrUserSettings
   },
   {
-    title: { ar: "أنواع المشروعات", en: "Project Types" },
-    href: "/server/types",
-    icon: Type
+    title: { ar: "موظفي العملاء", en: "Client members" },
+    href: "/server/clients/members",
+    icon: IdCard
   },
   {
-    title: { ar: "التسويق الرقمي", en: "projects" },
+    title: { ar: "الخدمات", en: "Services" },
+    href: "/server/Services",
+    icon: RiCustomerService2Fill
+  },
+  {
+    title: { ar: "المشروعات", en: "projects" },
     href: "/server/projects",
-    icon: IoCodeSlashOutline
+    icon: FaCode
+  },
+  {
+    title: { ar: "المشروعات المعروضة", en: "demos" },
+    href: "/server/demos",
+    icon: FaDisplay
   },
   {
     title: { ar: "مقالاتنا", en: "articles" },
