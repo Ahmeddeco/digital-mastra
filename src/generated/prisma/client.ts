@@ -62,17 +62,32 @@ export type Verification = Prisma.VerificationModel
  */
 export type User = Prisma.UserModel
 /**
- * Model ProjectType
- * 
- */
-export type ProjectType = Prisma.ProjectTypeModel
-/**
  * Model Client
  * 
  */
 export type Client = Prisma.ClientModel
 /**
+ * Model ClientMember
+ * 
+ */
+export type ClientMember = Prisma.ClientMemberModel
+/**
+ * Model Service
+ * 
+ */
+export type Service = Prisma.ServiceModel
+/**
  * Model Project
  * 
  */
 export type Project = Prisma.ProjectModel
+/**
+ * Model ProjectService
+ * 
+ */
+export type ProjectService = Prisma.ProjectServiceModel
+/**
+ * Model Demo
+ * 
+ */
+export type Demo = Prisma.DemoModel

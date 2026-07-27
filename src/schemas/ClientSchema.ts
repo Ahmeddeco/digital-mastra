@@ -2,16 +2,18 @@ import { z } from 'zod'
 
 export const ClientSchema = z.object({
   id: z.string().nullish(),
-  companyName: z.string().max(256),
-  logo: z.string().nullish(),
-  tel: z.string().min(10).max(15),
-  secondaryTel: z.string().min(10).max(15).nullish(),
-  lat: z.string().nullish(),
-  lng: z.string().nullish(),
+  companyName: z.string(),
+  industry: z.string().nullish(),
+  logo: z.string().url().nullish(),
+  taxId: z.string().nullish(),
+  tel: z.string().min(10).max(14),
+  secondaryTel: z.string().min(10).max(14).nullish(),
+  website: z.string().url().nullish(),
   city: z.string().nullish(),
   state: z.string().nullish(),
   country: z.string().nullish(),
-  userId: z.string(),
+  isArchived: z.boolean(),
+  deletedAt: z.date().nullish(),
 })
 
 export type Client = z.infer<typeof ClientSchema>

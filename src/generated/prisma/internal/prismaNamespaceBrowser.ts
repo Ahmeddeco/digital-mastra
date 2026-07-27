@@ -55,9 +55,12 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   User: 'User',
-  ProjectType: 'ProjectType',
   Client: 'Client',
-  Project: 'Project'
+  ClientMember: 'ClientMember',
+  Service: 'Service',
+  Project: 'Project',
+  ProjectService: 'ProjectService',
+  Demo: 'Demo'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -129,49 +132,94 @@ export const UserScalarFieldEnum = {
   image: 'image',
   idImage: 'idImage',
   role: 'role',
+  mobile: 'mobile',
+  deletedAt: 'deletedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  mobile: 'mobile'
+  updatedAt: 'updatedAt'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-export const ProjectTypeScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  category: 'category',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type ProjectTypeScalarFieldEnum = (typeof ProjectTypeScalarFieldEnum)[keyof typeof ProjectTypeScalarFieldEnum]
-
-
 export const ClientScalarFieldEnum = {
   id: 'id',
   companyName: 'companyName',
+  industry: 'industry',
   logo: 'logo',
+  taxId: 'taxId',
   tel: 'tel',
   secondaryTel: 'secondaryTel',
-  lat: 'lat',
-  lng: 'lng',
+  website: 'website',
   city: 'city',
   state: 'state',
   country: 'country',
+  isArchived: 'isArchived',
+  deletedAt: 'deletedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  userId: 'userId'
+  updatedAt: 'updatedAt'
 } as const
 
 export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
 
 
+export const ClientMemberScalarFieldEnum = {
+  id: 'id',
+  clientId: 'clientId',
+  userId: 'userId',
+  position: 'position',
+  isPrimary: 'isPrimary'
+} as const
+
+export type ClientMemberScalarFieldEnum = (typeof ClientMemberScalarFieldEnum)[keyof typeof ClientMemberScalarFieldEnum]
+
+
+export const ServiceScalarFieldEnum = {
+  id: 'id',
+  nameAr: 'nameAr',
+  nameEn: 'nameEn',
+  category: 'category',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
+
+
 export const ProjectScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  title: 'title',
+  description: 'description',
+  clientId: 'clientId',
+  status: 'status',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  metadata: 'metadata',
+  isArchived: 'isArchived',
+  deletedAt: 'deletedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
+
+
+export const ProjectServiceScalarFieldEnum = {
+  projectId: 'projectId',
+  serviceId: 'serviceId'
+} as const
+
+export type ProjectServiceScalarFieldEnum = (typeof ProjectServiceScalarFieldEnum)[keyof typeof ProjectServiceScalarFieldEnum]
+
+
+export const DemoScalarFieldEnum = {
   id: 'id',
   slug: 'slug',
   titleAr: 'titleAr',
   titleEn: 'titleEn',
+  category: 'category',
+  tags: 'tags',
   descriptionAr: 'descriptionAr',
   descriptionEn: 'descriptionEn',
   painPointsAr: 'painPointsAr',
@@ -180,13 +228,15 @@ export const ProjectScalarFieldEnum = {
   solutionsEn: 'solutionsEn',
   mainImage: 'mainImage',
   images: 'images',
-  status: 'status',
+  liveUrl: 'liveUrl',
+  isFeatured: 'isFeatured',
+  deletedAt: 'deletedAt',
+  projectId: 'projectId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  clientId: 'clientId'
+  updatedAt: 'updatedAt'
 } as const
 
-export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
+export type DemoScalarFieldEnum = (typeof DemoScalarFieldEnum)[keyof typeof DemoScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -195,6 +245,14 @@ export const SortOrder = {
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -211,4 +269,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

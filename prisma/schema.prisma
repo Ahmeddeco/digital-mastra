@@ -1,3 +1,12 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
 generator zod {
   provider                         = "zod-prisma-types"
   output                           = "../src/generated/zod"
@@ -17,19 +26,14 @@ generator zod {
   coerceDate                       = false
 }
 
-generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
-}
-
-datasource db {
-  provider = "postgresql"
-}
+// ------------------------------------------------------
+// Auth & User Management
+// ------------------------------------------------------
 
 model Session {
   id        String   @id
   expiresAt DateTime
-  token     String
+  token     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   ipAddress String?
@@ -37,7 +41,6 @@ model Session {
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([token])
   @@index([userId])
   @@map("session")
 }
@@ -75,23 +78,25 @@ model Verification {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String         @id @default(cuid())
   name          String
-  email         String    @unique
-  emailVerified Boolean   @default(false)
+  email         String         @unique
+  emailVerified Boolean        @default(false)
   image         String?
-  idImage       String?   @map("id_image")
-  role          Role      @default(user)
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  idImage       String?        @map("id_image")
+  role          Role           @default(user)
+  mobile        String?        @unique
+  deletedAt     DateTime?      @map("deleted_at") // لحظر/حذف الحساب صوريًا
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   sessions      Session[]
   accounts      Account[]
-  mobile        String?   @unique
-  clients       Client[]
+  clientMembers ClientMember[]
 
   @@index([email])
   @@index([name])
   @@index([mobile])
+  @@index([deletedAt])
   @@map("user")
 }
 
@@ -100,16 +105,55 @@ enum Role {
   admin
   programmer
   marketer
+  designer
 }
 
-model ProjectType {
-  id        String          @id @default(cuid())
-  title     String          @unique
-  category  ProjectCategory
-  projects  Project[]
-  createdAt DateTime        @default(now())
-  updatedAt DateTime        @updatedAt
+// ------------------------------------------------------
+// Clients & Companies (B2B Structure)
+// ------------------------------------------------------
+
+model Client {
+  id           String         @id @default(cuid())
+  companyName  String         @map("company_name")
+  industry     String?
+  logo         String?
+  taxId        String?        @map("tax_id")
+  tel          String
+  secondaryTel String?        @map("secondary_tel")
+  website      String?
+  city         String?
+  state        String?
+  country      String?
+  isArchived   Boolean        @default(false) @map("is_archived") // عميل متوقف/سابق
+  deletedAt    DateTime?      @map("deleted_at") // محذوف لسلة المهملات
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  members      ClientMember[]
+  projects     Project[]
+
+  @@index([companyName])
+  @@index([tel])
+  @@index([isArchived])
+  @@index([deletedAt])
+  @@map("client")
 }
+
+model ClientMember {
+  id        String  @id @default(cuid())
+  clientId  String  @map("client_id")
+  userId    String  @map("user_id")
+  position  String?
+  isPrimary Boolean @default(false) @map("is_primary")
+  client    Client  @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([clientId, userId])
+  @@map("client_member")
+}
+
+// ------------------------------------------------------
+// Services & Operations
+// ------------------------------------------------------
 
 enum ProjectCategory {
   development
@@ -117,63 +161,95 @@ enum ProjectCategory {
   design
 }
 
-model Client {
-  id           String    @id @default(cuid())
-  owner        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  companyName  String    @map("company_name")
-  logo         String?
-  tel          String    @unique
-  secondaryTel String?   @unique @map("secondary_tel")
-  lat          Float?
-  lng          Float?
-  city         String?
-  state        String?
-  country      String?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-  projects     Project[]
-  userId       String
+model Service {
+  id          String           @id @default(cuid())
+  nameAr      String           @map("name_ar")
+  nameEn      String           @map("name_en")
+  category    ProjectCategory
+  description String?          @db.Text
+  projects    ProjectService[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
 
-  @@index([userId])
-  @@index([tel])
-  @@index([companyName])
+  @@map("service")
 }
 
 model Project {
-  id            String        @id @default(cuid())
-  slug          String        @unique
-  titleAr       String        @map("title_ar")
-  titleEn       String        @map("title_en")
-  descriptionAr String?       @map("description_ar")
-  descriptionEn String?       @map("description_en")
-  painPointsAr  String?       @map("pain_points_ar") @db.Text
-  painPointsEn  String?       @map("pain_points_en") @db.Text
-  solutionsAr   String?       @map("solutions_ar") @db.Text
-  solutionsEn   String?       @map("solutions_en") @db.Text
-  mainImage     String        @map("main_image")
-  images        String[]
-  types         ProjectType[]
-  status        ProjectStatus @default(draft)
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-  client        Client        @relation(fields: [clientId], references: [id])
-  clientId      String
+  id          String           @id @default(cuid())
+  code        String           @unique @default(nanoid(8))
+  title       String
+  description String?          @db.Text
+  clientId    String           @map("client_id")
+  client      Client           @relation(fields: [clientId], references: [id])
+  status      ProjectStatus    @default(draft)
+  startDate   DateTime?        @map("start_date")
+  endDate     DateTime?        @map("end_date")
+  services    ProjectService[]
+  metadata    Json?
+  isArchived  Boolean          @default(false) @map("is_archived") // مشروع مكتمل ومؤرشف
+  deletedAt   DateTime?        @map("deleted_at") // مشروع تم إلغاؤه وحذفه صوريًا
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  demo        Demo?
 
-  @@index([titleAr])
-  @@index([slug])
-  @@index([clientId])
-  @@index([titleEn])
-  @@index([createdAt])
+  @@index([clientId, status])
+  @@index([code])
+  @@index([isArchived])
+  @@index([deletedAt])
+  @@index([createdAt(sort: Desc)])
+  @@map("project")
+}
+
+model ProjectService {
+  projectId String  @map("project_id")
+  serviceId String  @map("service_id")
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  service   Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, serviceId])
+  @@map("project_service")
 }
 
 enum ProjectStatus {
-  draft       @map("draft") // مسودة: إعداد المقترح ونطاق العمل
-  onboarding  @map("onboarding") // تهيئة: مرحلة تجهيز الصلاحيات وملفات العميل
-  inProgress  @map("in_progress") // قيد التنفيذ: بدء العمل الفعلي
-  inReview    @map("in_review") // قيد المراجعة: مراجعة الجودة أو موافقة العميل
-  onHold      @map("on_hold") // مُعلق: إيقاف مؤقت لأسباب مالية أو إدارية
-  blocked     @map("blocked") // مُعطل: متوقف على متطلبات معلقة عند العميل
-  completed   @map("completed") // مكتمل: تم التسليم والقبول النهائي
-  cancelled   @map("cancelled") // ملغى: تم cancellation للمشروع
-  maintenance @map("maintenance") // صيانة: دعم فني أو عقود تسويق شهرية (Retainer)
+  draft       @map("draft")
+  onboarding  @map("onboarding")
+  inProgress  @map("in_progress")
+  inReview    @map("in_review")
+  onHold      @map("on_hold")
+  blocked     @map("blocked")
+  completed   @map("completed")
+  cancelled   @map("cancelled")
+  maintenance @map("maintenance")
+}
+
+// ------------------------------------------------------
+// Public Demo
+// ------------------------------------------------------
+
+model Demo {
+  id            String          @id @default(cuid())
+  slug          String          @unique
+  titleAr       String          @map("title_ar")
+  titleEn       String          @map("title_en")
+  category      ProjectCategory @default(development)
+  tags          String[]
+  descriptionAr String?         @map("description_ar") @db.Text
+  descriptionEn String?         @map("description_en") @db.Text
+  painPointsAr  String?         @map("pain_points_ar") @db.Text
+  painPointsEn  String?         @map("pain_points_en") @db.Text
+  solutionsAr   String?         @map("solutions_ar") @db.Text
+  solutionsEn   String?         @map("solutions_en") @db.Text
+  mainImage     String          @map("main_image")
+  images        String[]
+  liveUrl       String?         @map("live_url")
+  isFeatured    Boolean         @default(false) @map("is_featured")
+  deletedAt     DateTime?       @map("deleted_at") // لإخفاء عنصر المعرض صوريًا
+  projectId     String?         @unique @map("project_id")
+  project       Project?        @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  @@index([slug])
+  @@index([isFeatured, category])
+  @@index([deletedAt])
 }

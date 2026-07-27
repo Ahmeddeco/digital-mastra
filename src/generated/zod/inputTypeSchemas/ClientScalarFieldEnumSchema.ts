@@ -1,5 +1,5 @@
 import { z } from 'zod';
 
-export const ClientScalarFieldEnumSchema = z.enum(['id','companyName','logo','tel','secondaryTel','lat','lng','city','state','country','createdAt','updatedAt','userId']);
+export const ClientScalarFieldEnumSchema = z.enum(['id','companyName','industry','logo','taxId','tel','secondaryTel','website','city','state','country','isArchived','deletedAt','createdAt','updatedAt']);
 
 export default ClientScalarFieldEnumSchema;

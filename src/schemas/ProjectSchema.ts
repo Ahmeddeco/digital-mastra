@@ -1,21 +1,19 @@
+import JsonValueSchema from "@/generated/zod/inputTypeSchemas/JsonValueSchema"
 import ProjectStatusSchema from "@/generated/zod/inputTypeSchemas/ProjectStatusSchema"
 import { z } from 'zod'
 
 export const ProjectSchema = z.object({
-  id: z.string().nullish(),
   status: ProjectStatusSchema,
-  slug: z.string(),
-  titleAr: z.string(),
-  titleEn: z.string(),
-  descriptionAr: z.string().nullish(),
-  descriptionEn: z.string().nullish(),
-  painPointsAr: z.string().nullish(),
-  painPointsEn: z.string().nullish(),
-  solutionsAr: z.string().nullish(),
-  solutionsEn: z.string().nullish(),
-  mainImage: z.string(),
-  images: z.string().array(),
+  id: z.string().nullish(),
+  code: z.string().nullish(),
+  title: z.string(),
+  description: z.string().nullish(),
   clientId: z.string(),
+  startDate: z.date().nullish(),
+  endDate: z.date().nullish(),
+  metadata: JsonValueSchema.nullable(),
+  isArchived: z.boolean(),
+  deletedAt: z.date().nullish(),
 })
 
 export type Project = z.infer<typeof ProjectSchema>
