@@ -110,7 +110,7 @@ export default async function StylesPage({ searchParams }: { searchParams: Promi
 															</DialogDescription>
 														</DialogHeader>
 														<div className="flex items-center justify-between ">
-															<Button asChild>
+															<Button asChild variant={"outline"}>
 																<DialogClose>cancel</DialogClose>
 															</Button>
 															<Form action={deleteUserAction}>

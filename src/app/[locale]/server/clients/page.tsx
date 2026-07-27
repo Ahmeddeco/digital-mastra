@@ -29,8 +29,10 @@ import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 import { getAllClients } from "@/dl/clients.data"
 import { getAllClientsType } from "@/types/client.type"
-import MapDialog from "@/components/shared/MapDialog"
+import MapDialog from "@/components/navigation/MapDialog"
 import { deleteClientAction } from "@/actions/client.action"
+import LeafletMap from "@/components/navigation/LeafletMap"
+import LeafMapDialog from "@/components/navigation/LeafMapDialog"
 
 export default async function StylesPage({
 	searchParams,
@@ -91,7 +93,8 @@ export default async function StylesPage({
 								<TableCell className="capitalize ">{owner.name}</TableCell>
 								<TableCell>{tel}</TableCell>
 								<TableCell>
-									<MapDialog lat={String(lat) ?? ""} lng={String(lng) ?? ""} title={`${country} - ${state}`} />{" "}
+									{/* <MapDialog lat={String(lat) ?? ""} lng={String(lng) ?? ""} title={`${country} - ${state}`} /> */}
+									<LeafMapDialog lat={String(lat)} lng={String(lng)} />
 								</TableCell>
 
 								{/* -------------------------------- settings -------------------------------- */}
@@ -100,9 +103,9 @@ export default async function StylesPage({
 										<DropdownMenuTrigger>
 											<MoreVertical />
 										</DropdownMenuTrigger>
-										<DropdownMenuContent align="start" className="space-y-2">
+										<DropdownMenuContent align="end" className="space-y-2">
 											<DropdownMenuItem asChild>
-												<Button variant={"secondary"} size={"full"} asChild>
+												<Button variant={"outline"} size={"full"} asChild>
 													<Link href={`/server/clients/edit/${id}`}>edit</Link>
 												</Button>
 											</DropdownMenuItem>
@@ -123,7 +126,7 @@ export default async function StylesPage({
 															</DialogDescription>
 														</DialogHeader>
 														<div className="flex items-center justify-between ">
-															<Button asChild>
+															<Button asChild variant={"outline"}>
 																<DialogClose>cancel</DialogClose>
 															</Button>
 															<Form action={deleteClientAction}>

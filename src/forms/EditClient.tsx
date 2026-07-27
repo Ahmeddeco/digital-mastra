@@ -13,7 +13,7 @@ import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@
 import { editClientAction } from "@/actions/client.action"
 import ClientSchema from "@/schemas/ClientSchema"
 import { getAllUsersForSelectType } from "@/types/user.type"
-import Gps from "@/components/shared/Gps"
+import Gps from "@/components/navigation/Gps"
 import { getOneClientType } from "@/types/client.type"
 
 type Props = {

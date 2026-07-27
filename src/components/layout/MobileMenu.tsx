@@ -17,12 +17,12 @@ export default function MobileMenu() {
 					</Button>
 				</SheetTrigger>
 				<SheetContent>
-					<SheetHeader className="border-b shadow-md">
-						<SheetTitle className="flex items-center justify-center ">
+					<SheetHeader className="border-b ">
+						<SheetTitle className="flex items-center justify-end ">
 							<Logo />
 						</SheetTitle>
 					</SheetHeader>
-					<nav className="flex flex-col items-center gap-8 p-4 h-fit ">
+					<nav className="flex flex-col items-center gap-6 p-4 h-fit ">
 						<FrontNavigation />
 					</nav>
 					<SheetFooter className="flex-row items-center justify-between border-t shadow-md">

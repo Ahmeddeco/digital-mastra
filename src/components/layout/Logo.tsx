@@ -21,7 +21,7 @@ export default function Logo({ reverse = false }: Props) {
 					className={`object-contain ${locale === "en" ? "object-right" : "object-left"}`}
 				/>
 			</div>
-			<h3 className={`${reverse && "text-background"}  lowercase leading-tight `}>
+			<h3 className={`${reverse && "text-background"}  lowercase leading-tight md:block hidden`}>
 				{locale === "en" ? "igital" : "ديجيتال"}
 			</h3>
 		</Link>

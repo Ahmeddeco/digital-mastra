@@ -35,7 +35,7 @@ export default async function Testimonial({ params }: { params: Promise<{ locale
 					</Card>
 				))}
 			</div>
-			<Dots color={"bg-chart-2"} rowNumber={4} className={"rotate-3 top-0 right-2"} />
+			<Dots color={"bg-chart-2"} rowNumber={4} className={"rotate-3 top-0 right-2 lg:block hidden"} />
 			<Dots color={"bg-chart-1"} rowNumber={6} className={"-rotate-6 -bottom-8 left-2"} />
 		</section>
 	)

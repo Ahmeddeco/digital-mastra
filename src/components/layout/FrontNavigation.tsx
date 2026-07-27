@@ -1,11 +1,10 @@
 "use client"
 
-import { frontNavLinks } from "@/constants/nav"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Button } from "../ui/button"
-import React from "react"
+import { frontNavLinks } from "@/constants/nav"
 import { useCurrentLocale } from "@/locales/client"
+import { Button } from "../ui/button"
 
 export default function FrontNavigation() {
 	const pathName = usePathname()
@@ -14,12 +13,27 @@ export default function FrontNavigation() {
 	return (
 		<>
 			{frontNavLinks.map((link) => {
-				const isActive = pathName === `/${locale}${link.href}` || pathName === `${link.href}${locale}`
+				const Icon = link.icon
+
+				// 1. بناء المسار المتوقع باللغة الحالية مع معالجة الشُرَط المائلة (Double Slashes)
+				const linkPath = `/${locale}${link.href.startsWith("/") ? link.href : `/${link.href}`}`.replace(/\/+/g, "/")
+
+				// 2. التحقق من مطابقة الصفحة الرئيسية أو المسارات الفرعية
+				const isHome = link.href === "/" || link.href === ""
+				const isActive = isHome
+					? pathName === `/${locale}` || pathName === `/${locale}/`
+					: pathName === linkPath || pathName.startsWith(`${linkPath}/`)
 
 				return (
-					<Button asChild key={link.href} variant={isActive ? "default" : "ghost"} size={"sm"}>
-						<Link href={link.href}>
-							{isActive ? React.createElement(link.icon) : null}
+					<Button
+						key={link.href}
+						asChild
+						variant={isActive ? "default" : "ghost"}
+						size="sm"
+						className="lg:justify-center justify-start w-full lg:w-fit h-10 lg:h-8 "
+					>
+						<Link href={`/${locale}${link.href.startsWith("/") ? link.href : `/${link.href}`}`}>
+							{isActive && Icon ? <Icon /> : null}
 							{locale === "ar" ? link.title.ar : link.title.en}
 						</Link>
 					</Button>
