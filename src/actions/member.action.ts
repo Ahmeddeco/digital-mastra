@@ -1,5 +1,6 @@
 'use server'
 
+import { DeleteActionState } from "@/components/backend/Delete"
 import prisma from "@/lib/prisma"
 import ClientMemberSchema from "@/schemas/ClientMemberSchema"
 import { parseWithZod } from "@conform-to/zod"
@@ -59,7 +60,7 @@ export const editMemberAction = async (prevState: unknown, formData: FormData) =
   } catch (error) {
     console.error(error)
     return submission.reply({
-      formErrors: ["فشل تحديث البيانات، تأكد من أن المعرف صحيح"],
+      formErrors: ["Data update failed, please ensure the ID is correct."],
     })
   }
 
@@ -68,17 +69,26 @@ export const editMemberAction = async (prevState: unknown, formData: FormData) =
 }
 
 /* ---------------------------- deleteMemberAction --------------------------- */
-export const deleteMemberAction = async (formData: FormData) => {
-  const id = formData.get("id")
+export const deleteMemberAction = async (
+  _prevState: DeleteActionState,
+  formData: FormData
+): Promise<DeleteActionState> => {
+  const id = formData.get("id") as string
+
+  if (!id) {
+    return { success: false, error: "Item ID not found" }
+  }
+
   try {
-    await prisma.clientMember.update({
-      where: { id: id as string },
-      data: { isArchived: true, deletedAt: new Date() }
+    await prisma.clientMember.delete({
+      where: { id },
     })
   } catch (error) {
-    console.error(error)
+    console.error("Delete Action Error:", error)
+    return { success: false, error: "An error occurred during the deletion process." }
   }
 
   updateTag("members")
   refresh()
+  return { success: true, error: null }
 }

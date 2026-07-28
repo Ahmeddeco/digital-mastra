@@ -1,17 +1,17 @@
 "use client"
 import { Button } from "../components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { useChangeLocale } from "@/locales/client"
-import { Languages } from "lucide-react"
+import { useChangeLocale, useCurrentLocale } from "@/locales/client"
 
 export default function LanguageButton() {
 	const changeLocale = useChangeLocale()
+	const locale = useCurrentLocale()
 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button size={"icon-lg"} variant={"ghost"}>
-					<Languages />
+					{locale}
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="center">

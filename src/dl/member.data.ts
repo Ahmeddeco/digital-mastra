@@ -14,7 +14,7 @@ export const getAllMembersForPage = async (size: number, page: number) => {
     const data = await prisma.clientMember.findMany({
       skip: (page * size) - size,
       take: size,
-      select: { position: true, isPrimary: true, client: { select: { id: true, companyName: true } }, user: { select: { id: true, name: true } } },
+      select: { id: true, position: true, isPrimary: true, client: { select: { id: true, companyName: true } }, user: { select: { id: true, name: true, image: true } } },
       orderBy: { createdAt: "asc" },
     })
     return { data, totalPages, totalClients }

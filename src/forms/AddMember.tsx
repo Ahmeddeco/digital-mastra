@@ -10,14 +10,14 @@ import SubmitButton from "@/components/shared/SubmitButton"
 import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@/components/ui/select"
 import ClientMemberSchema from "@/schemas/ClientMemberSchema"
 import { addMemberAction } from "@/actions/member.action"
-import { getAllUsersForSelectType } from "@/types/user.type"
+import { getAllNotMemberUsersForSelectType } from "@/types/user.type"
 import { getAllClientsForSelectType } from "@/types/client.type"
 import { Switch } from "@/components/ui/switch"
 import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
 import { FaUserTie } from "react-icons/fa6"
 
 type Props = {
-	allUsers: getAllUsersForSelectType
+	allUsers: getAllNotMemberUsersForSelectType
 	allClients: getAllClientsForSelectType
 }
 

@@ -1,5 +1,5 @@
 import { isAllowedRoles } from "@/auth/isAllowedRoles"
-import ServerPageCard from "@/components/shared/ServerPageCard"
+import ServerPageCard from "@/components/backend/ServerPageCard"
 import { getAllClientsForSelect } from "@/dl/clients.data"
 import { getAllNotMemberUsersForSelect } from "@/dl/users.data"
 import AddMember from "@/forms/AddMember"
@@ -11,6 +11,7 @@ export default async function AddMemberPage() {
 	await isAllowedRoles([Role.admin])
 	const allUsers: getAllNotMemberUsersForSelectType = await getAllNotMemberUsersForSelect()
 	const allClients: getAllClientsForSelectType = await getAllClientsForSelect()
+	console.log("allUsers from AddMemberPage", allUsers)
 
 	return (
 		<ServerPageCard

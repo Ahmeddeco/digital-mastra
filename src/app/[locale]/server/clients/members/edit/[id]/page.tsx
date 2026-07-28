@@ -1,5 +1,5 @@
 import { isAllowedRoles } from "@/auth/isAllowedRoles"
-import ServerPageCard from "@/components/shared/ServerPageCard"
+import ServerPageCard from "@/components/backend/ServerPageCard"
 import { getAllClientsForSelect } from "@/dl/clients.data"
 import { getOneClientMember } from "@/dl/member.data"
 import { getAllUsersForSelect } from "@/dl/users.data"
