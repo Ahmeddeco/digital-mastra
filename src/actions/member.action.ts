@@ -36,7 +36,7 @@ export const addMemberAction = async (prevState: unknown, formData: FormData) =>
   }
 
   updateTag("members")
-  redirect("/server/clients/members")
+  redirect("/server/members")
 }
 
 /* ----------------------------- editMemberAction ---------------------------- */
@@ -65,7 +65,7 @@ export const editMemberAction = async (prevState: unknown, formData: FormData) =
   }
 
   updateTag("members")
-  redirect("/server/clients/members")
+  redirect("/server/members")
 }
 
 /* ---------------------------- deleteMemberAction --------------------------- */

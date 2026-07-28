@@ -14,10 +14,10 @@ export default async function OurServices({ params }: { params: Promise<{ locale
 				<div className="flex flex-col gap-2 items-center lg:items-start">
 					<h4>{dict.homePage.ourServices.title}</h4>
 					<h2 className={` capitalize`}>{dict.homePage.ourServices.subTitle}</h2>
-					<p className="max-w-xl text-center lg:text-start"> {dict.homePage.ourServices.p1}</p>
-					<p className="max-w-xl text-center lg:text-start"> {dict.homePage.ourServices.p2}</p>
+					<p className="max-w-lg text-center lg:text-start"> {dict.homePage.ourServices.p1}</p>
+					<p className="max-w-lg text-center lg:text-start"> {dict.homePage.ourServices.p2}</p>
 				</div>
-				<Button size={"full"}>
+				<Button size={"lg"}>
 					<ArrowRight /> {locale === "en" ? "Read More" : "إقرأ المزيد"}
 				</Button>
 			</div>

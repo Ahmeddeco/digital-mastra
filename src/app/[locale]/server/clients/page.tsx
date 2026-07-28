@@ -1,4 +1,4 @@
-import { ImageOff, Link2, MoreVertical, PlusCircle } from "lucide-react"
+import { ExternalLink, ImageOff, MoreVertical, PlusCircle } from "lucide-react"
 import ServerPageCard from "@/components/backend/ServerPageCard"
 import EmptyCard from "@/components/shared/EmptyCard"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -89,14 +89,14 @@ export default async function ClientsServerPage({
 								<TableCell>{industry}</TableCell>
 								<TableCell>
 									<Badge>
-										{country} - {state} - {city}{" "}
+										{country} - {state} - {city}
 									</Badge>
 								</TableCell>
 								<TableCell>{workTel}</TableCell>
 								<TableCell>
-									<Button asChild size={"icon"} variant={"link"}>
+									<Button asChild size={"icon-sm"} variant={"default"}>
 										<Link href={website ?? ""} target="_blank">
-											<Link2 />
+											<ExternalLink />
 										</Link>
 									</Button>
 								</TableCell>

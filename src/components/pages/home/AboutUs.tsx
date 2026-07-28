@@ -16,9 +16,9 @@ export default async function AboutUs({ params }: { params: Promise<{ locale: "e
 					<h4>{dict.homePage.aboutUs.title}</h4>
 					<h2>{dict.homePage.aboutUs.subTitle}</h2>
 				</div>
-				<p className="max-w-xl text-center lg:text-start">{dict.homePage.aboutUs.p1}</p>
-				<p className="max-w-xl text-center lg:text-start">{dict.homePage.aboutUs.p2}</p>
-				<Button asChild size={"full"}>
+				<p className="max-w-lg text-center lg:text-start">{dict.homePage.aboutUs.p1}</p>
+				<p className="max-w-lg text-center lg:text-start">{dict.homePage.aboutUs.p2}</p>
+				<Button asChild size={"lg"}>
 					<Link href={dict.homePage.aboutUs.btn.href}>
 						<TbUserQuestion />
 						{dict.homePage.aboutUs.btn.title}

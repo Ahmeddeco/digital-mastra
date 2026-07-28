@@ -16,7 +16,7 @@ export default async function Hero({ params }: { params: Promise<{ locale: "en" 
 				<h2 className={` text-center capitalize `}>
 					{dict.homePage.homeHero.h1} <br /> {dict.homePage.homeHero.h1Br}
 				</h2>
-				<h6 className="text-center">
+				<h6 className="text-center max-w-lg">
 					{dict.homePage.homeHero.p}
 					<br />
 					{dict.homePage.homeHero.pBr}
@@ -33,7 +33,7 @@ export default async function Hero({ params }: { params: Promise<{ locale: "en" 
 				<div className="size-8 lg:size-12 bg-chart-2 rounded-full lg:absolute hidden right-4 lg:-left-24 -bottom-8 lg:-bottom-2 -z-50" />
 
 				{/* ------------------------------ Top Left Card ----------------------------- */}
-				<Card className="z-40 absolute w-fit -top-12 lg:top-12 -left-4 lg:-left-12">
+				<Card className="z-40 absolute w-fit -top-12 lg:top-12 -inset-s-4 lg:-inset-s-12">
 					<CardContent className="flex flex-col items-center justify-center">
 						<div className="flex items-center gap-2">
 							<StarIcon fill="gold" stroke="gold" />
@@ -47,7 +47,7 @@ export default async function Hero({ params }: { params: Promise<{ locale: "en" 
 				</Card>
 
 				{/* ---------------------------- Bottom Right Card --------------------------- */}
-				<Card className="z-40 absolute size-fit lg:block hidden  bottom-12 -right-12 w-72 ">
+				<Card className="z-40 absolute size-fit lg:block hidden  bottom-12 -inset-e-12 w-72 ">
 					<CardContent className="flex flex-col gap-4 justify-center">
 						<div className="flex items-center gap-2">
 							{/* Image */}
