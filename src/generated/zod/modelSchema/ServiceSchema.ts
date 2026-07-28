@@ -10,7 +10,8 @@ export const ServiceSchema = z.object({
   id: z.string(),
   nameAr: z.string(),
   nameEn: z.string(),
-  description: z.string().nullish(),
+  descriptionAr: z.string().nullish(),
+  descriptionEn: z.string().nullish(),
   createdAt: z.date(),
   updatedAt: z.date(),
 })

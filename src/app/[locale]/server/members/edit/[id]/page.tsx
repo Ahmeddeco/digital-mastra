@@ -20,7 +20,7 @@ export default async function AddMemberPage({ params }: { params: Promise<{ id: 
 		<ServerPageCard
 			title={"Edit member"}
 			description={"Edit a member to the database."}
-			href="/server/clients/members"
+			href="/server/members"
 			btnTitle={"back"}
 		>
 			<EditMember allUsers={allUsers} allClients={allClients} member={member} />

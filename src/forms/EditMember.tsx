@@ -8,19 +8,19 @@ import { Field, FieldError, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import SubmitButton from "@/components/shared/SubmitButton"
 import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@/components/ui/select"
-import ClientMemberSchema from "@/schemas/ClientMemberSchema"
 import { editMemberAction } from "@/actions/member.action"
 import { getAllUsersForSelectType } from "@/types/user.type"
 import { getAllClientsForSelectType } from "@/types/client.type"
 import { Switch } from "@/components/ui/switch"
 import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "@/components/ui/item"
 import { FaUserTie } from "react-icons/fa6"
-import { getOneClientMemberType } from "@/types/member.type"
+import { getOneMemberType } from "@/types/member.type"
+import MemberSchema from "@/schemas/MemberSchema"
 
 type Props = {
 	allUsers: getAllUsersForSelectType
 	allClients: getAllClientsForSelectType
-	member: getOneClientMemberType
+	member: getOneMemberType
 }
 
 export default function EditMember({ allClients, allUsers, member }: Props) {
@@ -28,7 +28,7 @@ export default function EditMember({ allClients, allUsers, member }: Props) {
 	const [form, fields] = useForm({
 		lastResult,
 		onValidate({ formData }) {
-			return parseWithZod(formData, { schema: ClientMemberSchema })
+			return parseWithZod(formData, { schema: MemberSchema })
 		},
 		shouldValidate: "onBlur",
 		shouldRevalidate: "onInput",
@@ -107,7 +107,7 @@ export default function EditMember({ allClients, allUsers, member }: Props) {
 			</Field>
 
 			{/* ----------------------------- SubmitButton ---------------------------- */}
-			<SubmitButton text={"edit client member"} />
+			<SubmitButton text={"edit member"} />
 		</Form>
 	)
 }

@@ -43,10 +43,10 @@ export type User = Prisma.UserModel
  */
 export type Client = Prisma.ClientModel
 /**
- * Model ClientMember
+ * Model Member
  * 
  */
-export type ClientMember = Prisma.ClientMemberModel
+export type Member = Prisma.MemberModel
 /**
  * Model Service
  * 
@@ -57,11 +57,6 @@ export type Service = Prisma.ServiceModel
  * 
  */
 export type Project = Prisma.ProjectModel
-/**
- * Model ProjectService
- * 
- */
-export type ProjectService = Prisma.ProjectServiceModel
 /**
  * Model Demo
  * 

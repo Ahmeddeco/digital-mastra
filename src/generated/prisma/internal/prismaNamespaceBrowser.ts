@@ -56,10 +56,9 @@ export const ModelName = {
   Verification: 'Verification',
   User: 'User',
   Client: 'Client',
-  ClientMember: 'ClientMember',
+  Member: 'Member',
   Service: 'Service',
   Project: 'Project',
-  ProjectService: 'ProjectService',
   Demo: 'Demo',
   Article: 'Article'
 } as const
@@ -163,7 +162,7 @@ export const ClientScalarFieldEnum = {
 export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
 
 
-export const ClientMemberScalarFieldEnum = {
+export const MemberScalarFieldEnum = {
   id: 'id',
   position: 'position',
   isPrimary: 'isPrimary',
@@ -173,7 +172,7 @@ export const ClientMemberScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type ClientMemberScalarFieldEnum = (typeof ClientMemberScalarFieldEnum)[keyof typeof ClientMemberScalarFieldEnum]
+export type MemberScalarFieldEnum = (typeof MemberScalarFieldEnum)[keyof typeof MemberScalarFieldEnum]
 
 
 export const ServiceScalarFieldEnum = {
@@ -181,7 +180,8 @@ export const ServiceScalarFieldEnum = {
   nameAr: 'nameAr',
   nameEn: 'nameEn',
   category: 'category',
-  description: 'description',
+  descriptionAr: 'descriptionAr',
+  descriptionEn: 'descriptionEn',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -206,14 +206,6 @@ export const ProjectScalarFieldEnum = {
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
-
-
-export const ProjectServiceScalarFieldEnum = {
-  projectId: 'projectId',
-  serviceId: 'serviceId'
-} as const
-
-export type ProjectServiceScalarFieldEnum = (typeof ProjectServiceScalarFieldEnum)[keyof typeof ProjectServiceScalarFieldEnum]
 
 
 export const DemoScalarFieldEnum = {

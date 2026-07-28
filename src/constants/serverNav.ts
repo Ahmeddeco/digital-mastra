@@ -20,13 +20,13 @@ export const serverNav = [
     icon: GrUserSettings
   },
   {
-    title: { ar: "موظفي العملاء", en: "Client members" },
-    href: "/server/clients/members",
+    title: { ar: "موظفي العملاء", en: "members" },
+    href: "/server/members",
     icon: IdCard
   },
   {
     title: { ar: "الخدمات", en: "Services" },
-    href: "/server/Services",
+    href: "/server/services",
     icon: RiCustomerService2Fill
   },
   {

@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
 /////////////////////////////////////////
-// CLIENT MEMBER SCHEMA
+// MEMBER SCHEMA
 /////////////////////////////////////////
 
-export const ClientMemberSchema = z.object({
+export const MemberSchema = z.object({
   id: z.string(),
   position: z.string().nullish(),
   isPrimary: z.boolean().nullish(),
@@ -14,6 +14,6 @@ export const ClientMemberSchema = z.object({
   updatedAt: z.date(),
 })
 
-export type ClientMember = z.infer<typeof ClientMemberSchema>
+export type Member = z.infer<typeof MemberSchema>
 
-export default ClientMemberSchema;
+export default MemberSchema;

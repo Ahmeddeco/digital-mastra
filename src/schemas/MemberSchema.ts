@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const ClientMemberSchema = z.object({
+export const MemberSchema = z.object({
   id: z.string().nullish(),
   clientId: z.string(),
   userId: z.string(),
@@ -8,6 +8,6 @@ export const ClientMemberSchema = z.object({
   isPrimary: z.boolean().nullish(),
 })
 
-export type ClientMember = z.infer<typeof ClientMemberSchema>
+export type ClientMember = z.infer<typeof MemberSchema>
 
-export default ClientMemberSchema
+export default MemberSchema

@@ -243,7 +243,7 @@ export type ProjectWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   client?: Prisma.XOR<Prisma.ClientScalarRelationFilter, Prisma.ClientWhereInput>
-  services?: Prisma.ProjectServiceListRelationFilter
+  services?: Prisma.ServiceListRelationFilter
   demo?: Prisma.XOR<Prisma.DemoNullableScalarRelationFilter, Prisma.DemoWhereInput> | null
 }
 
@@ -262,7 +262,7 @@ export type ProjectOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   client?: Prisma.ClientOrderByWithRelationInput
-  services?: Prisma.ProjectServiceOrderByRelationAggregateInput
+  services?: Prisma.ServiceOrderByRelationAggregateInput
   demo?: Prisma.DemoOrderByWithRelationInput
 }
 
@@ -284,7 +284,7 @@ export type ProjectWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Project"> | Date | string
   client?: Prisma.XOR<Prisma.ClientScalarRelationFilter, Prisma.ClientWhereInput>
-  services?: Prisma.ProjectServiceListRelationFilter
+  services?: Prisma.ServiceListRelationFilter
   demo?: Prisma.XOR<Prisma.DemoNullableScalarRelationFilter, Prisma.DemoWhereInput> | null
 }, "id" | "code">
 
@@ -340,7 +340,7 @@ export type ProjectCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   client: Prisma.ClientCreateNestedOneWithoutProjectsInput
-  services?: Prisma.ProjectServiceCreateNestedManyWithoutProjectInput
+  services?: Prisma.ServiceCreateNestedManyWithoutProjectsInput
   demo?: Prisma.DemoCreateNestedOneWithoutProjectInput
 }
 
@@ -358,7 +358,7 @@ export type ProjectUncheckedCreateInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  services?: Prisma.ProjectServiceUncheckedCreateNestedManyWithoutProjectInput
+  services?: Prisma.ServiceUncheckedCreateNestedManyWithoutProjectsInput
   demo?: Prisma.DemoUncheckedCreateNestedOneWithoutProjectInput
 }
 
@@ -376,7 +376,7 @@ export type ProjectUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   client?: Prisma.ClientUpdateOneRequiredWithoutProjectsNestedInput
-  services?: Prisma.ProjectServiceUpdateManyWithoutProjectNestedInput
+  services?: Prisma.ServiceUpdateManyWithoutProjectsNestedInput
   demo?: Prisma.DemoUpdateOneWithoutProjectNestedInput
 }
 
@@ -394,7 +394,7 @@ export type ProjectUncheckedUpdateInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  services?: Prisma.ProjectServiceUncheckedUpdateManyWithoutProjectNestedInput
+  services?: Prisma.ServiceUncheckedUpdateManyWithoutProjectsNestedInput
   demo?: Prisma.DemoUncheckedUpdateOneWithoutProjectNestedInput
 }
 
@@ -501,11 +501,6 @@ export type ProjectMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type ProjectScalarRelationFilter = {
-  is?: Prisma.ProjectWhereInput
-  isNot?: Prisma.ProjectWhereInput
-}
-
 export type ProjectNullableScalarRelationFilter = {
   is?: Prisma.ProjectWhereInput | null
   isNot?: Prisma.ProjectWhereInput | null
@@ -553,22 +548,46 @@ export type ProjectUncheckedUpdateManyWithoutClientNestedInput = {
   deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
 }
 
+export type ProjectCreateNestedManyWithoutServicesInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutServicesInput, Prisma.ProjectUncheckedCreateWithoutServicesInput> | Prisma.ProjectCreateWithoutServicesInput[] | Prisma.ProjectUncheckedCreateWithoutServicesInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutServicesInput | Prisma.ProjectCreateOrConnectWithoutServicesInput[]
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+}
+
+export type ProjectUncheckedCreateNestedManyWithoutServicesInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutServicesInput, Prisma.ProjectUncheckedCreateWithoutServicesInput> | Prisma.ProjectCreateWithoutServicesInput[] | Prisma.ProjectUncheckedCreateWithoutServicesInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutServicesInput | Prisma.ProjectCreateOrConnectWithoutServicesInput[]
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+}
+
+export type ProjectUpdateManyWithoutServicesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutServicesInput, Prisma.ProjectUncheckedCreateWithoutServicesInput> | Prisma.ProjectCreateWithoutServicesInput[] | Prisma.ProjectUncheckedCreateWithoutServicesInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutServicesInput | Prisma.ProjectCreateOrConnectWithoutServicesInput[]
+  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutServicesInput | Prisma.ProjectUpsertWithWhereUniqueWithoutServicesInput[]
+  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutServicesInput | Prisma.ProjectUpdateWithWhereUniqueWithoutServicesInput[]
+  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutServicesInput | Prisma.ProjectUpdateManyWithWhereWithoutServicesInput[]
+  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
+}
+
+export type ProjectUncheckedUpdateManyWithoutServicesNestedInput = {
+  create?: Prisma.XOR<Prisma.ProjectCreateWithoutServicesInput, Prisma.ProjectUncheckedCreateWithoutServicesInput> | Prisma.ProjectCreateWithoutServicesInput[] | Prisma.ProjectUncheckedCreateWithoutServicesInput[]
+  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutServicesInput | Prisma.ProjectCreateOrConnectWithoutServicesInput[]
+  upsert?: Prisma.ProjectUpsertWithWhereUniqueWithoutServicesInput | Prisma.ProjectUpsertWithWhereUniqueWithoutServicesInput[]
+  set?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  disconnect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  delete?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  connect?: Prisma.ProjectWhereUniqueInput | Prisma.ProjectWhereUniqueInput[]
+  update?: Prisma.ProjectUpdateWithWhereUniqueWithoutServicesInput | Prisma.ProjectUpdateWithWhereUniqueWithoutServicesInput[]
+  updateMany?: Prisma.ProjectUpdateManyWithWhereWithoutServicesInput | Prisma.ProjectUpdateManyWithWhereWithoutServicesInput[]
+  deleteMany?: Prisma.ProjectScalarWhereInput | Prisma.ProjectScalarWhereInput[]
+}
+
 export type EnumProjectStatusFieldUpdateOperationsInput = {
   set?: $Enums.ProjectStatus
-}
-
-export type ProjectCreateNestedOneWithoutServicesInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutServicesInput, Prisma.ProjectUncheckedCreateWithoutServicesInput>
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutServicesInput
-  connect?: Prisma.ProjectWhereUniqueInput
-}
-
-export type ProjectUpdateOneRequiredWithoutServicesNestedInput = {
-  create?: Prisma.XOR<Prisma.ProjectCreateWithoutServicesInput, Prisma.ProjectUncheckedCreateWithoutServicesInput>
-  connectOrCreate?: Prisma.ProjectCreateOrConnectWithoutServicesInput
-  upsert?: Prisma.ProjectUpsertWithoutServicesInput
-  connect?: Prisma.ProjectWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProjectUpdateToOneWithWhereWithoutServicesInput, Prisma.ProjectUpdateWithoutServicesInput>, Prisma.ProjectUncheckedUpdateWithoutServicesInput>
 }
 
 export type ProjectCreateNestedOneWithoutDemoInput = {
@@ -600,7 +619,7 @@ export type ProjectCreateWithoutClientInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  services?: Prisma.ProjectServiceCreateNestedManyWithoutProjectInput
+  services?: Prisma.ServiceCreateNestedManyWithoutProjectsInput
   demo?: Prisma.DemoCreateNestedOneWithoutProjectInput
 }
 
@@ -617,7 +636,7 @@ export type ProjectUncheckedCreateWithoutClientInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  services?: Prisma.ProjectServiceUncheckedCreateNestedManyWithoutProjectInput
+  services?: Prisma.ServiceUncheckedCreateNestedManyWithoutProjectsInput
   demo?: Prisma.DemoUncheckedCreateNestedOneWithoutProjectInput
 }
 
@@ -705,15 +724,168 @@ export type ProjectCreateOrConnectWithoutServicesInput = {
   create: Prisma.XOR<Prisma.ProjectCreateWithoutServicesInput, Prisma.ProjectUncheckedCreateWithoutServicesInput>
 }
 
-export type ProjectUpsertWithoutServicesInput = {
+export type ProjectUpsertWithWhereUniqueWithoutServicesInput = {
+  where: Prisma.ProjectWhereUniqueInput
   update: Prisma.XOR<Prisma.ProjectUpdateWithoutServicesInput, Prisma.ProjectUncheckedUpdateWithoutServicesInput>
   create: Prisma.XOR<Prisma.ProjectCreateWithoutServicesInput, Prisma.ProjectUncheckedCreateWithoutServicesInput>
+}
+
+export type ProjectUpdateWithWhereUniqueWithoutServicesInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutServicesInput, Prisma.ProjectUncheckedUpdateWithoutServicesInput>
+}
+
+export type ProjectUpdateManyWithWhereWithoutServicesInput = {
+  where: Prisma.ProjectScalarWhereInput
+  data: Prisma.XOR<Prisma.ProjectUpdateManyMutationInput, Prisma.ProjectUncheckedUpdateManyWithoutServicesInput>
+}
+
+export type ProjectCreateWithoutDemoInput = {
+  id?: string
+  code?: string
+  title: string
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isArchived?: boolean | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  client: Prisma.ClientCreateNestedOneWithoutProjectsInput
+  services?: Prisma.ServiceCreateNestedManyWithoutProjectsInput
+}
+
+export type ProjectUncheckedCreateWithoutDemoInput = {
+  id?: string
+  code?: string
+  title: string
+  description?: string | null
+  clientId: string
+  status?: $Enums.ProjectStatus
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isArchived?: boolean | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  services?: Prisma.ServiceUncheckedCreateNestedManyWithoutProjectsInput
+}
+
+export type ProjectCreateOrConnectWithoutDemoInput = {
+  where: Prisma.ProjectWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutDemoInput, Prisma.ProjectUncheckedCreateWithoutDemoInput>
+}
+
+export type ProjectUpsertWithoutDemoInput = {
+  update: Prisma.XOR<Prisma.ProjectUpdateWithoutDemoInput, Prisma.ProjectUncheckedUpdateWithoutDemoInput>
+  create: Prisma.XOR<Prisma.ProjectCreateWithoutDemoInput, Prisma.ProjectUncheckedCreateWithoutDemoInput>
   where?: Prisma.ProjectWhereInput
 }
 
-export type ProjectUpdateToOneWithWhereWithoutServicesInput = {
+export type ProjectUpdateToOneWithWhereWithoutDemoInput = {
   where?: Prisma.ProjectWhereInput
-  data: Prisma.XOR<Prisma.ProjectUpdateWithoutServicesInput, Prisma.ProjectUncheckedUpdateWithoutServicesInput>
+  data: Prisma.XOR<Prisma.ProjectUpdateWithoutDemoInput, Prisma.ProjectUncheckedUpdateWithoutDemoInput>
+}
+
+export type ProjectUpdateWithoutDemoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  client?: Prisma.ClientUpdateOneRequiredWithoutProjectsNestedInput
+  services?: Prisma.ServiceUpdateManyWithoutProjectsNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutDemoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  clientId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  services?: Prisma.ServiceUncheckedUpdateManyWithoutProjectsNestedInput
+}
+
+export type ProjectCreateManyClientInput = {
+  id?: string
+  code?: string
+  title: string
+  description?: string | null
+  status?: $Enums.ProjectStatus
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isArchived?: boolean | null
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type ProjectUpdateWithoutClientInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  services?: Prisma.ServiceUpdateManyWithoutProjectsNestedInput
+  demo?: Prisma.DemoUpdateOneWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateWithoutClientInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  services?: Prisma.ServiceUncheckedUpdateManyWithoutProjectsNestedInput
+  demo?: Prisma.DemoUncheckedUpdateOneWithoutProjectNestedInput
+}
+
+export type ProjectUncheckedUpdateManyWithoutClientInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type ProjectUpdateWithoutServicesInput = {
@@ -750,144 +922,12 @@ export type ProjectUncheckedUpdateWithoutServicesInput = {
   demo?: Prisma.DemoUncheckedUpdateOneWithoutProjectNestedInput
 }
 
-export type ProjectCreateWithoutDemoInput = {
-  id?: string
-  code?: string
-  title: string
-  description?: string | null
-  status?: $Enums.ProjectStatus
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean | null
-  deletedAt?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  client: Prisma.ClientCreateNestedOneWithoutProjectsInput
-  services?: Prisma.ProjectServiceCreateNestedManyWithoutProjectInput
-}
-
-export type ProjectUncheckedCreateWithoutDemoInput = {
-  id?: string
-  code?: string
-  title: string
-  description?: string | null
-  clientId: string
-  status?: $Enums.ProjectStatus
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean | null
-  deletedAt?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  services?: Prisma.ProjectServiceUncheckedCreateNestedManyWithoutProjectInput
-}
-
-export type ProjectCreateOrConnectWithoutDemoInput = {
-  where: Prisma.ProjectWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutDemoInput, Prisma.ProjectUncheckedCreateWithoutDemoInput>
-}
-
-export type ProjectUpsertWithoutDemoInput = {
-  update: Prisma.XOR<Prisma.ProjectUpdateWithoutDemoInput, Prisma.ProjectUncheckedUpdateWithoutDemoInput>
-  create: Prisma.XOR<Prisma.ProjectCreateWithoutDemoInput, Prisma.ProjectUncheckedCreateWithoutDemoInput>
-  where?: Prisma.ProjectWhereInput
-}
-
-export type ProjectUpdateToOneWithWhereWithoutDemoInput = {
-  where?: Prisma.ProjectWhereInput
-  data: Prisma.XOR<Prisma.ProjectUpdateWithoutDemoInput, Prisma.ProjectUncheckedUpdateWithoutDemoInput>
-}
-
-export type ProjectUpdateWithoutDemoInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  client?: Prisma.ClientUpdateOneRequiredWithoutProjectsNestedInput
-  services?: Prisma.ProjectServiceUpdateManyWithoutProjectNestedInput
-}
-
-export type ProjectUncheckedUpdateWithoutDemoInput = {
+export type ProjectUncheckedUpdateManyWithoutServicesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clientId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  services?: Prisma.ProjectServiceUncheckedUpdateManyWithoutProjectNestedInput
-}
-
-export type ProjectCreateManyClientInput = {
-  id?: string
-  code?: string
-  title: string
-  description?: string | null
-  status?: $Enums.ProjectStatus
-  startDate?: Date | string | null
-  endDate?: Date | string | null
-  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: boolean | null
-  deletedAt?: Date | string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type ProjectUpdateWithoutClientInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  services?: Prisma.ProjectServiceUpdateManyWithoutProjectNestedInput
-  demo?: Prisma.DemoUpdateOneWithoutProjectNestedInput
-}
-
-export type ProjectUncheckedUpdateWithoutClientInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
-  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  isArchived?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  services?: Prisma.ProjectServiceUncheckedUpdateManyWithoutProjectNestedInput
-  demo?: Prisma.DemoUncheckedUpdateOneWithoutProjectNestedInput
-}
-
-export type ProjectUncheckedUpdateManyWithoutClientInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  code?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumProjectStatusFieldUpdateOperationsInput | $Enums.ProjectStatus
   startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -925,7 +965,7 @@ export type ProjectCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
  * ProjectCountOutputType without action
  */
 export type ProjectCountOutputTypeCountServicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ProjectServiceWhereInput
+  where?: Prisma.ServiceWhereInput
 }
 
 
@@ -1017,7 +1057,7 @@ export type $ProjectPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   name: "Project"
   objects: {
     client: Prisma.$ClientPayload<ExtArgs>
-    services: Prisma.$ProjectServicePayload<ExtArgs>[]
+    services: Prisma.$ServicePayload<ExtArgs>[]
     demo: Prisma.$DemoPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1429,7 +1469,7 @@ readonly fields: ProjectFieldRefs;
 export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   client<T extends Prisma.ClientDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClientDefaultArgs<ExtArgs>>): Prisma.Prisma__ClientClient<runtime.Types.Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  services<T extends Prisma.Project$servicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  services<T extends Prisma.Project$servicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$servicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   demo<T extends Prisma.Project$demoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Project$demoArgs<ExtArgs>>): Prisma.Prisma__DemoClient<runtime.Types.Result.GetResult<Prisma.$DemoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1878,23 +1918,23 @@ export type ProjectDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
  */
 export type Project$servicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the ProjectService
+   * Select specific fields to fetch from the Service
    */
-  select?: Prisma.ProjectServiceSelect<ExtArgs> | null
+  select?: Prisma.ServiceSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the ProjectService
+   * Omit specific fields from the Service
    */
-  omit?: Prisma.ProjectServiceOmit<ExtArgs> | null
+  omit?: Prisma.ServiceOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ProjectServiceInclude<ExtArgs> | null
-  where?: Prisma.ProjectServiceWhereInput
-  orderBy?: Prisma.ProjectServiceOrderByWithRelationInput | Prisma.ProjectServiceOrderByWithRelationInput[]
-  cursor?: Prisma.ProjectServiceWhereUniqueInput
+  include?: Prisma.ServiceInclude<ExtArgs> | null
+  where?: Prisma.ServiceWhereInput
+  orderBy?: Prisma.ServiceOrderByWithRelationInput | Prisma.ServiceOrderByWithRelationInput[]
+  cursor?: Prisma.ServiceWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ProjectServiceScalarFieldEnum | Prisma.ProjectServiceScalarFieldEnum[]
+  distinct?: Prisma.ServiceScalarFieldEnum | Prisma.ServiceScalarFieldEnum[]
 }
 
 /**

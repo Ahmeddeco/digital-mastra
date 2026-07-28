@@ -2,7 +2,7 @@
 
 import { DeleteActionState } from "@/components/backend/Delete"
 import prisma from "@/lib/prisma"
-import ClientMemberSchema from "@/schemas/ClientMemberSchema"
+import MemberSchema from "@/schemas/MemberSchema"
 import { parseWithZod } from "@conform-to/zod"
 import { refresh, updateTag } from "next/cache"
 import { redirect } from "next/navigation"
@@ -10,7 +10,7 @@ import { redirect } from "next/navigation"
 /* ----------------------------- addMemberAction ----------------------------- */
 export const addMemberAction = async (prevState: unknown, formData: FormData) => {
   const submission = parseWithZod(formData, {
-    schema: ClientMemberSchema,
+    schema: MemberSchema,
   })
   if (submission.status !== 'success') {
     return submission.reply()
@@ -18,7 +18,7 @@ export const addMemberAction = async (prevState: unknown, formData: FormData) =>
   const { clientId, userId, isPrimary, position } = submission.value
 
   try {
-    await prisma.clientMember.upsert({
+    await prisma.member.upsert({
       where: { clientId_userId: { clientId, userId } },
       create: {
         clientId, userId, isPrimary: isPrimary ?? false, position
@@ -42,7 +42,7 @@ export const addMemberAction = async (prevState: unknown, formData: FormData) =>
 /* ----------------------------- editMemberAction ---------------------------- */
 export const editMemberAction = async (prevState: unknown, formData: FormData) => {
   const submission = parseWithZod(formData, {
-    schema: ClientMemberSchema,
+    schema: MemberSchema,
   })
   if (submission.status !== 'success') {
     return submission.reply()
@@ -50,7 +50,7 @@ export const editMemberAction = async (prevState: unknown, formData: FormData) =
   const { clientId, userId, isPrimary, position } = submission.value
 
   try {
-    await prisma.clientMember.update({
+    await prisma.member.update({
       where: { clientId_userId: { clientId, userId } },
       data: {
         clientId, userId, isPrimary: isPrimary ?? false, position
@@ -80,7 +80,7 @@ export const deleteMemberAction = async (
   }
 
   try {
-    await prisma.clientMember.delete({
+    await prisma.member.delete({
       where: { id },
     })
   } catch (error) {

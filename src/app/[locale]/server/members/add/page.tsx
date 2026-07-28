@@ -11,13 +11,12 @@ export default async function AddMemberPage() {
 	await isAllowedRoles([Role.admin])
 	const allUsers: getAllNotMemberUsersForSelectType = await getAllNotMemberUsersForSelect()
 	const allClients: getAllClientsForSelectType = await getAllClientsForSelect()
-	console.log("allUsers from AddMemberPage", allUsers)
 
 	return (
 		<ServerPageCard
 			title={"Add member"}
 			description={"Add a member to the database."}
-			href="/server/clients/members"
+			href="/server/members"
 			btnTitle={"back"}
 		>
 			<AddMember allUsers={allUsers} allClients={allClients} />

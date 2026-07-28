@@ -63,7 +63,7 @@ export const getAllNotMemberUsersForSelect = async () => {
 
   try {
     return await prisma.user.findMany({
-      where: { clientMembers: { none: {} } },
+      where: { Members: { none: {} } },
       select: { id: true, name: true },
       orderBy: { name: "asc" }
     })

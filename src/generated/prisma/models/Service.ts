@@ -29,7 +29,8 @@ export type ServiceMinAggregateOutputType = {
   nameAr: string | null
   nameEn: string | null
   category: $Enums.ProjectCategory | null
-  description: string | null
+  descriptionAr: string | null
+  descriptionEn: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -39,7 +40,8 @@ export type ServiceMaxAggregateOutputType = {
   nameAr: string | null
   nameEn: string | null
   category: $Enums.ProjectCategory | null
-  description: string | null
+  descriptionAr: string | null
+  descriptionEn: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -49,7 +51,8 @@ export type ServiceCountAggregateOutputType = {
   nameAr: number
   nameEn: number
   category: number
-  description: number
+  descriptionAr: number
+  descriptionEn: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -61,7 +64,8 @@ export type ServiceMinAggregateInputType = {
   nameAr?: true
   nameEn?: true
   category?: true
-  description?: true
+  descriptionAr?: true
+  descriptionEn?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -71,7 +75,8 @@ export type ServiceMaxAggregateInputType = {
   nameAr?: true
   nameEn?: true
   category?: true
-  description?: true
+  descriptionAr?: true
+  descriptionEn?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -81,7 +86,8 @@ export type ServiceCountAggregateInputType = {
   nameAr?: true
   nameEn?: true
   category?: true
-  description?: true
+  descriptionAr?: true
+  descriptionEn?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -164,7 +170,8 @@ export type ServiceGroupByOutputType = {
   nameAr: string
   nameEn: string
   category: $Enums.ProjectCategory
-  description: string | null
+  descriptionAr: string | null
+  descriptionEn: string | null
   createdAt: Date
   updatedAt: Date
   _count: ServiceCountAggregateOutputType | null
@@ -195,10 +202,11 @@ export type ServiceWhereInput = {
   nameAr?: Prisma.StringFilter<"Service"> | string
   nameEn?: Prisma.StringFilter<"Service"> | string
   category?: Prisma.EnumProjectCategoryFilter<"Service"> | $Enums.ProjectCategory
-  description?: Prisma.StringNullableFilter<"Service"> | string | null
+  descriptionAr?: Prisma.StringNullableFilter<"Service"> | string | null
+  descriptionEn?: Prisma.StringNullableFilter<"Service"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Service"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Service"> | Date | string
-  projects?: Prisma.ProjectServiceListRelationFilter
+  projects?: Prisma.ProjectListRelationFilter
 }
 
 export type ServiceOrderByWithRelationInput = {
@@ -206,10 +214,11 @@ export type ServiceOrderByWithRelationInput = {
   nameAr?: Prisma.SortOrder
   nameEn?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  descriptionAr?: Prisma.SortOrderInput | Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  projects?: Prisma.ProjectServiceOrderByRelationAggregateInput
+  projects?: Prisma.ProjectOrderByRelationAggregateInput
 }
 
 export type ServiceWhereUniqueInput = Prisma.AtLeast<{
@@ -220,10 +229,11 @@ export type ServiceWhereUniqueInput = Prisma.AtLeast<{
   nameAr?: Prisma.StringFilter<"Service"> | string
   nameEn?: Prisma.StringFilter<"Service"> | string
   category?: Prisma.EnumProjectCategoryFilter<"Service"> | $Enums.ProjectCategory
-  description?: Prisma.StringNullableFilter<"Service"> | string | null
+  descriptionAr?: Prisma.StringNullableFilter<"Service"> | string | null
+  descriptionEn?: Prisma.StringNullableFilter<"Service"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Service"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Service"> | Date | string
-  projects?: Prisma.ProjectServiceListRelationFilter
+  projects?: Prisma.ProjectListRelationFilter
 }, "id">
 
 export type ServiceOrderByWithAggregationInput = {
@@ -231,7 +241,8 @@ export type ServiceOrderByWithAggregationInput = {
   nameAr?: Prisma.SortOrder
   nameEn?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  descriptionAr?: Prisma.SortOrderInput | Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ServiceCountOrderByAggregateInput
@@ -247,7 +258,8 @@ export type ServiceScalarWhereWithAggregatesInput = {
   nameAr?: Prisma.StringWithAggregatesFilter<"Service"> | string
   nameEn?: Prisma.StringWithAggregatesFilter<"Service"> | string
   category?: Prisma.EnumProjectCategoryWithAggregatesFilter<"Service"> | $Enums.ProjectCategory
-  description?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
+  descriptionAr?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
+  descriptionEn?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Service"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Service"> | Date | string
 }
@@ -257,10 +269,11 @@ export type ServiceCreateInput = {
   nameAr: string
   nameEn: string
   category: $Enums.ProjectCategory
-  description?: string | null
+  descriptionAr?: string | null
+  descriptionEn?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  projects?: Prisma.ProjectServiceCreateNestedManyWithoutServiceInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutServicesInput
 }
 
 export type ServiceUncheckedCreateInput = {
@@ -268,10 +281,11 @@ export type ServiceUncheckedCreateInput = {
   nameAr: string
   nameEn: string
   category: $Enums.ProjectCategory
-  description?: string | null
+  descriptionAr?: string | null
+  descriptionEn?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  projects?: Prisma.ProjectServiceUncheckedCreateNestedManyWithoutServiceInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutServicesInput
 }
 
 export type ServiceUpdateInput = {
@@ -279,10 +293,11 @@ export type ServiceUpdateInput = {
   nameAr?: Prisma.StringFieldUpdateOperationsInput | string
   nameEn?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projects?: Prisma.ProjectServiceUpdateManyWithoutServiceNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutServicesNestedInput
 }
 
 export type ServiceUncheckedUpdateInput = {
@@ -290,10 +305,11 @@ export type ServiceUncheckedUpdateInput = {
   nameAr?: Prisma.StringFieldUpdateOperationsInput | string
   nameEn?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  projects?: Prisma.ProjectServiceUncheckedUpdateManyWithoutServiceNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutServicesNestedInput
 }
 
 export type ServiceCreateManyInput = {
@@ -301,7 +317,8 @@ export type ServiceCreateManyInput = {
   nameAr: string
   nameEn: string
   category: $Enums.ProjectCategory
-  description?: string | null
+  descriptionAr?: string | null
+  descriptionEn?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -311,7 +328,8 @@ export type ServiceUpdateManyMutationInput = {
   nameAr?: Prisma.StringFieldUpdateOperationsInput | string
   nameEn?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -321,7 +339,8 @@ export type ServiceUncheckedUpdateManyInput = {
   nameAr?: Prisma.StringFieldUpdateOperationsInput | string
   nameEn?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -331,7 +350,8 @@ export type ServiceCountOrderByAggregateInput = {
   nameAr?: Prisma.SortOrder
   nameEn?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  descriptionAr?: Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -341,7 +361,8 @@ export type ServiceMaxOrderByAggregateInput = {
   nameAr?: Prisma.SortOrder
   nameEn?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  descriptionAr?: Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -351,32 +372,62 @@ export type ServiceMinOrderByAggregateInput = {
   nameAr?: Prisma.SortOrder
   nameEn?: Prisma.SortOrder
   category?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  descriptionAr?: Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
-export type ServiceScalarRelationFilter = {
-  is?: Prisma.ServiceWhereInput
-  isNot?: Prisma.ServiceWhereInput
+export type ServiceListRelationFilter = {
+  every?: Prisma.ServiceWhereInput
+  some?: Prisma.ServiceWhereInput
+  none?: Prisma.ServiceWhereInput
+}
+
+export type ServiceOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type EnumProjectCategoryFieldUpdateOperationsInput = {
   set?: $Enums.ProjectCategory
 }
 
-export type ServiceCreateNestedOneWithoutProjectsInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutProjectsInput, Prisma.ServiceUncheckedCreateWithoutProjectsInput>
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutProjectsInput
-  connect?: Prisma.ServiceWhereUniqueInput
+export type ServiceCreateNestedManyWithoutProjectsInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutProjectsInput, Prisma.ServiceUncheckedCreateWithoutProjectsInput> | Prisma.ServiceCreateWithoutProjectsInput[] | Prisma.ServiceUncheckedCreateWithoutProjectsInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutProjectsInput | Prisma.ServiceCreateOrConnectWithoutProjectsInput[]
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
 }
 
-export type ServiceUpdateOneRequiredWithoutProjectsNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceCreateWithoutProjectsInput, Prisma.ServiceUncheckedCreateWithoutProjectsInput>
-  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutProjectsInput
-  upsert?: Prisma.ServiceUpsertWithoutProjectsInput
-  connect?: Prisma.ServiceWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceUpdateToOneWithWhereWithoutProjectsInput, Prisma.ServiceUpdateWithoutProjectsInput>, Prisma.ServiceUncheckedUpdateWithoutProjectsInput>
+export type ServiceUncheckedCreateNestedManyWithoutProjectsInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutProjectsInput, Prisma.ServiceUncheckedCreateWithoutProjectsInput> | Prisma.ServiceCreateWithoutProjectsInput[] | Prisma.ServiceUncheckedCreateWithoutProjectsInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutProjectsInput | Prisma.ServiceCreateOrConnectWithoutProjectsInput[]
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+}
+
+export type ServiceUpdateManyWithoutProjectsNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutProjectsInput, Prisma.ServiceUncheckedCreateWithoutProjectsInput> | Prisma.ServiceCreateWithoutProjectsInput[] | Prisma.ServiceUncheckedCreateWithoutProjectsInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutProjectsInput | Prisma.ServiceCreateOrConnectWithoutProjectsInput[]
+  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutProjectsInput | Prisma.ServiceUpsertWithWhereUniqueWithoutProjectsInput[]
+  set?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  disconnect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  delete?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutProjectsInput | Prisma.ServiceUpdateWithWhereUniqueWithoutProjectsInput[]
+  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutProjectsInput | Prisma.ServiceUpdateManyWithWhereWithoutProjectsInput[]
+  deleteMany?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
+}
+
+export type ServiceUncheckedUpdateManyWithoutProjectsNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceCreateWithoutProjectsInput, Prisma.ServiceUncheckedCreateWithoutProjectsInput> | Prisma.ServiceCreateWithoutProjectsInput[] | Prisma.ServiceUncheckedCreateWithoutProjectsInput[]
+  connectOrCreate?: Prisma.ServiceCreateOrConnectWithoutProjectsInput | Prisma.ServiceCreateOrConnectWithoutProjectsInput[]
+  upsert?: Prisma.ServiceUpsertWithWhereUniqueWithoutProjectsInput | Prisma.ServiceUpsertWithWhereUniqueWithoutProjectsInput[]
+  set?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  disconnect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  delete?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  connect?: Prisma.ServiceWhereUniqueInput | Prisma.ServiceWhereUniqueInput[]
+  update?: Prisma.ServiceUpdateWithWhereUniqueWithoutProjectsInput | Prisma.ServiceUpdateWithWhereUniqueWithoutProjectsInput[]
+  updateMany?: Prisma.ServiceUpdateManyWithWhereWithoutProjectsInput | Prisma.ServiceUpdateManyWithWhereWithoutProjectsInput[]
+  deleteMany?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
 }
 
 export type ServiceCreateWithoutProjectsInput = {
@@ -384,7 +435,8 @@ export type ServiceCreateWithoutProjectsInput = {
   nameAr: string
   nameEn: string
   category: $Enums.ProjectCategory
-  description?: string | null
+  descriptionAr?: string | null
+  descriptionEn?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -394,7 +446,8 @@ export type ServiceUncheckedCreateWithoutProjectsInput = {
   nameAr: string
   nameEn: string
   category: $Enums.ProjectCategory
-  description?: string | null
+  descriptionAr?: string | null
+  descriptionEn?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -404,15 +457,34 @@ export type ServiceCreateOrConnectWithoutProjectsInput = {
   create: Prisma.XOR<Prisma.ServiceCreateWithoutProjectsInput, Prisma.ServiceUncheckedCreateWithoutProjectsInput>
 }
 
-export type ServiceUpsertWithoutProjectsInput = {
+export type ServiceUpsertWithWhereUniqueWithoutProjectsInput = {
+  where: Prisma.ServiceWhereUniqueInput
   update: Prisma.XOR<Prisma.ServiceUpdateWithoutProjectsInput, Prisma.ServiceUncheckedUpdateWithoutProjectsInput>
   create: Prisma.XOR<Prisma.ServiceCreateWithoutProjectsInput, Prisma.ServiceUncheckedCreateWithoutProjectsInput>
-  where?: Prisma.ServiceWhereInput
 }
 
-export type ServiceUpdateToOneWithWhereWithoutProjectsInput = {
-  where?: Prisma.ServiceWhereInput
+export type ServiceUpdateWithWhereUniqueWithoutProjectsInput = {
+  where: Prisma.ServiceWhereUniqueInput
   data: Prisma.XOR<Prisma.ServiceUpdateWithoutProjectsInput, Prisma.ServiceUncheckedUpdateWithoutProjectsInput>
+}
+
+export type ServiceUpdateManyWithWhereWithoutProjectsInput = {
+  where: Prisma.ServiceScalarWhereInput
+  data: Prisma.XOR<Prisma.ServiceUpdateManyMutationInput, Prisma.ServiceUncheckedUpdateManyWithoutProjectsInput>
+}
+
+export type ServiceScalarWhereInput = {
+  AND?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
+  OR?: Prisma.ServiceScalarWhereInput[]
+  NOT?: Prisma.ServiceScalarWhereInput | Prisma.ServiceScalarWhereInput[]
+  id?: Prisma.StringFilter<"Service"> | string
+  nameAr?: Prisma.StringFilter<"Service"> | string
+  nameEn?: Prisma.StringFilter<"Service"> | string
+  category?: Prisma.EnumProjectCategoryFilter<"Service"> | $Enums.ProjectCategory
+  descriptionAr?: Prisma.StringNullableFilter<"Service"> | string | null
+  descriptionEn?: Prisma.StringNullableFilter<"Service"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"Service"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Service"> | Date | string
 }
 
 export type ServiceUpdateWithoutProjectsInput = {
@@ -420,7 +492,8 @@ export type ServiceUpdateWithoutProjectsInput = {
   nameAr?: Prisma.StringFieldUpdateOperationsInput | string
   nameEn?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -430,7 +503,19 @@ export type ServiceUncheckedUpdateWithoutProjectsInput = {
   nameAr?: Prisma.StringFieldUpdateOperationsInput | string
   nameEn?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type ServiceUncheckedUpdateManyWithoutProjectsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nameAr?: Prisma.StringFieldUpdateOperationsInput | string
+  nameEn?: Prisma.StringFieldUpdateOperationsInput | string
+  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
+  descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -462,7 +547,7 @@ export type ServiceCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
  * ServiceCountOutputType without action
  */
 export type ServiceCountOutputTypeCountProjectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ProjectServiceWhereInput
+  where?: Prisma.ProjectWhereInput
 }
 
 
@@ -471,7 +556,8 @@ export type ServiceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   nameAr?: boolean
   nameEn?: boolean
   category?: boolean
-  description?: boolean
+  descriptionAr?: boolean
+  descriptionEn?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   projects?: boolean | Prisma.Service$projectsArgs<ExtArgs>
@@ -483,7 +569,8 @@ export type ServiceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   nameAr?: boolean
   nameEn?: boolean
   category?: boolean
-  description?: boolean
+  descriptionAr?: boolean
+  descriptionEn?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["service"]>
@@ -493,7 +580,8 @@ export type ServiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   nameAr?: boolean
   nameEn?: boolean
   category?: boolean
-  description?: boolean
+  descriptionAr?: boolean
+  descriptionEn?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["service"]>
@@ -503,12 +591,13 @@ export type ServiceSelectScalar = {
   nameAr?: boolean
   nameEn?: boolean
   category?: boolean
-  description?: boolean
+  descriptionAr?: boolean
+  descriptionEn?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nameAr" | "nameEn" | "category" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["service"]>
+export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nameAr" | "nameEn" | "category" | "descriptionAr" | "descriptionEn" | "createdAt" | "updatedAt", ExtArgs["result"]["service"]>
 export type ServiceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   projects?: boolean | Prisma.Service$projectsArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCountOutputTypeDefaultArgs<ExtArgs>
@@ -519,14 +608,15 @@ export type ServiceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type $ServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Service"
   objects: {
-    projects: Prisma.$ProjectServicePayload<ExtArgs>[]
+    projects: Prisma.$ProjectPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     nameAr: string
     nameEn: string
     category: $Enums.ProjectCategory
-    description: string | null
+    descriptionAr: string | null
+    descriptionEn: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["service"]>
@@ -923,7 +1013,7 @@ readonly fields: ServiceFieldRefs;
  */
 export interface Prisma__ServiceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  projects<T extends Prisma.Service$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  projects<T extends Prisma.Service$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Service$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -957,7 +1047,8 @@ export interface ServiceFieldRefs {
   readonly nameAr: Prisma.FieldRef<"Service", 'String'>
   readonly nameEn: Prisma.FieldRef<"Service", 'String'>
   readonly category: Prisma.FieldRef<"Service", 'ProjectCategory'>
-  readonly description: Prisma.FieldRef<"Service", 'String'>
+  readonly descriptionAr: Prisma.FieldRef<"Service", 'String'>
+  readonly descriptionEn: Prisma.FieldRef<"Service", 'String'>
   readonly createdAt: Prisma.FieldRef<"Service", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Service", 'DateTime'>
 }
@@ -1357,23 +1448,23 @@ export type ServiceDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
  */
 export type Service$projectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the ProjectService
+   * Select specific fields to fetch from the Project
    */
-  select?: Prisma.ProjectServiceSelect<ExtArgs> | null
+  select?: Prisma.ProjectSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the ProjectService
+   * Omit specific fields from the Project
    */
-  omit?: Prisma.ProjectServiceOmit<ExtArgs> | null
+  omit?: Prisma.ProjectOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ProjectServiceInclude<ExtArgs> | null
-  where?: Prisma.ProjectServiceWhereInput
-  orderBy?: Prisma.ProjectServiceOrderByWithRelationInput | Prisma.ProjectServiceOrderByWithRelationInput[]
-  cursor?: Prisma.ProjectServiceWhereUniqueInput
+  include?: Prisma.ProjectInclude<ExtArgs> | null
+  where?: Prisma.ProjectWhereInput
+  orderBy?: Prisma.ProjectOrderByWithRelationInput | Prisma.ProjectOrderByWithRelationInput[]
+  cursor?: Prisma.ProjectWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ProjectServiceScalarFieldEnum | Prisma.ProjectServiceScalarFieldEnum[]
+  distinct?: Prisma.ProjectScalarFieldEnum | Prisma.ProjectScalarFieldEnum[]
 }
 
 /**

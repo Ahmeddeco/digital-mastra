@@ -1,7 +1,7 @@
 import { ImageOff, PlusCircle } from "lucide-react"
 import ServerPageCard from "@/components/backend/ServerPageCard"
 import EmptyCard from "@/components/shared/EmptyCard"
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import Image from "next/image"
 import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
@@ -30,10 +30,10 @@ export default async function MembersServerPage({
 			icon={PlusCircle}
 			title={"all members"}
 			description={"All members in the database."}
-			href={"/server/clients/members/add"}
+			href={"/server/members/add"}
 		>
 			{!members?.data.length ? (
-				<EmptyCard href={"/server/clients/members/add"} linkTitle={"add member"} />
+				<EmptyCard href={"/server/members/add"} linkTitle={"add member"} />
 			) : (
 				<Table>
 					{/* ---------------------------- TableHeader ---------------------------- */}
@@ -75,16 +75,14 @@ export default async function MembersServerPage({
 								<Settings
 									id={id}
 									deleteAction={deleteMemberAction}
-									editLink={`/server/clients/members/edit/${id}`}
+									editLink={`/server/members/edit/${id}`}
 									deleteName={"member"}
 								/>
 							</TableRow>
 						))}
 					</TableBody>
 					{/* ---------------------------- Pagination ---------------------------- */}
-					<TableCaption>
-						<PaginationSection pageNumber={pageNumber} pageSize={pageSize} totalPages={members.totalPages} />
-					</TableCaption>
+					<PaginationSection pageNumber={pageNumber} pageSize={pageSize} totalPages={members.totalPages} />
 				</Table>
 			)}
 		</ServerPageCard>

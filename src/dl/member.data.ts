@@ -3,15 +3,15 @@
 import prisma from "@/lib/prisma"
 import { cacheLife, cacheTag } from "next/cache"
 
-/* ----------------------------- getAllClients ---------------------------- */
+/* ----------------------------- getAllMembersForPage ---------------------------- */
 export const getAllMembersForPage = async (size: number, page: number) => {
   cacheLife("hours")
   cacheTag('members')
 
   try {
-    const totalClients = await prisma.clientMember.count()
+    const totalClients = await prisma.member.count()
     const totalPages = Math.ceil(totalClients / size)
-    const data = await prisma.clientMember.findMany({
+    const data = await prisma.member.findMany({
       skip: (page * size) - size,
       take: size,
       select: { id: true, position: true, isPrimary: true, client: { select: { id: true, companyName: true } }, user: { select: { id: true, name: true, image: true } } },
@@ -23,13 +23,13 @@ export const getAllMembersForPage = async (size: number, page: number) => {
   }
 }
 
-/* ---------------------------- getOneClientMember ------------------------------ */
-export const getOneClientMember = async (id: string) => {
+/* ---------------------------- getOneMember ------------------------------ */
+export const getOneMember = async (id: string) => {
   cacheLife("hours")
   cacheTag('members')
 
   try {
-    return await prisma.clientMember.findUnique({
+    return await prisma.member.findUnique({
       where: { id },
     })
   } catch (error) {
@@ -37,13 +37,13 @@ export const getOneClientMember = async (id: string) => {
   }
 }
 
-/* ------------------------- getAllClientMembersForSelect ------------------------- */
-export const getAllClientMembersForSelect = async () => {
+/* ------------------------- getAllMembersForSelect ------------------------- */
+export const getAllMembersForSelect = async () => {
   cacheLife("hours")
   cacheTag('members')
 
   try {
-    return await prisma.clientMember.findMany({
+    return await prisma.member.findMany({
       select: { id: true, user: { select: { name: true } } },
       orderBy: { createdAt: "asc" }
     })

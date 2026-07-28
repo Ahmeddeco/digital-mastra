@@ -262,7 +262,7 @@ export type ClientWhereInput = {
   deletedAt?: Prisma.DateTimeNullableFilter<"Client"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Client"> | Date | string
-  members?: Prisma.ClientMemberListRelationFilter
+  members?: Prisma.MemberListRelationFilter
   projects?: Prisma.ProjectListRelationFilter
 }
 
@@ -282,7 +282,7 @@ export type ClientOrderByWithRelationInput = {
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  members?: Prisma.ClientMemberOrderByRelationAggregateInput
+  members?: Prisma.MemberOrderByRelationAggregateInput
   projects?: Prisma.ProjectOrderByRelationAggregateInput
 }
 
@@ -305,7 +305,7 @@ export type ClientWhereUniqueInput = Prisma.AtLeast<{
   deletedAt?: Prisma.DateTimeNullableFilter<"Client"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Client"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Client"> | Date | string
-  members?: Prisma.ClientMemberListRelationFilter
+  members?: Prisma.MemberListRelationFilter
   projects?: Prisma.ProjectListRelationFilter
 }, "id" | "workTel">
 
@@ -367,7 +367,7 @@ export type ClientCreateInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  members?: Prisma.ClientMemberCreateNestedManyWithoutClientInput
+  members?: Prisma.MemberCreateNestedManyWithoutClientInput
   projects?: Prisma.ProjectCreateNestedManyWithoutClientInput
 }
 
@@ -387,7 +387,7 @@ export type ClientUncheckedCreateInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  members?: Prisma.ClientMemberUncheckedCreateNestedManyWithoutClientInput
+  members?: Prisma.MemberUncheckedCreateNestedManyWithoutClientInput
   projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutClientInput
 }
 
@@ -407,7 +407,7 @@ export type ClientUpdateInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  members?: Prisma.ClientMemberUpdateManyWithoutClientNestedInput
+  members?: Prisma.MemberUpdateManyWithoutClientNestedInput
   projects?: Prisma.ProjectUpdateManyWithoutClientNestedInput
 }
 
@@ -427,7 +427,7 @@ export type ClientUncheckedUpdateInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  members?: Prisma.ClientMemberUncheckedUpdateManyWithoutClientNestedInput
+  members?: Prisma.MemberUncheckedUpdateManyWithoutClientNestedInput
   projects?: Prisma.ProjectUncheckedUpdateManyWithoutClientNestedInput
 }
 
@@ -684,7 +684,7 @@ export type ClientCreateWithoutProjectsInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  members?: Prisma.ClientMemberCreateNestedManyWithoutClientInput
+  members?: Prisma.MemberCreateNestedManyWithoutClientInput
 }
 
 export type ClientUncheckedCreateWithoutProjectsInput = {
@@ -703,7 +703,7 @@ export type ClientUncheckedCreateWithoutProjectsInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  members?: Prisma.ClientMemberUncheckedCreateNestedManyWithoutClientInput
+  members?: Prisma.MemberUncheckedCreateNestedManyWithoutClientInput
 }
 
 export type ClientCreateOrConnectWithoutProjectsInput = {
@@ -738,7 +738,7 @@ export type ClientUpdateWithoutProjectsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  members?: Prisma.ClientMemberUpdateManyWithoutClientNestedInput
+  members?: Prisma.MemberUpdateManyWithoutClientNestedInput
 }
 
 export type ClientUncheckedUpdateWithoutProjectsInput = {
@@ -757,7 +757,7 @@ export type ClientUncheckedUpdateWithoutProjectsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  members?: Prisma.ClientMemberUncheckedUpdateManyWithoutClientNestedInput
+  members?: Prisma.MemberUncheckedUpdateManyWithoutClientNestedInput
 }
 
 
@@ -789,7 +789,7 @@ export type ClientCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exten
  * ClientCountOutputType without action
  */
 export type ClientCountOutputTypeCountMembersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ClientMemberWhereInput
+  where?: Prisma.MemberWhereInput
 }
 
 /**
@@ -887,7 +887,7 @@ export type ClientIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type $ClientPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Client"
   objects: {
-    members: Prisma.$ClientMemberPayload<ExtArgs>[]
+    members: Prisma.$MemberPayload<ExtArgs>[]
     projects: Prisma.$ProjectPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1300,7 +1300,7 @@ readonly fields: ClientFieldRefs;
  */
 export interface Prisma__ClientClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  members<T extends Prisma.Client$membersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$membersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClientMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  members<T extends Prisma.Client$membersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$membersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   projects<T extends Prisma.Client$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Client$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1743,23 +1743,23 @@ export type ClientDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
  */
 export type Client$membersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the ClientMember
+   * Select specific fields to fetch from the Member
    */
-  select?: Prisma.ClientMemberSelect<ExtArgs> | null
+  select?: Prisma.MemberSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the ClientMember
+   * Omit specific fields from the Member
    */
-  omit?: Prisma.ClientMemberOmit<ExtArgs> | null
+  omit?: Prisma.MemberOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.ClientMemberInclude<ExtArgs> | null
-  where?: Prisma.ClientMemberWhereInput
-  orderBy?: Prisma.ClientMemberOrderByWithRelationInput | Prisma.ClientMemberOrderByWithRelationInput[]
-  cursor?: Prisma.ClientMemberWhereUniqueInput
+  include?: Prisma.MemberInclude<ExtArgs> | null
+  where?: Prisma.MemberWhereInput
+  orderBy?: Prisma.MemberOrderByWithRelationInput | Prisma.MemberOrderByWithRelationInput[]
+  cursor?: Prisma.MemberWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.ClientMemberScalarFieldEnum | Prisma.ClientMemberScalarFieldEnum[]
+  distinct?: Prisma.MemberScalarFieldEnum | Prisma.MemberScalarFieldEnum[]
 }
 
 /**
