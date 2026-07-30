@@ -4,7 +4,7 @@ import { chatRoute } from "@mastra/ai-sdk"
 import { digitalMarketingAgent } from "@/bot/agents/digital-marketing-agent"
 
 
-const storage = new PostgresStore({
+export const storage = new PostgresStore({
   id: 'pg-storage',
   connectionString: process.env.DATABASE_URL,
   ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: true } : false,
