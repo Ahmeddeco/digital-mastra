@@ -196,27 +196,27 @@
 	}
 	h1,
 	.prose h1 {
-		@apply text-3xl lg:text-4xl font-black capitalize;
+		@apply text-3xl lg:text-4xl font-black capitalize lg:text-start text-center;
 	}
 	h2,
 	.prose h2 {
-		@apply text-2xl lg:text-3xl font-bold capitalize;
+		@apply text-2xl lg:text-3xl font-bold capitalize lg:text-start text-center;
 	}
 	h3,
 	.prose h3 {
-		@apply text-xl lg:text-2xl font-semibold capitalize;
+		@apply text-xl lg:text-2xl font-semibold capitalize lg:text-start text-center;
 	}
 	h4,
 	.prose h4 {
-		@apply text-lg lg:text-xl font-medium capitalize;
+		@apply text-lg lg:text-xl font-medium capitalize lg:text-start text-center;
 	}
 	h5,
 	.prose h5 {
-		@apply text-base lg:text-lg font-normal capitalize;
+		@apply text-base lg:text-lg font-normal capitalize lg:text-start text-center;
 	}
 	h6,
 	.prose h6 {
-		@apply text-sm lg:text-base font-light capitalize  text-pretty;
+		@apply text-sm lg:text-base font-light capitalize lg:text-start text-center text-pretty;
 	}
 	p,
 	.prose p {
