@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button"
 import { Command, CommandEmpty, CommandGroup, CommandItem } from "@/components/ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { useState } from "react"
-import { Field, FieldLabel } from "../ui/field"
-import { Card, CardContent, CardHeader } from "../ui/card"
-import { Input } from "../ui/input"
+import { Field, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 type Props = {
 	allSelectedData:
@@ -46,30 +47,28 @@ export default function MultiSelect({ allSelectedData, inputName, label, default
 			<FieldLabel>{label}</FieldLabel>
 			<Card className="w-full ">
 				{/* -------------------------------- Badge ------------------------------- */}
-				<CardHeader className="flex flex-wrap gap-6">
+				<CardContent className="flex flex-wrap gap-2">
 					{selected.map(({ id, title }) => (
-						<Button
+						<Badge
 							key={id}
 							onClick={() => setSelected(selected.filter((item) => item.id !== id))}
 							className="cursor-pointer"
-							size={"sm"}
 						>
 							{title}
-						</Button>
+						</Badge>
 					))}
-				</CardHeader>
+				</CardContent>
 
 				{/* ------------------------------- select ------------------------------- */}
-				<CardContent className="flex flex-col gap-3 w-full">
+				<CardFooter>
 					<Popover>
 						<PopoverTrigger asChild>
-							<Button variant="default" role="combobox" size={"lg"} type="button">
+							<Button variant="default" role="combobox" size={"sm"} type="button">
 								select {inputName}
 								<ChevronDown opacity={0.8} />
 							</Button>
 						</PopoverTrigger>
-
-						<PopoverContent className="w-full p-2 " align="center">
+						<PopoverContent className="w-full p-2 " align="start">
 							<Command className="w-full">
 								<CommandEmpty>No result found.</CommandEmpty>
 								<CommandGroup className="w-full">
@@ -87,7 +86,7 @@ export default function MultiSelect({ allSelectedData, inputName, label, default
 							</Command>
 						</PopoverContent>
 					</Popover>
-				</CardContent>
+				</CardFooter>
 			</Card>
 		</Field>
 	)

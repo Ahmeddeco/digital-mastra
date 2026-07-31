@@ -3,7 +3,7 @@ import ServerPageCard from "@/components/backend/ServerPageCard"
 import AddService from "@/forms/AddService"
 import { Role } from "@/generated/prisma/enums"
 
-export default async function AddMemberPage() {
+export default async function AddServicePage() {
 	await isAllowedRoles([Role.admin])
 
 	return (

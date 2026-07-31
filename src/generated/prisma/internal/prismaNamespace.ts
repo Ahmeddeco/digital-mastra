@@ -1318,8 +1318,10 @@ export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeo
 export const ProjectScalarFieldEnum = {
   id: 'id',
   code: 'code',
-  title: 'title',
-  description: 'description',
+  titleAr: 'titleAr',
+  titleEn: 'titleEn',
+  descriptionAr: 'descriptionAr',
+  descriptionEn: 'descriptionEn',
   clientId: 'clientId',
   status: 'status',
   startDate: 'startDate',

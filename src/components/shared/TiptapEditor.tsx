@@ -92,10 +92,10 @@ export default function TiptapEditor({
 	return (
 		<Field>
 			<FieldLabel>{label}</FieldLabel>
-			<div className="w-full rounded-md border border-input bg-background text-foreground overflow-hidden shadow-sm">
+			<div className="w-full border rounded-4xl bg-input/50 text-foreground overflow-hidden shadow-sm ">
 				<input type="hidden" name={name} id={id} value={content} key={editorKey} />
 				{/* --------------------------------- Toolbar -------------------------------- */}
-				<div className="flex flex-wrap items-center gap-1 p-2 bg-card/95 border-b border-input" dir="rtl">
+				<div className="flex flex-wrap  items-center gap-1 p-2 bg-input border-b " dir="rtl">
 					<Toggle
 						size="sm"
 						pressed={editor.isActive("bold")}

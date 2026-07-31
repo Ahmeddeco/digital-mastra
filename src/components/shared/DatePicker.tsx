@@ -12,9 +12,10 @@ type Props = {
 	name: string | undefined
 	defaultValue: string | undefined
 	errors: string[] | undefined
+	label: string
 }
 
-export default function DatePicker({ defaultValue, name, errors }: Props) {
+export default function DatePicker({ defaultValue, name, errors, label }: Props) {
 	const [date, setDate] = useState<Date | undefined>(() => {
 		const d = defaultValue ? new Date(defaultValue) : undefined
 		return d && !isNaN(d.getTime()) ? d : undefined
@@ -24,7 +25,7 @@ export default function DatePicker({ defaultValue, name, errors }: Props) {
 
 	return (
 		<Field>
-			<FieldLabel htmlFor={name}>{name}</FieldLabel>
+			<FieldLabel htmlFor={name}>{label}</FieldLabel>
 			<Popover>
 				<Input type="hidden" name={name} value={date ? date.toISOString() : ""} />
 				<PopoverTrigger asChild>

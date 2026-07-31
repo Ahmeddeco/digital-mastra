@@ -1,4 +1,4 @@
-type FormatType = 'full' | 'yearOnly' | 'monthAndYear'
+type FormatType = 'full' | 'yearOnly' | 'monthAndYear' | "monthAndYearAndDay"
 
 export const dateFormate = (
   day: Date,
@@ -21,6 +21,11 @@ export const dateFormate = (
     monthAndYear: {
       month: 'long',
       year: 'numeric',
+    },
+    monthAndYearAndDay: {
+      month: 'short',
+      year: 'numeric',
+      day: '2-digit',
     },
   }
 

@@ -5,7 +5,7 @@ import EditService from "@/forms/EditService"
 import { Role } from "@/generated/prisma/enums"
 import { getOneServiceType } from "@/types/service.type"
 
-export default async function EditMemberPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function EditServicePage({ params }: { params: Promise<{ id: string }> }) {
 	await isAllowedRoles([Role.admin])
 	const id = (await params).id
 	const service: getOneServiceType = await getOneService(id)

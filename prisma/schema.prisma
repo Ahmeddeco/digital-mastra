@@ -174,22 +174,24 @@ model Service {
 }
 
 model Project {
-  id          String        @id @default(cuid())
-  code        String        @unique @default(nanoid(8))
-  title       String
-  description String?       @db.Text
-  clientId    String        @map("client_id")
-  client      Client        @relation(fields: [clientId], references: [id])
-  status      ProjectStatus @default(draft)
-  startDate   DateTime?     @map("start_date")
-  endDate     DateTime?     @map("end_date")
-  services    Service[]
-  metadata    Json?
-  isArchived  Boolean?      @default(false) @map("is_archived") // مشروع مكتمل ومؤرشف
-  deletedAt   DateTime?     @map("deleted_at") // مشروع تم إلغاؤه وحذفه صوريًا
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  demo        Demo?
+  id            String        @id @default(cuid())
+  code          String        @unique @default(nanoid(8))
+  titleAr       String        @map("title_ar")
+  titleEn       String        @map("title_en")
+  descriptionAr String?       @map("description_ar") @db.Text
+  descriptionEn String?       @map("description_en") @db.Text
+  clientId      String        @map("client_id")
+  client        Client        @relation(fields: [clientId], references: [id])
+  status        ProjectStatus @default(draft)
+  startDate     DateTime?     @map("start_date")
+  endDate       DateTime?     @map("end_date")
+  services      Service[]
+  metadata      Json?
+  isArchived    Boolean?      @default(false) @map("is_archived") // مشروع مكتمل ومؤرشف
+  deletedAt     DateTime?     @map("deleted_at") // مشروع تم إلغاؤه وحذفه صوريًا
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  demo          Demo?
 
   @@index([clientId, status])
   @@index([code])

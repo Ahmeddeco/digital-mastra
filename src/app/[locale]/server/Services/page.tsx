@@ -11,7 +11,7 @@ import { getAllServicesForPage } from "@/dl/service.data"
 import { deleteServiceAction } from "@/actions/service.action"
 import { Badge } from "@/components/ui/badge"
 
-export default async function MembersServerPage({
+export default async function ServicesServerPage({
 	searchParams,
 	params,
 }: {
