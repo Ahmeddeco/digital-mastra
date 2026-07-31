@@ -1,4 +1,4 @@
-import { storage } from "@/bot"
+import { storage } from "@/bot/storage"
 import { Agent } from '@mastra/core/agent'
 import { Memory } from '@mastra/memory'
 import { ollama } from "ollama-ai-provider-v2"
@@ -27,9 +27,9 @@ You are the Digital Marketing Agent, a senior digital marketing strategist, grow
 - Provide copy examples directly usable in production or design templates.
   `,
   memory: new Memory({ storage }),
-  model: process.env.NODE_ENV === "production" ? "google/gemini-flash-latest" : ollama("gemma4:12b"),
+  model: process.env.NODE_ENV === "production" ? "google/gemini-flash-latest" : ollama("gemma4:e2b-it-qat"),
   skills: [
-    "../information/marketing",
+    "../information/marketing-psychology",
     "../information/copywriting",
     "../information/product-marketing",
     "../information/find-skills",

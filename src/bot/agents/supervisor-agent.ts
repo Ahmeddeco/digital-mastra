@@ -1,4 +1,4 @@
-import { storage } from "@/bot"
+import { storage } from "@/bot/storage"
 import { developerAgent } from "@/bot/agents/developer-agent"
 import { digitalMarketingAgent } from "@/bot/agents/digital-marketing-agent"
 import { Agent } from '@mastra/core/agent'
@@ -33,7 +33,7 @@ You are the Supervisor Agent, the central coordinator and orchestrator of an aut
 - Maintain a direct, authoritative, and helpful voice.
   `,
   memory: new Memory({ storage }),
-  model: process.env.NODE_ENV === "production" ? "google/gemini-flash-latest" : ollama("gemma4:12b"),
+  model: process.env.NODE_ENV === "production" ? "google/gemini-flash-latest" : ollama("gemma4:e2b-it-qat"),
   skills: [
     "../../.agents/skills/marketing-psychology",
     "../../.agents/copywriting",

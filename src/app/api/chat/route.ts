@@ -7,7 +7,7 @@ export const maxDuration = 300
 export async function POST(req: Request) {
   const { messages } = await req.json()
 
-  const agent = mastra.getAgent("digitalMarketingAgent")
+  const agent = mastra.getAgent("supervisorAgent")
   const stream = await agent.stream(messages)
 
   const uiMessageStream = createUIMessageStream({

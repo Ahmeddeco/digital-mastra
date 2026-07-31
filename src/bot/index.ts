@@ -1,24 +1,21 @@
 import { Mastra } from '@mastra/core/mastra'
-import { PostgresStore } from '@mastra/pg'
 import { chatRoute } from "@mastra/ai-sdk"
 import { digitalMarketingAgent } from "@/bot/agents/digital-marketing-agent"
-
-
-export const storage = new PostgresStore({
-  id: 'pg-storage',
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: true } : false,
-})
+import { developerAgent } from "@/bot/agents/developer-agent"
+import { supervisorAgent } from "@/bot/agents/supervisor-agent"
+import { storage } from "@/bot/storage"
+import { MastraEditor } from '@mastra/editor'
 
 export const mastra = new Mastra({
-  agents: { digitalMarketingAgent },
+  agents: { digitalMarketingAgent, developerAgent, supervisorAgent },
   storage,
   server: {
     apiRoutes: [
       chatRoute({
-        path: '/chat/marketing',
-        agent: 'digitalMarketingAgent',
+        path: '/chat',
+        agent: 'supervisorAgent',
       }),
     ],
   },
+  editor: new MastraEditor(),
 })

@@ -1,4 +1,4 @@
-import { storage } from "@/bot"
+import { storage } from "@/bot/storage"
 import { Agent } from '@mastra/core/agent'
 import { Memory } from '@mastra/memory'
 import { ollama } from "ollama-ai-provider-v2"
@@ -30,9 +30,9 @@ You are the Developer Agent, an elite full-stack software engineer specialized i
 - Keep explanatory text focused, technical, and concrete. Avoid filler prose.
   `,
   memory: new Memory({ storage }),
-  model: process.env.NODE_ENV === "production" ? "google/gemini-flash-latest" : ollama("gemma4:12b"),
+  model: process.env.NODE_ENV === "production" ? "google/gemini-flash-latest" : ollama("gemma4:e2b-it-qat"),
   skills: [
-    "../information/frontend",
+    "../information/frontend-design",
     "../information/web-design-guidelines",
   ]
 })
