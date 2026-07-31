@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { JsonValueSchema } from '../inputTypeSchemas/JsonValueSchema'
 import { ProjectStatusSchema } from '../inputTypeSchemas/ProjectStatusSchema'
+import { ProjectCategorySchema } from '../inputTypeSchemas/ProjectCategorySchema'
 
 /////////////////////////////////////////
 // PROJECT SCHEMA
@@ -8,6 +9,7 @@ import { ProjectStatusSchema } from '../inputTypeSchemas/ProjectStatusSchema'
 
 export const ProjectSchema = z.object({
   status: ProjectStatusSchema,
+  category: ProjectCategorySchema,
   id: z.string(),
   code: z.string(),
   titleAr: z.string(),

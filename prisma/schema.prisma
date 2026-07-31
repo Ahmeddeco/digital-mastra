@@ -174,24 +174,25 @@ model Service {
 }
 
 model Project {
-  id            String        @id @default(cuid())
-  code          String        @unique @default(nanoid(8))
-  titleAr       String        @map("title_ar")
-  titleEn       String        @map("title_en")
-  descriptionAr String?       @map("description_ar") @db.Text
-  descriptionEn String?       @map("description_en") @db.Text
-  clientId      String        @map("client_id")
-  client        Client        @relation(fields: [clientId], references: [id])
-  status        ProjectStatus @default(draft)
-  startDate     DateTime?     @map("start_date")
-  endDate       DateTime?     @map("end_date")
+  id            String          @id @default(cuid())
+  code          String          @unique @default(nanoid(8))
+  titleAr       String          @map("title_ar")
+  titleEn       String          @map("title_en")
+  descriptionAr String?         @map("description_ar") @db.Text
+  descriptionEn String?         @map("description_en") @db.Text
+  clientId      String          @map("client_id")
+  client        Client          @relation(fields: [clientId], references: [id])
+  status        ProjectStatus   @default(draft)
+  startDate     DateTime?       @map("start_date")
+  endDate       DateTime?       @map("end_date")
   services      Service[]
   metadata      Json?
-  isArchived    Boolean?      @default(false) @map("is_archived") // مشروع مكتمل ومؤرشف
-  deletedAt     DateTime?     @map("deleted_at") // مشروع تم إلغاؤه وحذفه صوريًا
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
+  isArchived    Boolean?        @default(false) @map("is_archived") // مشروع مكتمل ومؤرشف
+  deletedAt     DateTime?       @map("deleted_at") // مشروع تم إلغاؤه وحذفه صوريًا
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
   demo          Demo?
+  category      ProjectCategory
 
   @@index([clientId, status])
   @@index([code])
@@ -217,31 +218,28 @@ enum ProjectStatus {
 // ------------------------------------------------------
 
 model Demo {
-  id            String          @id @default(cuid())
-  slug          String          @unique
-  titleAr       String          @map("title_ar")
-  titleEn       String          @map("title_en")
-  category      ProjectCategory @default(development)
-  tags          String[]
-  descriptionAr String?         @map("description_ar") @db.Text
-  descriptionEn String?         @map("description_en") @db.Text
-  painPointsAr  String?         @map("pain_points_ar") @db.Text
-  painPointsEn  String?         @map("pain_points_en") @db.Text
-  solutionsAr   String?         @map("solutions_ar") @db.Text
-  solutionsEn   String?         @map("solutions_en") @db.Text
-  mainImage     String          @map("main_image")
+  id            String    @id @default(cuid())
+  slug          String    @unique
+  titleAr       String    @map("title_ar")
+  titleEn       String    @map("title_en")
+  descriptionAr String?   @map("description_ar") @db.Text
+  descriptionEn String?   @map("description_en") @db.Text
+  painPointsAr  String?   @map("pain_points_ar") @db.Text
+  painPointsEn  String?   @map("pain_points_en") @db.Text
+  solutionsAr   String?   @map("solutions_ar") @db.Text
+  solutionsEn   String?   @map("solutions_en") @db.Text
+  mainImage     String    @map("main_image")
   images        String[]
-  liveUrl       String?         @map("live_url")
-  isFeatured    Boolean         @default(false) @map("is_featured")
-  deletedAt     DateTime?       @map("deleted_at") // لإخفاء عنصر المعرض صوريًا
-  projectId     String?         @unique @map("project_id")
-  project       Project?        @relation(fields: [projectId], references: [id], onDelete: SetNull)
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
+  liveUrl       String?   @map("live_url")
+  deletedAt     DateTime? @map("deleted_at") // لإخفاء عنصر المعرض صوريًا
+  projectId     String?   @unique @map("project_id")
+  project       Project?  @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
   @@index([slug])
-  @@index([isFeatured, category])
-  @@index([deletedAt])
+  @@index([createdAt])
+  @@index([titleAr, titleEn])
 }
 
 model Article {

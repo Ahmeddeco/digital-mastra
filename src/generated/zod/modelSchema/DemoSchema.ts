@@ -1,17 +1,14 @@
 import { z } from 'zod';
-import { ProjectCategorySchema } from '../inputTypeSchemas/ProjectCategorySchema'
 
 /////////////////////////////////////////
 // DEMO SCHEMA
 /////////////////////////////////////////
 
 export const DemoSchema = z.object({
-  category: ProjectCategorySchema,
   id: z.string(),
   slug: z.string(),
   titleAr: z.string(),
   titleEn: z.string(),
-  tags: z.string().array(),
   descriptionAr: z.string().nullish(),
   descriptionEn: z.string().nullish(),
   painPointsAr: z.string().nullish(),
@@ -21,7 +18,6 @@ export const DemoSchema = z.object({
   mainImage: z.string(),
   images: z.string().array(),
   liveUrl: z.string().nullish(),
-  isFeatured: z.boolean(),
   deletedAt: z.date().nullish(),
   projectId: z.string().nullish(),
   createdAt: z.date(),

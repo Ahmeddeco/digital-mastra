@@ -164,6 +164,7 @@ async function main() {
         descriptionEn: fakerEN.lorem.paragraph(),
         clientId: client.id,
         status: statuses[i % statuses.length],
+        category: category,
         startDate: fakerEN.date.past(),
         endDate: fakerEN.date.future(),
         services: {
@@ -183,8 +184,6 @@ async function main() {
           slug: fakerEN.helpers.slugify(project.titleEn.toLowerCase() + "-" + fakerEN.string.nanoid(4)),
           titleAr: project.titleAr,
           titleEn: project.titleEn,
-          category: category,
-          tags: ["Next.js", "TailwindCSS", "Prisma", "React"],
           descriptionAr: project.descriptionAr,
           descriptionEn: project.descriptionEn,
           painPointsAr: "كان العميل يعاني من بطء النظام القديم وصعوبة إدارة المبيعات.",
@@ -197,7 +196,6 @@ async function main() {
             fakerEN.image.url(),
           ],
           liveUrl: fakerEN.internet.url(),
-          isFeatured: true,
           projectId: project.id,
         },
       })

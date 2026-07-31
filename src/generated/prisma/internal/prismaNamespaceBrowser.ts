@@ -204,7 +204,8 @@ export const ProjectScalarFieldEnum = {
   isArchived: 'isArchived',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  category: 'category'
 } as const
 
 export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
@@ -215,8 +216,6 @@ export const DemoScalarFieldEnum = {
   slug: 'slug',
   titleAr: 'titleAr',
   titleEn: 'titleEn',
-  category: 'category',
-  tags: 'tags',
   descriptionAr: 'descriptionAr',
   descriptionEn: 'descriptionEn',
   painPointsAr: 'painPointsAr',
@@ -226,7 +225,6 @@ export const DemoScalarFieldEnum = {
   mainImage: 'mainImage',
   images: 'images',
   liveUrl: 'liveUrl',
-  isFeatured: 'isFeatured',
   deletedAt: 'deletedAt',
   projectId: 'projectId',
   createdAt: 'createdAt',

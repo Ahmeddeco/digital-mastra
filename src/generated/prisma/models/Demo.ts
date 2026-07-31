@@ -29,7 +29,6 @@ export type DemoMinAggregateOutputType = {
   slug: string | null
   titleAr: string | null
   titleEn: string | null
-  category: $Enums.ProjectCategory | null
   descriptionAr: string | null
   descriptionEn: string | null
   painPointsAr: string | null
@@ -38,7 +37,6 @@ export type DemoMinAggregateOutputType = {
   solutionsEn: string | null
   mainImage: string | null
   liveUrl: string | null
-  isFeatured: boolean | null
   deletedAt: Date | null
   projectId: string | null
   createdAt: Date | null
@@ -50,7 +48,6 @@ export type DemoMaxAggregateOutputType = {
   slug: string | null
   titleAr: string | null
   titleEn: string | null
-  category: $Enums.ProjectCategory | null
   descriptionAr: string | null
   descriptionEn: string | null
   painPointsAr: string | null
@@ -59,7 +56,6 @@ export type DemoMaxAggregateOutputType = {
   solutionsEn: string | null
   mainImage: string | null
   liveUrl: string | null
-  isFeatured: boolean | null
   deletedAt: Date | null
   projectId: string | null
   createdAt: Date | null
@@ -71,8 +67,6 @@ export type DemoCountAggregateOutputType = {
   slug: number
   titleAr: number
   titleEn: number
-  category: number
-  tags: number
   descriptionAr: number
   descriptionEn: number
   painPointsAr: number
@@ -82,7 +76,6 @@ export type DemoCountAggregateOutputType = {
   mainImage: number
   images: number
   liveUrl: number
-  isFeatured: number
   deletedAt: number
   projectId: number
   createdAt: number
@@ -96,7 +89,6 @@ export type DemoMinAggregateInputType = {
   slug?: true
   titleAr?: true
   titleEn?: true
-  category?: true
   descriptionAr?: true
   descriptionEn?: true
   painPointsAr?: true
@@ -105,7 +97,6 @@ export type DemoMinAggregateInputType = {
   solutionsEn?: true
   mainImage?: true
   liveUrl?: true
-  isFeatured?: true
   deletedAt?: true
   projectId?: true
   createdAt?: true
@@ -117,7 +108,6 @@ export type DemoMaxAggregateInputType = {
   slug?: true
   titleAr?: true
   titleEn?: true
-  category?: true
   descriptionAr?: true
   descriptionEn?: true
   painPointsAr?: true
@@ -126,7 +116,6 @@ export type DemoMaxAggregateInputType = {
   solutionsEn?: true
   mainImage?: true
   liveUrl?: true
-  isFeatured?: true
   deletedAt?: true
   projectId?: true
   createdAt?: true
@@ -138,8 +127,6 @@ export type DemoCountAggregateInputType = {
   slug?: true
   titleAr?: true
   titleEn?: true
-  category?: true
-  tags?: true
   descriptionAr?: true
   descriptionEn?: true
   painPointsAr?: true
@@ -149,7 +136,6 @@ export type DemoCountAggregateInputType = {
   mainImage?: true
   images?: true
   liveUrl?: true
-  isFeatured?: true
   deletedAt?: true
   projectId?: true
   createdAt?: true
@@ -234,8 +220,6 @@ export type DemoGroupByOutputType = {
   slug: string
   titleAr: string
   titleEn: string
-  category: $Enums.ProjectCategory
-  tags: string[]
   descriptionAr: string | null
   descriptionEn: string | null
   painPointsAr: string | null
@@ -245,7 +229,6 @@ export type DemoGroupByOutputType = {
   mainImage: string
   images: string[]
   liveUrl: string | null
-  isFeatured: boolean
   deletedAt: Date | null
   projectId: string | null
   createdAt: Date
@@ -278,8 +261,6 @@ export type DemoWhereInput = {
   slug?: Prisma.StringFilter<"Demo"> | string
   titleAr?: Prisma.StringFilter<"Demo"> | string
   titleEn?: Prisma.StringFilter<"Demo"> | string
-  category?: Prisma.EnumProjectCategoryFilter<"Demo"> | $Enums.ProjectCategory
-  tags?: Prisma.StringNullableListFilter<"Demo">
   descriptionAr?: Prisma.StringNullableFilter<"Demo"> | string | null
   descriptionEn?: Prisma.StringNullableFilter<"Demo"> | string | null
   painPointsAr?: Prisma.StringNullableFilter<"Demo"> | string | null
@@ -289,7 +270,6 @@ export type DemoWhereInput = {
   mainImage?: Prisma.StringFilter<"Demo"> | string
   images?: Prisma.StringNullableListFilter<"Demo">
   liveUrl?: Prisma.StringNullableFilter<"Demo"> | string | null
-  isFeatured?: Prisma.BoolFilter<"Demo"> | boolean
   deletedAt?: Prisma.DateTimeNullableFilter<"Demo"> | Date | string | null
   projectId?: Prisma.StringNullableFilter<"Demo"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Demo"> | Date | string
@@ -302,8 +282,6 @@ export type DemoOrderByWithRelationInput = {
   slug?: Prisma.SortOrder
   titleAr?: Prisma.SortOrder
   titleEn?: Prisma.SortOrder
-  category?: Prisma.SortOrder
-  tags?: Prisma.SortOrder
   descriptionAr?: Prisma.SortOrderInput | Prisma.SortOrder
   descriptionEn?: Prisma.SortOrderInput | Prisma.SortOrder
   painPointsAr?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -313,7 +291,6 @@ export type DemoOrderByWithRelationInput = {
   mainImage?: Prisma.SortOrder
   images?: Prisma.SortOrder
   liveUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  isFeatured?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   projectId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -330,8 +307,6 @@ export type DemoWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.DemoWhereInput | Prisma.DemoWhereInput[]
   titleAr?: Prisma.StringFilter<"Demo"> | string
   titleEn?: Prisma.StringFilter<"Demo"> | string
-  category?: Prisma.EnumProjectCategoryFilter<"Demo"> | $Enums.ProjectCategory
-  tags?: Prisma.StringNullableListFilter<"Demo">
   descriptionAr?: Prisma.StringNullableFilter<"Demo"> | string | null
   descriptionEn?: Prisma.StringNullableFilter<"Demo"> | string | null
   painPointsAr?: Prisma.StringNullableFilter<"Demo"> | string | null
@@ -341,7 +316,6 @@ export type DemoWhereUniqueInput = Prisma.AtLeast<{
   mainImage?: Prisma.StringFilter<"Demo"> | string
   images?: Prisma.StringNullableListFilter<"Demo">
   liveUrl?: Prisma.StringNullableFilter<"Demo"> | string | null
-  isFeatured?: Prisma.BoolFilter<"Demo"> | boolean
   deletedAt?: Prisma.DateTimeNullableFilter<"Demo"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Demo"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Demo"> | Date | string
@@ -353,8 +327,6 @@ export type DemoOrderByWithAggregationInput = {
   slug?: Prisma.SortOrder
   titleAr?: Prisma.SortOrder
   titleEn?: Prisma.SortOrder
-  category?: Prisma.SortOrder
-  tags?: Prisma.SortOrder
   descriptionAr?: Prisma.SortOrderInput | Prisma.SortOrder
   descriptionEn?: Prisma.SortOrderInput | Prisma.SortOrder
   painPointsAr?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -364,7 +336,6 @@ export type DemoOrderByWithAggregationInput = {
   mainImage?: Prisma.SortOrder
   images?: Prisma.SortOrder
   liveUrl?: Prisma.SortOrderInput | Prisma.SortOrder
-  isFeatured?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   projectId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -382,8 +353,6 @@ export type DemoScalarWhereWithAggregatesInput = {
   slug?: Prisma.StringWithAggregatesFilter<"Demo"> | string
   titleAr?: Prisma.StringWithAggregatesFilter<"Demo"> | string
   titleEn?: Prisma.StringWithAggregatesFilter<"Demo"> | string
-  category?: Prisma.EnumProjectCategoryWithAggregatesFilter<"Demo"> | $Enums.ProjectCategory
-  tags?: Prisma.StringNullableListFilter<"Demo">
   descriptionAr?: Prisma.StringNullableWithAggregatesFilter<"Demo"> | string | null
   descriptionEn?: Prisma.StringNullableWithAggregatesFilter<"Demo"> | string | null
   painPointsAr?: Prisma.StringNullableWithAggregatesFilter<"Demo"> | string | null
@@ -393,7 +362,6 @@ export type DemoScalarWhereWithAggregatesInput = {
   mainImage?: Prisma.StringWithAggregatesFilter<"Demo"> | string
   images?: Prisma.StringNullableListFilter<"Demo">
   liveUrl?: Prisma.StringNullableWithAggregatesFilter<"Demo"> | string | null
-  isFeatured?: Prisma.BoolWithAggregatesFilter<"Demo"> | boolean
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Demo"> | Date | string | null
   projectId?: Prisma.StringNullableWithAggregatesFilter<"Demo"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Demo"> | Date | string
@@ -405,8 +373,6 @@ export type DemoCreateInput = {
   slug: string
   titleAr: string
   titleEn: string
-  category?: $Enums.ProjectCategory
-  tags?: Prisma.DemoCreatetagsInput | string[]
   descriptionAr?: string | null
   descriptionEn?: string | null
   painPointsAr?: string | null
@@ -416,7 +382,6 @@ export type DemoCreateInput = {
   mainImage: string
   images?: Prisma.DemoCreateimagesInput | string[]
   liveUrl?: string | null
-  isFeatured?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -428,8 +393,6 @@ export type DemoUncheckedCreateInput = {
   slug: string
   titleAr: string
   titleEn: string
-  category?: $Enums.ProjectCategory
-  tags?: Prisma.DemoCreatetagsInput | string[]
   descriptionAr?: string | null
   descriptionEn?: string | null
   painPointsAr?: string | null
@@ -439,7 +402,6 @@ export type DemoUncheckedCreateInput = {
   mainImage: string
   images?: Prisma.DemoCreateimagesInput | string[]
   liveUrl?: string | null
-  isFeatured?: boolean
   deletedAt?: Date | string | null
   projectId?: string | null
   createdAt?: Date | string
@@ -451,8 +413,6 @@ export type DemoUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   titleAr?: Prisma.StringFieldUpdateOperationsInput | string
   titleEn?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  tags?: Prisma.DemoUpdatetagsInput | string[]
   descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   painPointsAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -462,7 +422,6 @@ export type DemoUpdateInput = {
   mainImage?: Prisma.StringFieldUpdateOperationsInput | string
   images?: Prisma.DemoUpdateimagesInput | string[]
   liveUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -474,8 +433,6 @@ export type DemoUncheckedUpdateInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   titleAr?: Prisma.StringFieldUpdateOperationsInput | string
   titleEn?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  tags?: Prisma.DemoUpdatetagsInput | string[]
   descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   painPointsAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -485,7 +442,6 @@ export type DemoUncheckedUpdateInput = {
   mainImage?: Prisma.StringFieldUpdateOperationsInput | string
   images?: Prisma.DemoUpdateimagesInput | string[]
   liveUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -497,8 +453,6 @@ export type DemoCreateManyInput = {
   slug: string
   titleAr: string
   titleEn: string
-  category?: $Enums.ProjectCategory
-  tags?: Prisma.DemoCreatetagsInput | string[]
   descriptionAr?: string | null
   descriptionEn?: string | null
   painPointsAr?: string | null
@@ -508,7 +462,6 @@ export type DemoCreateManyInput = {
   mainImage: string
   images?: Prisma.DemoCreateimagesInput | string[]
   liveUrl?: string | null
-  isFeatured?: boolean
   deletedAt?: Date | string | null
   projectId?: string | null
   createdAt?: Date | string
@@ -520,8 +473,6 @@ export type DemoUpdateManyMutationInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   titleAr?: Prisma.StringFieldUpdateOperationsInput | string
   titleEn?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  tags?: Prisma.DemoUpdatetagsInput | string[]
   descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   painPointsAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -531,7 +482,6 @@ export type DemoUpdateManyMutationInput = {
   mainImage?: Prisma.StringFieldUpdateOperationsInput | string
   images?: Prisma.DemoUpdateimagesInput | string[]
   liveUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -542,8 +492,6 @@ export type DemoUncheckedUpdateManyInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   titleAr?: Prisma.StringFieldUpdateOperationsInput | string
   titleEn?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  tags?: Prisma.DemoUpdatetagsInput | string[]
   descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   painPointsAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -553,7 +501,6 @@ export type DemoUncheckedUpdateManyInput = {
   mainImage?: Prisma.StringFieldUpdateOperationsInput | string
   images?: Prisma.DemoUpdateimagesInput | string[]
   liveUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -578,8 +525,6 @@ export type DemoCountOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   titleAr?: Prisma.SortOrder
   titleEn?: Prisma.SortOrder
-  category?: Prisma.SortOrder
-  tags?: Prisma.SortOrder
   descriptionAr?: Prisma.SortOrder
   descriptionEn?: Prisma.SortOrder
   painPointsAr?: Prisma.SortOrder
@@ -589,7 +534,6 @@ export type DemoCountOrderByAggregateInput = {
   mainImage?: Prisma.SortOrder
   images?: Prisma.SortOrder
   liveUrl?: Prisma.SortOrder
-  isFeatured?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -601,7 +545,6 @@ export type DemoMaxOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   titleAr?: Prisma.SortOrder
   titleEn?: Prisma.SortOrder
-  category?: Prisma.SortOrder
   descriptionAr?: Prisma.SortOrder
   descriptionEn?: Prisma.SortOrder
   painPointsAr?: Prisma.SortOrder
@@ -610,7 +553,6 @@ export type DemoMaxOrderByAggregateInput = {
   solutionsEn?: Prisma.SortOrder
   mainImage?: Prisma.SortOrder
   liveUrl?: Prisma.SortOrder
-  isFeatured?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -622,7 +564,6 @@ export type DemoMinOrderByAggregateInput = {
   slug?: Prisma.SortOrder
   titleAr?: Prisma.SortOrder
   titleEn?: Prisma.SortOrder
-  category?: Prisma.SortOrder
   descriptionAr?: Prisma.SortOrder
   descriptionEn?: Prisma.SortOrder
   painPointsAr?: Prisma.SortOrder
@@ -631,7 +572,6 @@ export type DemoMinOrderByAggregateInput = {
   solutionsEn?: Prisma.SortOrder
   mainImage?: Prisma.SortOrder
   liveUrl?: Prisma.SortOrder
-  isFeatured?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
   projectId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -670,17 +610,8 @@ export type DemoUncheckedUpdateOneWithoutProjectNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.DemoUpdateToOneWithWhereWithoutProjectInput, Prisma.DemoUpdateWithoutProjectInput>, Prisma.DemoUncheckedUpdateWithoutProjectInput>
 }
 
-export type DemoCreatetagsInput = {
-  set: string[]
-}
-
 export type DemoCreateimagesInput = {
   set: string[]
-}
-
-export type DemoUpdatetagsInput = {
-  set?: string[]
-  push?: string | string[]
 }
 
 export type DemoUpdateimagesInput = {
@@ -693,8 +624,6 @@ export type DemoCreateWithoutProjectInput = {
   slug: string
   titleAr: string
   titleEn: string
-  category?: $Enums.ProjectCategory
-  tags?: Prisma.DemoCreatetagsInput | string[]
   descriptionAr?: string | null
   descriptionEn?: string | null
   painPointsAr?: string | null
@@ -704,7 +633,6 @@ export type DemoCreateWithoutProjectInput = {
   mainImage: string
   images?: Prisma.DemoCreateimagesInput | string[]
   liveUrl?: string | null
-  isFeatured?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -715,8 +643,6 @@ export type DemoUncheckedCreateWithoutProjectInput = {
   slug: string
   titleAr: string
   titleEn: string
-  category?: $Enums.ProjectCategory
-  tags?: Prisma.DemoCreatetagsInput | string[]
   descriptionAr?: string | null
   descriptionEn?: string | null
   painPointsAr?: string | null
@@ -726,7 +652,6 @@ export type DemoUncheckedCreateWithoutProjectInput = {
   mainImage: string
   images?: Prisma.DemoCreateimagesInput | string[]
   liveUrl?: string | null
-  isFeatured?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -753,8 +678,6 @@ export type DemoUpdateWithoutProjectInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   titleAr?: Prisma.StringFieldUpdateOperationsInput | string
   titleEn?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  tags?: Prisma.DemoUpdatetagsInput | string[]
   descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   painPointsAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -764,7 +687,6 @@ export type DemoUpdateWithoutProjectInput = {
   mainImage?: Prisma.StringFieldUpdateOperationsInput | string
   images?: Prisma.DemoUpdateimagesInput | string[]
   liveUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -775,8 +697,6 @@ export type DemoUncheckedUpdateWithoutProjectInput = {
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   titleAr?: Prisma.StringFieldUpdateOperationsInput | string
   titleEn?: Prisma.StringFieldUpdateOperationsInput | string
-  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
-  tags?: Prisma.DemoUpdatetagsInput | string[]
   descriptionAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   descriptionEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   painPointsAr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -786,7 +706,6 @@ export type DemoUncheckedUpdateWithoutProjectInput = {
   mainImage?: Prisma.StringFieldUpdateOperationsInput | string
   images?: Prisma.DemoUpdateimagesInput | string[]
   liveUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -799,8 +718,6 @@ export type DemoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   slug?: boolean
   titleAr?: boolean
   titleEn?: boolean
-  category?: boolean
-  tags?: boolean
   descriptionAr?: boolean
   descriptionEn?: boolean
   painPointsAr?: boolean
@@ -810,7 +727,6 @@ export type DemoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   mainImage?: boolean
   images?: boolean
   liveUrl?: boolean
-  isFeatured?: boolean
   deletedAt?: boolean
   projectId?: boolean
   createdAt?: boolean
@@ -823,8 +739,6 @@ export type DemoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   slug?: boolean
   titleAr?: boolean
   titleEn?: boolean
-  category?: boolean
-  tags?: boolean
   descriptionAr?: boolean
   descriptionEn?: boolean
   painPointsAr?: boolean
@@ -834,7 +748,6 @@ export type DemoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   mainImage?: boolean
   images?: boolean
   liveUrl?: boolean
-  isFeatured?: boolean
   deletedAt?: boolean
   projectId?: boolean
   createdAt?: boolean
@@ -847,8 +760,6 @@ export type DemoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   slug?: boolean
   titleAr?: boolean
   titleEn?: boolean
-  category?: boolean
-  tags?: boolean
   descriptionAr?: boolean
   descriptionEn?: boolean
   painPointsAr?: boolean
@@ -858,7 +769,6 @@ export type DemoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   mainImage?: boolean
   images?: boolean
   liveUrl?: boolean
-  isFeatured?: boolean
   deletedAt?: boolean
   projectId?: boolean
   createdAt?: boolean
@@ -871,8 +781,6 @@ export type DemoSelectScalar = {
   slug?: boolean
   titleAr?: boolean
   titleEn?: boolean
-  category?: boolean
-  tags?: boolean
   descriptionAr?: boolean
   descriptionEn?: boolean
   painPointsAr?: boolean
@@ -882,14 +790,13 @@ export type DemoSelectScalar = {
   mainImage?: boolean
   images?: boolean
   liveUrl?: boolean
-  isFeatured?: boolean
   deletedAt?: boolean
   projectId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type DemoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "titleAr" | "titleEn" | "category" | "tags" | "descriptionAr" | "descriptionEn" | "painPointsAr" | "painPointsEn" | "solutionsAr" | "solutionsEn" | "mainImage" | "images" | "liveUrl" | "isFeatured" | "deletedAt" | "projectId" | "createdAt" | "updatedAt", ExtArgs["result"]["demo"]>
+export type DemoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "titleAr" | "titleEn" | "descriptionAr" | "descriptionEn" | "painPointsAr" | "painPointsEn" | "solutionsAr" | "solutionsEn" | "mainImage" | "images" | "liveUrl" | "deletedAt" | "projectId" | "createdAt" | "updatedAt", ExtArgs["result"]["demo"]>
 export type DemoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.Demo$projectArgs<ExtArgs>
 }
@@ -910,8 +817,6 @@ export type $DemoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     slug: string
     titleAr: string
     titleEn: string
-    category: $Enums.ProjectCategory
-    tags: string[]
     descriptionAr: string | null
     descriptionEn: string | null
     painPointsAr: string | null
@@ -921,7 +826,6 @@ export type $DemoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     mainImage: string
     images: string[]
     liveUrl: string | null
-    isFeatured: boolean
     deletedAt: Date | null
     projectId: string | null
     createdAt: Date
@@ -1354,8 +1258,6 @@ export interface DemoFieldRefs {
   readonly slug: Prisma.FieldRef<"Demo", 'String'>
   readonly titleAr: Prisma.FieldRef<"Demo", 'String'>
   readonly titleEn: Prisma.FieldRef<"Demo", 'String'>
-  readonly category: Prisma.FieldRef<"Demo", 'ProjectCategory'>
-  readonly tags: Prisma.FieldRef<"Demo", 'String[]'>
   readonly descriptionAr: Prisma.FieldRef<"Demo", 'String'>
   readonly descriptionEn: Prisma.FieldRef<"Demo", 'String'>
   readonly painPointsAr: Prisma.FieldRef<"Demo", 'String'>
@@ -1365,7 +1267,6 @@ export interface DemoFieldRefs {
   readonly mainImage: Prisma.FieldRef<"Demo", 'String'>
   readonly images: Prisma.FieldRef<"Demo", 'String[]'>
   readonly liveUrl: Prisma.FieldRef<"Demo", 'String'>
-  readonly isFeatured: Prisma.FieldRef<"Demo", 'Boolean'>
   readonly deletedAt: Prisma.FieldRef<"Demo", 'DateTime'>
   readonly projectId: Prisma.FieldRef<"Demo", 'String'>
   readonly createdAt: Prisma.FieldRef<"Demo", 'DateTime'>

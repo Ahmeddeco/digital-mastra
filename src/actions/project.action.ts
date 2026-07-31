@@ -16,7 +16,7 @@ export const addProjectAction = async (prevState: unknown, formData: FormData) =
     return submission.reply()
   }
 
-  const { titleAr, titleEn, descriptionAr, descriptionEn, clientId, status, startDate, endDate, metadata, services } = submission.value
+  const { titleAr, category, titleEn, descriptionAr, descriptionEn, clientId, status, startDate, endDate, metadata, services } = submission.value
   const formattedMetadata = metadata?.reduce<Record<string, string>>((acc, item) => {
     if (item.key && item.key.trim() !== "") {
       acc[item.key] = item.value
@@ -33,6 +33,7 @@ export const addProjectAction = async (prevState: unknown, formData: FormData) =
         descriptionEn,
         clientId,
         status,
+        category,
         startDate,
         services: services ? {
           connect: services.map(id => ({ id }))
@@ -62,7 +63,7 @@ export const editProjectAction = async (prevState: unknown, formData: FormData) 
     return submission.reply()
   }
 
-  const { id, titleAr, titleEn, descriptionAr, descriptionEn, clientId, status, startDate, endDate, metadata, services } = submission.value
+  const { id, titleAr, titleEn, category, descriptionAr, descriptionEn, clientId, status, startDate, endDate, metadata, services } = submission.value
   const formattedMetadata = metadata?.reduce<Record<string, string>>((acc, item) => {
     if (item.key && item.key.trim() !== "") {
       acc[item.key] = item.value
@@ -78,6 +79,7 @@ export const editProjectAction = async (prevState: unknown, formData: FormData) 
         titleEn,
         descriptionAr,
         descriptionEn,
+        category,
         clientId,
         status,
         startDate,

@@ -20,6 +20,7 @@ import { getAllServicesForSelectType } from "@/types/service.type"
 import MultiSelect from "@/components/shared/MultiSelect"
 import { getOneProjectType } from "@/types/project.type"
 import Form from "next/form"
+import ProjectCategorySchema from "@/generated/zod/inputTypeSchemas/ProjectCategorySchema"
 
 type Props = {
 	clients: getAllClientsForSelectType
@@ -132,6 +133,24 @@ export default function EditProject({ clients, services, project }: Props) {
 						</SelectContent>
 					</Select>
 					<FieldError>{fields.status.errors}</FieldError>
+				</Field>
+
+				{/* ------------------------------ category ------------------------------ */}
+				<Field>
+					<FieldLabel htmlFor={fields.category.id}>category</FieldLabel>
+					<Select key={fields.category.key} name={fields.category.name} defaultValue={project?.category}>
+						<SelectTrigger>
+							<SelectValue />
+						</SelectTrigger>
+						<SelectContent>
+							{Object.values(ProjectCategorySchema.Enum).map((category) => (
+								<SelectItem value={category} key={category}>
+									{category}
+								</SelectItem>
+							))}
+						</SelectContent>
+					</Select>
+					<FieldError>{fields.category.errors}</FieldError>
 				</Field>
 
 				{/* -------------------------------- startDate ------------------------------- */}

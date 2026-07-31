@@ -1,8 +1,10 @@
+import ProjectCategorySchema from "@/generated/zod/inputTypeSchemas/ProjectCategorySchema"
 import ProjectStatusSchema from "@/generated/zod/inputTypeSchemas/ProjectStatusSchema"
 import { z } from 'zod'
 
 export const ProjectSchema = z.object({
   status: ProjectStatusSchema,
+  category: ProjectCategorySchema,
   id: z.string().nullish(),
   code: z.string().nullish(),// This will be added by database
   titleAr: z.string(),

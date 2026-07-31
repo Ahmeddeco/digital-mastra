@@ -12,7 +12,7 @@ export default function Logo({ reverse = false }: Props) {
 	const locale = useCurrentLocale()
 
 	return (
-		<Link href="/" className="flex items-end justify-center gap-2 ">
+		<Link href="/" className="flex items-end justify-center gap-1 ">
 			<div className="relative size-9 ">
 				<Image
 					src={"/icons/logo.webp"}

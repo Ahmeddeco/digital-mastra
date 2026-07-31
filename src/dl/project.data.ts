@@ -53,7 +53,7 @@ export const getAllProjectsForSelect = async () => {
   try {
     return await prisma.project.findMany({
       select: { id: true, titleAr: true, titleEn: true },
-      orderBy: { titleEn: "asc", titleAr: "asc" }
+      orderBy: { createdAt: "desc", }
     })
   } catch (error) {
     console.error(error)
