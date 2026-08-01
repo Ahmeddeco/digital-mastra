@@ -29,7 +29,7 @@ export default async function DevelopmentHero({ params }: { params: Promise<{ lo
 					src={"/images/development/developmentHero.webp"}
 					alt={"hero"}
 					fill
-					className="object-cover rounded-2xl "
+					className="object-cover rounded-2xl shadow-2xl "
 					priority
 				/>
 
