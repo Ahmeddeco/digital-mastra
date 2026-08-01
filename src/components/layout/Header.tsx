@@ -7,7 +7,7 @@ import LanguageButton from "@/locales/LanguageButton"
 
 export default function Header() {
 	return (
-		<header className="fixed w-full inset-0 mx-auto bg-foreground/90 text-background  drop-shadow-xl backdrop-blur-2xl lg:rounded-full rounded-none px-4 lg:h-14 h-12 z-50 container lg:mt-4 mt-0 flex items-center justify-between ">
+		<header className="fixed w-full inset-0 mx-auto bg-foreground/90 text-background drop-shadow-xl backdrop-blur-2xl lg:rounded-full rounded-none px-4  h-12 z-50 container lg:mt-4 mt-0 flex items-center justify-between ">
 			<div className="flex items-center justify-between container mx-auto">
 				{/* --------------------------------- Logo -------------------------------- */}
 				<Logo reverse />

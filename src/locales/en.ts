@@ -197,13 +197,13 @@ export const enDic = {
       p: " We develop a speed and responsive web apps to help your company to serve the client well and increase your profit.",
       accordion: [
         {
-          value: " item1",
+          value: "web",
           title: " web app development",
           p: " the process of designing building testing and deploying web-based applications that will be installed on remote servers and delivered to users or customers via the internet goals.",
           image: "/images/development/webDevelopment.webp",
         },
         {
-          value: " item2",
+          value: "mobile",
           title: " mobile app development",
           p: " the practice of orienting your website to rank higher on a search engine results page (SERP) so that you receive more traffic. The aim is typically to rank on the first page of Google results for search terms that mean the most to your target audience.",
           image: "/images/development/mobileDevelopment.webp",

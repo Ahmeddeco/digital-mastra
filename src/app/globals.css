@@ -51,7 +51,7 @@
 	--radius-3xl: calc(var(--radius) * 2.2);
 	--radius-4xl: calc(var(--radius) * 2.6);
 	--font-serif: Geist Mono, monospace;
-	--radius: 0.4rem;
+	--radius: 0.4px;
 	--tracking-tighter: calc(var(--tracking-normal) - 0.05em);
 	--tracking-tight: calc(var(--tracking-normal) - 0.025em);
 	--tracking-wide: calc(var(--tracking-normal) + 0.025em);
@@ -130,6 +130,7 @@
 	--shadow-2xl: 0px 2px 4px 0px hsl(0 0% 66.6667% / 0.5);
 	--tracking-normal: 0px;
 	--foreground: oklch(0.3211 0 0);
+	--radius: 0.4rem;
 }
 
 .dark {
@@ -184,6 +185,7 @@
 	--shadow-lg: 0px 2px 4px 0px hsl(0 0% 13.3333% / 0.2), 0px 4px 6px -1px hsl(0 0% 13.3333% / 0.2);
 	--shadow-xl: 0px 2px 4px 0px hsl(0 0% 13.3333% / 0.2), 0px 8px 10px -1px hsl(0 0% 13.3333% / 0.2);
 	--shadow-2xl: 0px 2px 4px 0px hsl(0 0% 13.3333% / 0.5);
+	--radius: 0.4rem;
 }
 
 @layer base {

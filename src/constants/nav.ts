@@ -1,7 +1,7 @@
 import { Home, MapPin, Newspaper, Server, Smartphone, } from "lucide-react"
-import { FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
-import { IoCodeSlashOutline } from "react-icons/io5"
+import { FaCode, FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6"
 import { RiRobot3Line, RiShoppingBag4Line } from "react-icons/ri"
+import { AiOutlineProject } from "react-icons/ai"
 
 
 export const frontNavLinks = [
@@ -13,12 +13,17 @@ export const frontNavLinks = [
   {
     title: { ar: "البرمجة", en: "Development" },
     href: "/Development",
-    icon: IoCodeSlashOutline
+    icon: FaCode
   },
   {
     title: { ar: "التسويق الرقمي", en: "marketing" },
     href: "/marketing",
     icon: RiShoppingBag4Line
+  },
+  {
+    title: { ar: "المشروعات", en: "our projects" },
+    href: "/projects",
+    icon: AiOutlineProject
   },
   {
     title: { ar: "مقالاتنا", en: "articles" },

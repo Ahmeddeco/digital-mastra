@@ -15,6 +15,7 @@ import TiptapEditor from "@/components/shared/TiptapEditor"
 import { UploadManyImagesDropZone, UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 import { getAllProjectsForSelectType } from "@/types/project.type"
 import { slug } from "@/logic/slug"
+import ProjectCategorySchema from "@/generated/zod/inputTypeSchemas/ProjectCategorySchema"
 
 type Props = {
 	projects: getAllProjectsForSelectType
@@ -136,6 +137,24 @@ export default function AddDemo({ projects }: Props) {
 						</SelectContent>
 					</Select>
 					<FieldError>{fields.projectId.errors}</FieldError>
+				</Field>
+
+				{/* ------------------------------ category ------------------------------ */}
+				<Field>
+					<FieldLabel htmlFor={fields.category.id}>category</FieldLabel>
+					<Select key={fields.category.key} name={fields.category.name} defaultValue={fields.category.initialValue}>
+						<SelectTrigger>
+							<SelectValue />
+						</SelectTrigger>
+						<SelectContent>
+							{Object.values(ProjectCategorySchema.Enum).map((category) => (
+								<SelectItem value={category} key={category}>
+									{category}
+								</SelectItem>
+							))}
+						</SelectContent>
+					</Select>
+					<FieldError>{fields.category.errors}</FieldError>
 				</Field>
 
 				{/* --------------------------------- liveUrl -------------------------------- */}

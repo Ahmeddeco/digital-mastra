@@ -41,6 +41,7 @@ export type DemoMinAggregateOutputType = {
   projectId: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  category: $Enums.ProjectCategory | null
 }
 
 export type DemoMaxAggregateOutputType = {
@@ -60,6 +61,7 @@ export type DemoMaxAggregateOutputType = {
   projectId: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  category: $Enums.ProjectCategory | null
 }
 
 export type DemoCountAggregateOutputType = {
@@ -80,6 +82,7 @@ export type DemoCountAggregateOutputType = {
   projectId: number
   createdAt: number
   updatedAt: number
+  category: number
   _all: number
 }
 
@@ -101,6 +104,7 @@ export type DemoMinAggregateInputType = {
   projectId?: true
   createdAt?: true
   updatedAt?: true
+  category?: true
 }
 
 export type DemoMaxAggregateInputType = {
@@ -120,6 +124,7 @@ export type DemoMaxAggregateInputType = {
   projectId?: true
   createdAt?: true
   updatedAt?: true
+  category?: true
 }
 
 export type DemoCountAggregateInputType = {
@@ -140,6 +145,7 @@ export type DemoCountAggregateInputType = {
   projectId?: true
   createdAt?: true
   updatedAt?: true
+  category?: true
   _all?: true
 }
 
@@ -233,6 +239,7 @@ export type DemoGroupByOutputType = {
   projectId: string | null
   createdAt: Date
   updatedAt: Date
+  category: $Enums.ProjectCategory
   _count: DemoCountAggregateOutputType | null
   _min: DemoMinAggregateOutputType | null
   _max: DemoMaxAggregateOutputType | null
@@ -274,6 +281,7 @@ export type DemoWhereInput = {
   projectId?: Prisma.StringNullableFilter<"Demo"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Demo"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Demo"> | Date | string
+  category?: Prisma.EnumProjectCategoryFilter<"Demo"> | $Enums.ProjectCategory
   project?: Prisma.XOR<Prisma.ProjectNullableScalarRelationFilter, Prisma.ProjectWhereInput> | null
 }
 
@@ -295,6 +303,7 @@ export type DemoOrderByWithRelationInput = {
   projectId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   project?: Prisma.ProjectOrderByWithRelationInput
 }
 
@@ -319,6 +328,7 @@ export type DemoWhereUniqueInput = Prisma.AtLeast<{
   deletedAt?: Prisma.DateTimeNullableFilter<"Demo"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Demo"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Demo"> | Date | string
+  category?: Prisma.EnumProjectCategoryFilter<"Demo"> | $Enums.ProjectCategory
   project?: Prisma.XOR<Prisma.ProjectNullableScalarRelationFilter, Prisma.ProjectWhereInput> | null
 }, "id" | "slug" | "projectId">
 
@@ -340,6 +350,7 @@ export type DemoOrderByWithAggregationInput = {
   projectId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   _count?: Prisma.DemoCountOrderByAggregateInput
   _max?: Prisma.DemoMaxOrderByAggregateInput
   _min?: Prisma.DemoMinOrderByAggregateInput
@@ -366,6 +377,7 @@ export type DemoScalarWhereWithAggregatesInput = {
   projectId?: Prisma.StringNullableWithAggregatesFilter<"Demo"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Demo"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Demo"> | Date | string
+  category?: Prisma.EnumProjectCategoryWithAggregatesFilter<"Demo"> | $Enums.ProjectCategory
 }
 
 export type DemoCreateInput = {
@@ -385,6 +397,7 @@ export type DemoCreateInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  category: $Enums.ProjectCategory
   project?: Prisma.ProjectCreateNestedOneWithoutDemoInput
 }
 
@@ -406,6 +419,7 @@ export type DemoUncheckedCreateInput = {
   projectId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  category: $Enums.ProjectCategory
 }
 
 export type DemoUpdateInput = {
@@ -425,6 +439,7 @@ export type DemoUpdateInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
   project?: Prisma.ProjectUpdateOneWithoutDemoNestedInput
 }
 
@@ -446,6 +461,7 @@ export type DemoUncheckedUpdateInput = {
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
 }
 
 export type DemoCreateManyInput = {
@@ -466,6 +482,7 @@ export type DemoCreateManyInput = {
   projectId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  category: $Enums.ProjectCategory
 }
 
 export type DemoUpdateManyMutationInput = {
@@ -485,6 +502,7 @@ export type DemoUpdateManyMutationInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
 }
 
 export type DemoUncheckedUpdateManyInput = {
@@ -505,6 +523,7 @@ export type DemoUncheckedUpdateManyInput = {
   projectId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
 }
 
 export type DemoNullableScalarRelationFilter = {
@@ -538,6 +557,7 @@ export type DemoCountOrderByAggregateInput = {
   projectId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  category?: Prisma.SortOrder
 }
 
 export type DemoMaxOrderByAggregateInput = {
@@ -557,6 +577,7 @@ export type DemoMaxOrderByAggregateInput = {
   projectId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  category?: Prisma.SortOrder
 }
 
 export type DemoMinOrderByAggregateInput = {
@@ -576,6 +597,7 @@ export type DemoMinOrderByAggregateInput = {
   projectId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  category?: Prisma.SortOrder
 }
 
 export type DemoCreateNestedOneWithoutProjectInput = {
@@ -636,6 +658,7 @@ export type DemoCreateWithoutProjectInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  category: $Enums.ProjectCategory
 }
 
 export type DemoUncheckedCreateWithoutProjectInput = {
@@ -655,6 +678,7 @@ export type DemoUncheckedCreateWithoutProjectInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  category: $Enums.ProjectCategory
 }
 
 export type DemoCreateOrConnectWithoutProjectInput = {
@@ -690,6 +714,7 @@ export type DemoUpdateWithoutProjectInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
 }
 
 export type DemoUncheckedUpdateWithoutProjectInput = {
@@ -709,6 +734,7 @@ export type DemoUncheckedUpdateWithoutProjectInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
 }
 
 
@@ -731,6 +757,7 @@ export type DemoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   projectId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  category?: boolean
   project?: boolean | Prisma.Demo$projectArgs<ExtArgs>
 }, ExtArgs["result"]["demo"]>
 
@@ -752,6 +779,7 @@ export type DemoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   projectId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  category?: boolean
   project?: boolean | Prisma.Demo$projectArgs<ExtArgs>
 }, ExtArgs["result"]["demo"]>
 
@@ -773,6 +801,7 @@ export type DemoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   projectId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  category?: boolean
   project?: boolean | Prisma.Demo$projectArgs<ExtArgs>
 }, ExtArgs["result"]["demo"]>
 
@@ -794,9 +823,10 @@ export type DemoSelectScalar = {
   projectId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  category?: boolean
 }
 
-export type DemoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "titleAr" | "titleEn" | "descriptionAr" | "descriptionEn" | "painPointsAr" | "painPointsEn" | "solutionsAr" | "solutionsEn" | "mainImage" | "images" | "liveUrl" | "deletedAt" | "projectId" | "createdAt" | "updatedAt", ExtArgs["result"]["demo"]>
+export type DemoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "titleAr" | "titleEn" | "descriptionAr" | "descriptionEn" | "painPointsAr" | "painPointsEn" | "solutionsAr" | "solutionsEn" | "mainImage" | "images" | "liveUrl" | "deletedAt" | "projectId" | "createdAt" | "updatedAt" | "category", ExtArgs["result"]["demo"]>
 export type DemoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   project?: boolean | Prisma.Demo$projectArgs<ExtArgs>
 }
@@ -830,6 +860,7 @@ export type $DemoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     projectId: string | null
     createdAt: Date
     updatedAt: Date
+    category: $Enums.ProjectCategory
   }, ExtArgs["result"]["demo"]>
   composites: {}
 }
@@ -1271,6 +1302,7 @@ export interface DemoFieldRefs {
   readonly projectId: Prisma.FieldRef<"Demo", 'String'>
   readonly createdAt: Prisma.FieldRef<"Demo", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Demo", 'DateTime'>
+  readonly category: Prisma.FieldRef<"Demo", 'ProjectCategory'>
 }
     
 

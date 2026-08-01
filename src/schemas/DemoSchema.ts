@@ -1,6 +1,8 @@
+import ProjectCategorySchema from "@/generated/zod/inputTypeSchemas/ProjectCategorySchema"
 import { z } from 'zod'
 
 export const DemoSchema = z.object({
+  category: ProjectCategorySchema,
   id: z.string().nullish(),
   slug: z.string(),
   titleAr: z.string(),

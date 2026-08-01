@@ -13,7 +13,7 @@ export const getAllDemosForPage = async (size: number, page: number) => {
     const totalPages = Math.ceil(totalClients / size)
     const data = await prisma.demo.findMany({
       select: {
-        id: true, titleEn: true, slug: true, mainImage: true,
+        id: true, titleEn: true, slug: true, mainImage: true, category: true,
         project: { select: { titleEn: true, id: true, createdAt: true } }
       },
       skip: (page * size) - size,
@@ -55,6 +55,19 @@ export const getAllDemosForSelect = async () => {
     })
   } catch (error) {
     console.error(error)
+  }
+}
+/* ---------------------- getAllDemosForDevelopmentPage --------------------- */
+export const getAllDemosForProjectsPage = async () => {
+  cacheLife("days")
+  cacheTag('projects')
 
+  try {
+    return await prisma.demo.findMany({
+      include: { project: true },
+      orderBy: { createdAt: "desc", }
+    })
+  } catch (error) {
+    console.error(error)
   }
 }

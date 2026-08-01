@@ -16,6 +16,7 @@ import { UploadManyImagesDropZone, UploadOneImagesDropZone } from "@/components/
 import { getAllProjectsForSelectType } from "@/types/project.type"
 import { slug } from "@/logic/slug"
 import { getOneDemoType } from "@/types/demo.type"
+import ProjectCategorySchema from "@/generated/zod/inputTypeSchemas/ProjectCategorySchema"
 
 type Props = {
 	projects: getAllProjectsForSelectType
@@ -134,6 +135,24 @@ export default function EditDemo({ projects, demo }: Props) {
 						</SelectContent>
 					</Select>
 					<FieldError>{fields.projectId.errors}</FieldError>
+				</Field>
+
+				{/* ------------------------------ category ------------------------------ */}
+				<Field>
+					<FieldLabel htmlFor={fields.category.id}>category</FieldLabel>
+					<Select key={fields.category.key} name={fields.category.name} defaultValue={demo?.category}>
+						<SelectTrigger>
+							<SelectValue />
+						</SelectTrigger>
+						<SelectContent>
+							{Object.values(ProjectCategorySchema.Enum).map((category) => (
+								<SelectItem value={category} key={category}>
+									{category}
+								</SelectItem>
+							))}
+						</SelectContent>
+					</Select>
+					<FieldError>{fields.category.errors}</FieldError>
 				</Field>
 
 				{/* --------------------------------- liveUrl -------------------------------- */}

@@ -218,24 +218,25 @@ enum ProjectStatus {
 // ------------------------------------------------------
 
 model Demo {
-  id            String    @id @default(cuid())
-  slug          String    @unique
-  titleAr       String    @map("title_ar")
-  titleEn       String    @map("title_en")
-  descriptionAr String?   @map("description_ar") @db.Text
-  descriptionEn String?   @map("description_en") @db.Text
-  painPointsAr  String?   @map("pain_points_ar") @db.Text
-  painPointsEn  String?   @map("pain_points_en") @db.Text
-  solutionsAr   String?   @map("solutions_ar") @db.Text
-  solutionsEn   String?   @map("solutions_en") @db.Text
-  mainImage     String    @map("main_image")
+  id            String          @id @default(cuid())
+  slug          String          @unique
+  titleAr       String          @map("title_ar")
+  titleEn       String          @map("title_en")
+  descriptionAr String?         @map("description_ar") @db.Text
+  descriptionEn String?         @map("description_en") @db.Text
+  painPointsAr  String?         @map("pain_points_ar") @db.Text
+  painPointsEn  String?         @map("pain_points_en") @db.Text
+  solutionsAr   String?         @map("solutions_ar") @db.Text
+  solutionsEn   String?         @map("solutions_en") @db.Text
+  mainImage     String          @map("main_image")
   images        String[]
-  liveUrl       String?   @map("live_url")
-  deletedAt     DateTime? @map("deleted_at") // لإخفاء عنصر المعرض صوريًا
-  projectId     String?   @unique @map("project_id")
-  project       Project?  @relation(fields: [projectId], references: [id], onDelete: SetNull)
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  liveUrl       String?         @map("live_url")
+  deletedAt     DateTime?       @map("deleted_at") // لإخفاء عنصر المعرض صوريًا
+  projectId     String?         @unique @map("project_id")
+  project       Project?        @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  category      ProjectCategory
 
   @@index([slug])
   @@index([createdAt])

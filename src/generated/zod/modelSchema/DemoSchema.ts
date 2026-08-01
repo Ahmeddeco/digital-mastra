@@ -1,10 +1,12 @@
 import { z } from 'zod';
+import { ProjectCategorySchema } from '../inputTypeSchemas/ProjectCategorySchema'
 
 /////////////////////////////////////////
 // DEMO SCHEMA
 /////////////////////////////////////////
 
 export const DemoSchema = z.object({
+  category: ProjectCategorySchema,
   id: z.string(),
   slug: z.string(),
   titleAr: z.string(),

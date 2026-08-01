@@ -154,7 +154,6 @@ async function main() {
 
   for (let i = 0; i < createdClients.length; i++) {
     const client = createdClients[i]
-    const category = i % 2 === 0 ? ProjectCategory.development : ProjectCategory.design
 
     const project = await prisma.project.create({
       data: {
@@ -164,7 +163,7 @@ async function main() {
         descriptionEn: fakerEN.lorem.paragraph(),
         clientId: client.id,
         status: statuses[i % statuses.length],
-        category: category,
+        category: fakerEN.helpers.arrayElement(Object.values(ProjectCategory) as ProjectCategory[]),
         startDate: fakerEN.date.past(),
         endDate: fakerEN.date.future(),
         services: {
@@ -197,6 +196,8 @@ async function main() {
           ],
           liveUrl: fakerEN.internet.url(),
           projectId: project.id,
+          category: fakerEN.helpers.arrayElement(Object.values(ProjectCategory) as ProjectCategory[]),
+
         },
       })
     }
