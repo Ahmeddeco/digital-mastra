@@ -5,7 +5,7 @@ import { cacheLife, cacheTag } from "next/cache"
 
 /* ----------------------------- getAllUsers ---------------------------- */
 export const getAllUsers = async (size: number, page: number) => {
-  cacheLife("hours")
+  cacheLife("seconds")
   cacheTag('users')
 
   try {
@@ -26,7 +26,7 @@ export const getAllUsers = async (size: number, page: number) => {
 
 /* ---------------------------- getOneUser ------------------------------ */
 export const getOneUser = async (id: string) => {
-  cacheLife("hours")
+  cacheLife("seconds")
   cacheTag('users')
 
   try {
@@ -43,7 +43,7 @@ export const getOneUser = async (id: string) => {
 
 /* ----------------------- getAllUsersForSelect ---------------------- */
 export const getAllUsersForSelect = async () => {
-  cacheLife("hours")
+  cacheLife("seconds")
   cacheTag('users')
 
   try {
@@ -58,7 +58,7 @@ export const getAllUsersForSelect = async () => {
 
 /* ---------------------- getAllNotMemberUsersForSelect --------------------- */
 export const getAllNotMemberUsersForSelect = async () => {
-  cacheLife("hours")
+  cacheLife("seconds")
   cacheTag('users')
 
   try {

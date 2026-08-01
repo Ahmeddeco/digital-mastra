@@ -21,9 +21,9 @@ export default function Logo({ reverse = false }: Props) {
 					className={`object-contain ${locale === "en" ? "object-right" : "object-left"}`}
 				/>
 			</div>
-			<h2 className={`${reverse && "text-background"}  capitalize leading-none md:block hidden `}>
+			<h3 className={`${reverse && "text-background"}  capitalize leading-none md:block hidden `}>
 				{locale === "en" ? "digital" : "ديجيتال"}
-			</h2>
+			</h3>
 		</Link>
 	)
 }
