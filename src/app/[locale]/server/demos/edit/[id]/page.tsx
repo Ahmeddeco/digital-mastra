@@ -1,28 +1,26 @@
 import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import ServerPageCard from "@/components/backend/ServerPageCard"
-import { getAllClientsForSelect } from "@/dl/clients.data"
-import { getOneProject } from "@/dl/project.data"
-import { getAllServicesForSelect } from "@/dl/service.data"
-import EditProject from "@/forms/EditProject"
+import { getOneDemo } from "@/dl/demo.data"
+import { getAllProjectsForSelect } from "@/dl/project.data"
+import EditDemo from "@/forms/EditDemo"
 import { Role } from "@/generated/prisma/enums"
-import { getAllClientsForSelectType } from "@/types/client.type"
-import { getOneProjectType } from "@/types/project.type"
-import { getAllServicesForSelectType } from "@/types/service.type"
+import { getOneDemoType } from "@/types/demo.type"
+import { getAllProjectsForSelectType } from "@/types/project.type"
 
 export default async function EditDemoPage({ params }: { params: Promise<{ id: string }> }) {
 	await isAllowedRoles([Role.admin])
 	const id = (await params).id
-	const clients: getAllClientsForSelectType = await getAllClientsForSelect()
-	const services: getAllServicesForSelectType = await getAllServicesForSelect()
-	const project: getOneProjectType = await getOneProject(id)
+	const demo: getOneDemoType = await getOneDemo(id)
+	const projects: getAllProjectsForSelectType = await getAllProjectsForSelect()
+
 	return (
 		<ServerPageCard
-			title={"Edit Project"}
-			description={"Edit a Project in the database."}
-			href="/server/projects"
+			title={"edit demo"}
+			description={"edit a demo to the database."}
+			href="/server/demos"
 			btnTitle={"back"}
 		>
-			<EditProject clients={clients} services={services} project={project} />
+			<EditDemo projects={projects} demo={demo} />
 		</ServerPageCard>
 	)
 }

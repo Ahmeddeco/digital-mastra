@@ -10,18 +10,20 @@ import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@
 import { Textarea } from "@/components/ui/textarea"
 import Form from "next/form"
 import DemoSchema from "@/schemas/DemoSchema"
-import { addDemoAction } from "@/actions/demo.action"
+import { editDemoAction } from "@/actions/demo.action"
 import TiptapEditor from "@/components/shared/TiptapEditor"
 import { UploadManyImagesDropZone, UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 import { getAllProjectsForSelectType } from "@/types/project.type"
 import { slug } from "@/logic/slug"
+import { getOneDemoType } from "@/types/demo.type"
 
 type Props = {
 	projects: getAllProjectsForSelectType
+	demo: getOneDemoType
 }
 
-export default function EditDemo({ projects }: Props) {
-	const [lastResult, action] = useActionState(addDemoAction, undefined)
+export default function EditDemo({ projects, demo }: Props) {
+	const [lastResult, action] = useActionState(editDemoAction, undefined)
 	const [form, fields] = useForm({
 		lastResult,
 		onValidate({ formData }) {
@@ -30,10 +32,11 @@ export default function EditDemo({ projects }: Props) {
 		shouldValidate: "onBlur",
 		shouldRevalidate: "onInput",
 	})
-	const [slugInput, setSlugInput] = useState("")
+	const [slugInput, setSlugInput] = useState(demo?.slug ?? "")
 
 	return (
 		<Form {...getFormProps(form)} action={action} className="space-y-6">
+			<Input type="hidden" name="id" value={demo?.id} />
 			{/* --------------------------------- slug -------------------------------- */}
 			<Input type="hidden" key={fields.slug.key} name={fields.slug.name} value={slug(slugInput)} readOnly />
 
@@ -41,12 +44,7 @@ export default function EditDemo({ projects }: Props) {
 				{/* --------------------------------- titleAr --------------------------------- */}
 				<Field>
 					<FieldLabel htmlFor={fields.titleAr.id}>{fields.titleAr.name}</FieldLabel>
-					<Input
-						type="text"
-						key={fields.titleAr.key}
-						name={fields.titleAr.name}
-						defaultValue={fields.titleAr.initialValue}
-					/>
+					<Input type="text" key={fields.titleAr.key} name={fields.titleAr.name} defaultValue={demo?.titleAr} />
 					<FieldError>{fields.titleAr.errors}</FieldError>
 				</Field>
 
@@ -57,7 +55,7 @@ export default function EditDemo({ projects }: Props) {
 						type="text"
 						key={fields.titleEn.key}
 						name={fields.titleEn.name}
-						defaultValue={fields.titleEn.initialValue}
+						defaultValue={demo?.titleEn}
 						onChange={(e) => setSlugInput(e.target.value)}
 					/>
 					<FieldError>{fields.titleEn.errors}</FieldError>
@@ -68,7 +66,7 @@ export default function EditDemo({ projects }: Props) {
 					<FieldLabel htmlFor={fields.descriptionAr.id}>{fields.descriptionAr.name}</FieldLabel>
 					<Textarea
 						name={fields.descriptionAr.name}
-						defaultValue={fields.descriptionAr.initialValue}
+						defaultValue={demo?.descriptionAr ?? ""}
 						key={fields.descriptionAr.key}
 					/>
 					<FieldError>{fields.descriptionAr.errors}</FieldError>
@@ -79,7 +77,7 @@ export default function EditDemo({ projects }: Props) {
 					<FieldLabel htmlFor={fields.descriptionEn.id}>{fields.descriptionEn.name}</FieldLabel>
 					<Textarea
 						name={fields.descriptionEn.name}
-						defaultValue={fields.descriptionEn.initialValue}
+						defaultValue={demo?.descriptionEn ?? ""}
 						key={fields.descriptionEn.key}
 					/>
 					<FieldError>{fields.descriptionEn.errors}</FieldError>
@@ -88,7 +86,7 @@ export default function EditDemo({ projects }: Props) {
 				<TiptapEditor
 					name={fields.painPointsAr.name}
 					editorKey={fields.painPointsAr.key ?? ""}
-					defaultValue={fields.painPointsAr.initialValue ?? ""}
+					defaultValue={demo?.painPointsAr ?? ""}
 					label={"pain Points Ar"}
 					errors={fields.painPointsAr.errors ?? []}
 				/>
@@ -97,7 +95,7 @@ export default function EditDemo({ projects }: Props) {
 				<TiptapEditor
 					name={fields.painPointsEn.name}
 					editorKey={fields.painPointsEn.key ?? ""}
-					defaultValue={fields.painPointsEn.initialValue ?? ""}
+					defaultValue={demo?.painPointsEn ?? ""}
 					label={"pain Points Ar"}
 					errors={fields.painPointsEn.errors ?? []}
 				/>
@@ -106,7 +104,7 @@ export default function EditDemo({ projects }: Props) {
 				<TiptapEditor
 					name={fields.solutionsAr.name}
 					editorKey={fields.solutionsAr.key ?? ""}
-					defaultValue={fields.solutionsAr.initialValue ?? ""}
+					defaultValue={demo?.solutionsAr ?? ""}
 					label={"solutions En"}
 					errors={fields.solutionsAr.errors ?? []}
 				/>
@@ -115,7 +113,7 @@ export default function EditDemo({ projects }: Props) {
 				<TiptapEditor
 					name={fields.solutionsEn.name}
 					editorKey={fields.solutionsEn.key ?? ""}
-					defaultValue={fields.solutionsEn.initialValue ?? ""}
+					defaultValue={demo?.solutionsEn ?? ""}
 					label={"solutions En"}
 					errors={fields.solutionsEn.errors ?? []}
 				/>
@@ -123,7 +121,7 @@ export default function EditDemo({ projects }: Props) {
 				{/* -------------------------------- projectId -------------------------------- */}
 				<Field>
 					<FieldLabel htmlFor={fields.projectId.id}>project</FieldLabel>
-					<Select key={fields.projectId.key} name={fields.projectId.name} defaultValue={fields.projectId.initialValue}>
+					<Select key={fields.projectId.key} name={fields.projectId.name} defaultValue={demo?.projectId ?? ""}>
 						<SelectTrigger>
 							<SelectValue />
 						</SelectTrigger>
@@ -141,12 +139,7 @@ export default function EditDemo({ projects }: Props) {
 				{/* --------------------------------- liveUrl -------------------------------- */}
 				<Field>
 					<FieldLabel htmlFor={fields.liveUrl.id}>{fields.liveUrl.name}</FieldLabel>
-					<Input
-						type="url"
-						key={fields.liveUrl.key}
-						name={fields.liveUrl.name}
-						defaultValue={fields.liveUrl.initialValue}
-					/>
+					<Input type="url" key={fields.liveUrl.key} name={fields.liveUrl.name} defaultValue={demo?.liveUrl ?? ""} />
 					<FieldError>{fields.liveUrl.errors}</FieldError>
 				</Field>
 			</div>
@@ -156,6 +149,7 @@ export default function EditDemo({ projects }: Props) {
 				imageName={fields.mainImage.name}
 				errors={fields.mainImage.errors}
 				label={fields.mainImage.name}
+				dbImage={demo?.mainImage}
 			/>
 
 			{/* --------------------------------- images --------------------------------- */}
@@ -163,10 +157,11 @@ export default function EditDemo({ projects }: Props) {
 				imageName={fields.images.name}
 				errors={fields.images.errors}
 				label={fields.images.name}
+				dbImages={demo?.images}
 			/>
 
 			{/* ----------------------------- SubmitButton ---------------------------- */}
-			<SubmitButton text={"add demo"} />
+			<SubmitButton text={"edit demo"} />
 		</Form>
 	)
 }

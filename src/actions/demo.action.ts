@@ -41,11 +41,11 @@ export const editDemoAction = async (prevState: unknown, formData: FormData) => 
   if (submission.status !== 'success') {
     return submission.reply()
   }
-  const { images, mainImage, titleAr, slug, titleEn, deletedAt, descriptionAr, descriptionEn, liveUrl, painPointsAr, painPointsEn, projectId, solutionsAr, solutionsEn } = submission.value
+  const { id, images, mainImage, titleAr, slug, titleEn, deletedAt, descriptionAr, descriptionEn, liveUrl, painPointsAr, painPointsEn, projectId, solutionsAr, solutionsEn } = submission.value
 
   try {
     await prisma.demo.update({
-      where: { slug },
+      where: { id: id as string },
       data: { images, slug, mainImage, titleAr, titleEn, deletedAt, descriptionAr, descriptionEn, liveUrl, painPointsAr, painPointsEn, projectId, solutionsAr, solutionsEn },
     })
   } catch (error) {
