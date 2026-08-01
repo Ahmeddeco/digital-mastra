@@ -243,6 +243,9 @@ export const ArticleScalarFieldEnum = {
   articleBodyAr: 'articleBodyAr',
   articleBodyEn: 'articleBodyEn',
   resources: 'resources',
+  mainImage: 'mainImage',
+  images: 'images',
+  category: 'category',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

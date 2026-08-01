@@ -32,6 +32,8 @@ export type ArticleMinAggregateOutputType = {
   descriptionEn: string | null
   articleBodyAr: string | null
   articleBodyEn: string | null
+  mainImage: string | null
+  category: $Enums.ProjectCategory | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -44,6 +46,8 @@ export type ArticleMaxAggregateOutputType = {
   descriptionEn: string | null
   articleBodyAr: string | null
   articleBodyEn: string | null
+  mainImage: string | null
+  category: $Enums.ProjectCategory | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -57,6 +61,9 @@ export type ArticleCountAggregateOutputType = {
   articleBodyAr: number
   articleBodyEn: number
   resources: number
+  mainImage: number
+  images: number
+  category: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -71,6 +78,8 @@ export type ArticleMinAggregateInputType = {
   descriptionEn?: true
   articleBodyAr?: true
   articleBodyEn?: true
+  mainImage?: true
+  category?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -83,6 +92,8 @@ export type ArticleMaxAggregateInputType = {
   descriptionEn?: true
   articleBodyAr?: true
   articleBodyEn?: true
+  mainImage?: true
+  category?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -96,6 +107,9 @@ export type ArticleCountAggregateInputType = {
   articleBodyAr?: true
   articleBodyEn?: true
   resources?: true
+  mainImage?: true
+  images?: true
+  category?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -182,6 +196,9 @@ export type ArticleGroupByOutputType = {
   articleBodyAr: string
   articleBodyEn: string
   resources: string[]
+  mainImage: string
+  images: string[]
+  category: $Enums.ProjectCategory
   createdAt: Date
   updatedAt: Date
   _count: ArticleCountAggregateOutputType | null
@@ -216,6 +233,9 @@ export type ArticleWhereInput = {
   articleBodyAr?: Prisma.StringFilter<"Article"> | string
   articleBodyEn?: Prisma.StringFilter<"Article"> | string
   resources?: Prisma.StringNullableListFilter<"Article">
+  mainImage?: Prisma.StringFilter<"Article"> | string
+  images?: Prisma.StringNullableListFilter<"Article">
+  category?: Prisma.EnumProjectCategoryFilter<"Article"> | $Enums.ProjectCategory
   createdAt?: Prisma.DateTimeFilter<"Article"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Article"> | Date | string
 }
@@ -229,6 +249,9 @@ export type ArticleOrderByWithRelationInput = {
   articleBodyAr?: Prisma.SortOrder
   articleBodyEn?: Prisma.SortOrder
   resources?: Prisma.SortOrder
+  mainImage?: Prisma.SortOrder
+  images?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -245,6 +268,9 @@ export type ArticleWhereUniqueInput = Prisma.AtLeast<{
   articleBodyAr?: Prisma.StringFilter<"Article"> | string
   articleBodyEn?: Prisma.StringFilter<"Article"> | string
   resources?: Prisma.StringNullableListFilter<"Article">
+  mainImage?: Prisma.StringFilter<"Article"> | string
+  images?: Prisma.StringNullableListFilter<"Article">
+  category?: Prisma.EnumProjectCategoryFilter<"Article"> | $Enums.ProjectCategory
   createdAt?: Prisma.DateTimeFilter<"Article"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Article"> | Date | string
 }, "id">
@@ -258,6 +284,9 @@ export type ArticleOrderByWithAggregationInput = {
   articleBodyAr?: Prisma.SortOrder
   articleBodyEn?: Prisma.SortOrder
   resources?: Prisma.SortOrder
+  mainImage?: Prisma.SortOrder
+  images?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ArticleCountOrderByAggregateInput
@@ -277,6 +306,9 @@ export type ArticleScalarWhereWithAggregatesInput = {
   articleBodyAr?: Prisma.StringWithAggregatesFilter<"Article"> | string
   articleBodyEn?: Prisma.StringWithAggregatesFilter<"Article"> | string
   resources?: Prisma.StringNullableListFilter<"Article">
+  mainImage?: Prisma.StringWithAggregatesFilter<"Article"> | string
+  images?: Prisma.StringNullableListFilter<"Article">
+  category?: Prisma.EnumProjectCategoryWithAggregatesFilter<"Article"> | $Enums.ProjectCategory
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Article"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Article"> | Date | string
 }
@@ -290,6 +322,9 @@ export type ArticleCreateInput = {
   articleBodyAr: string
   articleBodyEn: string
   resources?: Prisma.ArticleCreateresourcesInput | string[]
+  mainImage: string
+  images?: Prisma.ArticleCreateimagesInput | string[]
+  category: $Enums.ProjectCategory
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -303,6 +338,9 @@ export type ArticleUncheckedCreateInput = {
   articleBodyAr: string
   articleBodyEn: string
   resources?: Prisma.ArticleCreateresourcesInput | string[]
+  mainImage: string
+  images?: Prisma.ArticleCreateimagesInput | string[]
+  category: $Enums.ProjectCategory
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -316,6 +354,9 @@ export type ArticleUpdateInput = {
   articleBodyAr?: Prisma.StringFieldUpdateOperationsInput | string
   articleBodyEn?: Prisma.StringFieldUpdateOperationsInput | string
   resources?: Prisma.ArticleUpdateresourcesInput | string[]
+  mainImage?: Prisma.StringFieldUpdateOperationsInput | string
+  images?: Prisma.ArticleUpdateimagesInput | string[]
+  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -329,6 +370,9 @@ export type ArticleUncheckedUpdateInput = {
   articleBodyAr?: Prisma.StringFieldUpdateOperationsInput | string
   articleBodyEn?: Prisma.StringFieldUpdateOperationsInput | string
   resources?: Prisma.ArticleUpdateresourcesInput | string[]
+  mainImage?: Prisma.StringFieldUpdateOperationsInput | string
+  images?: Prisma.ArticleUpdateimagesInput | string[]
+  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -342,6 +386,9 @@ export type ArticleCreateManyInput = {
   articleBodyAr: string
   articleBodyEn: string
   resources?: Prisma.ArticleCreateresourcesInput | string[]
+  mainImage: string
+  images?: Prisma.ArticleCreateimagesInput | string[]
+  category: $Enums.ProjectCategory
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -355,6 +402,9 @@ export type ArticleUpdateManyMutationInput = {
   articleBodyAr?: Prisma.StringFieldUpdateOperationsInput | string
   articleBodyEn?: Prisma.StringFieldUpdateOperationsInput | string
   resources?: Prisma.ArticleUpdateresourcesInput | string[]
+  mainImage?: Prisma.StringFieldUpdateOperationsInput | string
+  images?: Prisma.ArticleUpdateimagesInput | string[]
+  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -368,6 +418,9 @@ export type ArticleUncheckedUpdateManyInput = {
   articleBodyAr?: Prisma.StringFieldUpdateOperationsInput | string
   articleBodyEn?: Prisma.StringFieldUpdateOperationsInput | string
   resources?: Prisma.ArticleUpdateresourcesInput | string[]
+  mainImage?: Prisma.StringFieldUpdateOperationsInput | string
+  images?: Prisma.ArticleUpdateimagesInput | string[]
+  category?: Prisma.EnumProjectCategoryFieldUpdateOperationsInput | $Enums.ProjectCategory
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -381,6 +434,9 @@ export type ArticleCountOrderByAggregateInput = {
   articleBodyAr?: Prisma.SortOrder
   articleBodyEn?: Prisma.SortOrder
   resources?: Prisma.SortOrder
+  mainImage?: Prisma.SortOrder
+  images?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -393,6 +449,8 @@ export type ArticleMaxOrderByAggregateInput = {
   descriptionEn?: Prisma.SortOrder
   articleBodyAr?: Prisma.SortOrder
   articleBodyEn?: Prisma.SortOrder
+  mainImage?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -405,6 +463,8 @@ export type ArticleMinOrderByAggregateInput = {
   descriptionEn?: Prisma.SortOrder
   articleBodyAr?: Prisma.SortOrder
   articleBodyEn?: Prisma.SortOrder
+  mainImage?: Prisma.SortOrder
+  category?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -413,7 +473,16 @@ export type ArticleCreateresourcesInput = {
   set: string[]
 }
 
+export type ArticleCreateimagesInput = {
+  set: string[]
+}
+
 export type ArticleUpdateresourcesInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type ArticleUpdateimagesInput = {
   set?: string[]
   push?: string | string[]
 }
@@ -429,6 +498,9 @@ export type ArticleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   articleBodyAr?: boolean
   articleBodyEn?: boolean
   resources?: boolean
+  mainImage?: boolean
+  images?: boolean
+  category?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["article"]>
@@ -442,6 +514,9 @@ export type ArticleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   articleBodyAr?: boolean
   articleBodyEn?: boolean
   resources?: boolean
+  mainImage?: boolean
+  images?: boolean
+  category?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["article"]>
@@ -455,6 +530,9 @@ export type ArticleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   articleBodyAr?: boolean
   articleBodyEn?: boolean
   resources?: boolean
+  mainImage?: boolean
+  images?: boolean
+  category?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["article"]>
@@ -468,11 +546,14 @@ export type ArticleSelectScalar = {
   articleBodyAr?: boolean
   articleBodyEn?: boolean
   resources?: boolean
+  mainImage?: boolean
+  images?: boolean
+  category?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ArticleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titleAr" | "titleEn" | "descriptionAr" | "descriptionEn" | "articleBodyAr" | "articleBodyEn" | "resources" | "createdAt" | "updatedAt", ExtArgs["result"]["article"]>
+export type ArticleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titleAr" | "titleEn" | "descriptionAr" | "descriptionEn" | "articleBodyAr" | "articleBodyEn" | "resources" | "mainImage" | "images" | "category" | "createdAt" | "updatedAt", ExtArgs["result"]["article"]>
 
 export type $ArticlePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Article"
@@ -486,6 +567,9 @@ export type $ArticlePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     articleBodyAr: string
     articleBodyEn: string
     resources: string[]
+    mainImage: string
+    images: string[]
+    category: $Enums.ProjectCategory
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["article"]>
@@ -919,6 +1003,9 @@ export interface ArticleFieldRefs {
   readonly articleBodyAr: Prisma.FieldRef<"Article", 'String'>
   readonly articleBodyEn: Prisma.FieldRef<"Article", 'String'>
   readonly resources: Prisma.FieldRef<"Article", 'String[]'>
+  readonly mainImage: Prisma.FieldRef<"Article", 'String'>
+  readonly images: Prisma.FieldRef<"Article", 'String[]'>
+  readonly category: Prisma.FieldRef<"Article", 'ProjectCategory'>
   readonly createdAt: Prisma.FieldRef<"Article", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Article", 'DateTime'>
 }

@@ -217,6 +217,12 @@ async function main() {
         articleBodyAr: fakerAR.lorem.paragraphs(3, "\n\n"),
         articleBodyEn: fakerEN.lorem.paragraphs(3, "\n\n"),
         resources: [fakerEN.internet.url(), fakerEN.internet.url()],
+        category: fakerEN.helpers.arrayElement(Object.values(ProjectCategory) as ProjectCategory[]),
+        mainImage: fakerEN.image.url(),
+        images: [
+          fakerEN.image.url(),
+          fakerEN.image.url(),
+        ],
       },
     })
   }
