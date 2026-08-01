@@ -30,6 +30,7 @@ export default function EditService({ service }: Props) {
 	})
 	return (
 		<Form id={form.id} action={action} onSubmit={form.onSubmit} className="space-y-6">
+			<Input type="hidden" name="id" value={service?.id} />
 			{/* ---------------------------------- nameAr --------------------------------- */}
 			<div className="flex lg:flex-row flex-col gap-6">
 				{/* --------------------------------- nameAr --------------------------------- */}
@@ -88,7 +89,7 @@ export default function EditService({ service }: Props) {
 			</Field>
 
 			{/* ----------------------------- SubmitButton ---------------------------- */}
-			<SubmitButton text={"add service"} />
+			<SubmitButton text={"edit service"} />
 		</Form>
 	)
 }
