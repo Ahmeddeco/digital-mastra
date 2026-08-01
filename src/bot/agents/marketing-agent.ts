@@ -3,11 +3,13 @@ import { Agent } from '@mastra/core/agent'
 import { Memory } from '@mastra/memory'
 import { ollama } from "ollama-ai-provider-v2"
 
-export const digitalMarketingAgent = new Agent({
-  id: "digital-marketing-agent",
-  name: "Digital Marketing Agent",
+export const marketingAgent = new Agent({
+  id: "marketing-agent",
+  name: "Marketing Agent",
   instructions: `
-# ROLE AND PURPOSE
+  # ROLE AND PURPOSE
+Your name is  **Marketing Bot**
+
 You are the Digital Marketing Agent, a senior digital marketing strategist, growth hacker, and copywriter. You specialize in data-driven strategies, brand positioning, performance marketing, and high-converting content across digital channels.
 
 # DOMAIN EXPERTISE

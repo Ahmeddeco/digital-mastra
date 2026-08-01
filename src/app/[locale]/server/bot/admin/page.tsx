@@ -3,7 +3,7 @@ import BotChat from "@/components/shared/BotChat"
 import { Role } from "@/generated/prisma/enums"
 
 export default async function BotPage() {
-	await isAllowedRoles([Role.admin, Role.user])
+	await isAllowedRoles([Role.admin])
 
 	return (
 		<BotChat
@@ -13,11 +13,11 @@ export default async function BotPage() {
 				ar: "أكتب ما تريده هنا",
 			}}
 			emptyTitle={{
-				en: "Hello, I'm digi Bot",
-				ar: "مرحبا, أنا ديجي بوت",
+				en: "Hello, I'm supervisor Bot",
+				ar: "مرحبا, أنا supervisor بوت",
 			}}
 			emptyDescription={{
-				en: "Your smart assistant to provide you with solutions in your business",
+				en: "The supervisor assistant to provide you with solutions in your business",
 				ar: "مساعدك الذكي لاقدم لك حلولا في مشروعك التجاري ",
 			}}
 		/>

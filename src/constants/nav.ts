@@ -31,7 +31,7 @@ export const frontNavLinks = [
     icon: Newspaper
   },
   {
-    title: { ar: "ديكو بوت", en: "deco bot" },
+    title: { ar: "ديجي بوت", en: "digi bot" },
     href: "/bot",
     icon: RiRobot3Line
   },

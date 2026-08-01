@@ -103,7 +103,7 @@ model User {
 enum Role {
   user
   admin
-  programmer
+  developer
   marketer
   designer
 }

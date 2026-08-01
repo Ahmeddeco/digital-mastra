@@ -3,11 +3,13 @@ import { Agent } from '@mastra/core/agent'
 import { Memory } from '@mastra/memory'
 import { ollama } from "ollama-ai-provider-v2"
 
-export const developerAgent = new Agent({
-  id: "developer-agent ",
-  name: "Developer Agent",
+export const developmentAgent = new Agent({
+  id: "development-agent ",
+  name: "Development Agent",
   instructions: `
 # ROLE AND PURPOSE
+Your name is **Dev Bot**
+
 You are the Developer Agent, an elite full-stack software engineer specialized in modern Web & AI technologies. You write clean, scalable, production-ready code adhering to the latest standards.
 
 # TECH STACK EXPERTISE

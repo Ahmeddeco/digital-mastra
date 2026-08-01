@@ -1,6 +1,6 @@
 import { ChartNoAxesCombined, IdCard, Newspaper, Server, User } from "lucide-react"
-import { FaCode, FaDisplay, } from "react-icons/fa6"
-import { RiCustomerService2Fill } from "react-icons/ri"
+import { FaCode, FaDev, FaDisplay, FaOpencart, } from "react-icons/fa6"
+import { RiAdminFill, RiCustomerService2Fill } from "react-icons/ri"
 import { GrUserSettings } from "react-icons/gr"
 
 export const serverNav = [
@@ -43,6 +43,21 @@ export const serverNav = [
     title: { ar: "مقالاتنا", en: "articles" },
     href: "/server/articles",
     icon: Newspaper
+  },
+  {
+    title: { ar: "supervisor Bot", en: "supervisor Bot" },
+    href: "/server/bot/admin",
+    icon: RiAdminFill
+  },
+  {
+    title: { ar: "Dev Bot", en: "Dev Bot" },
+    href: "/server/bot/development",
+    icon: FaDev
+  },
+  {
+    title: { ar: "Marketing Bot", en: "Marketing Bot" },
+    href: "/server/bot/marketing",
+    icon: FaOpencart
   },
   {
     title: { ar: "الإحصائيات", en: "charts" },

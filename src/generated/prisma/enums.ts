@@ -12,7 +12,7 @@
 export const Role = {
   user: 'user',
   admin: 'admin',
-  programmer: 'programmer',
+  developer: 'developer',
   marketer: 'marketer',
   designer: 'designer'
 } as const

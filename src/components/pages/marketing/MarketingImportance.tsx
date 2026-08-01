@@ -1,4 +1,3 @@
-import Dots from "@/components/shared/Dots"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import Image from "next/image"
 import { getDictionary } from "@/locales/dictionaries"

@@ -3,8 +3,8 @@ import BotChat from "@/components/shared/BotChat"
 import { Role } from "@/generated/prisma/enums"
 
 export default async function BotPage() {
-	await isAllowedRoles([Role.admin, Role.user])
-
+		await isAllowedRoles([Role.admin])
+	
 	return (
 		<BotChat
 			apiRoute={"/api/chat/user"}

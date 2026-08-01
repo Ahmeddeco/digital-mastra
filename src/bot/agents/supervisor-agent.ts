@@ -1,6 +1,6 @@
+import { developmentAgent } from "@/bot/agents/development-agent"
+import { marketingAgent } from "@/bot/agents/marketing-agent"
 import { storage } from "@/bot/storage"
-import { developerAgent } from "@/bot/agents/developer-agent"
-import { digitalMarketingAgent } from "@/bot/agents/digital-marketing-agent"
 import { Agent } from '@mastra/core/agent'
 import { Memory } from '@mastra/memory'
 import { ollama } from "ollama-ai-provider-v2"
@@ -10,6 +10,8 @@ export const supervisorAgent = new Agent({
   name: "Supervisor Agent",
   instructions: `
 # ROLE AND PURPOSE
+Your name is **Supervisor Agent**
+
 You are the Supervisor Agent, the central coordinator and orchestrator of an autonomous multi-agent system. Your job is to analyze user requests, break them down into distinct sub-tasks, delegate them to specialized sub-agents (developer-agent or digital-marketing-agent), evaluate their outputs, and synthesize a cohesive final response.
 
 # DELEGATION RULES
@@ -38,5 +40,5 @@ You are the Supervisor Agent, the central coordinator and orchestrator of an aut
     "../../.agents/skills/marketing-psychology",
     "../../.agents/copywriting",
   ],
-  agents: { digitalMarketingAgent, developerAgent }
+  agents: { developmentAgent, marketingAgent }
 })
