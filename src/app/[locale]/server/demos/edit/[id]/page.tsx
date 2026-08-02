@@ -6,8 +6,10 @@ import EditDemo from "@/forms/EditDemo"
 import { Role } from "@/generated/prisma/enums"
 import { getOneDemoType } from "@/types/demo.type"
 import { getAllProjectsForSelectType } from "@/types/project.type"
+import { connection } from "next/server"
 
 export default async function EditDemoPage({ params }: { params: Promise<{ id: string }> }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
 	const id = (await params).id
 	const demo: getOneDemoType = await getOneDemo(id)

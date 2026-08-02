@@ -5,8 +5,10 @@ import EditUser from "@/forms/EditUser"
 import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 import { getOneUser } from "@/dl/users.data"
+import { connection } from "next/server"
 
 export default async function EditUserPage({ params }: { params: Promise<{ id: string }> }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
 	const id = (await params).id
 	const user = await getOneUser(id)

@@ -31,14 +31,15 @@ import { getAllClientsForPage } from "@/dl/clients.data"
 import { getAllClientsForPageType } from "@/types/client.type"
 import { Badge } from "@/components/ui/badge"
 import { deleteClientAction } from "@/actions/client.action"
+import { connection } from "next/server"
 
 export default async function ClientsServerPage({
 	searchParams,
 }: {
 	searchParams: Promise<{ page: string; size: string }>
 }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
-
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1
 	const pageSize = +size || 10

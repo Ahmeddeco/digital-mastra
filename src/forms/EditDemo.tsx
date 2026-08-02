@@ -11,12 +11,21 @@ import { Textarea } from "@/components/ui/textarea"
 import Form from "next/form"
 import DemoSchema from "@/schemas/DemoSchema"
 import { editDemoAction } from "@/actions/demo.action"
-import TiptapEditor from "@/components/shared/TiptapEditor"
-import { UploadManyImagesDropZone, UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 import { getAllProjectsForSelectType } from "@/types/project.type"
 import { slug } from "@/logic/slug"
 import { getOneDemoType } from "@/types/demo.type"
 import ProjectCategorySchema from "@/generated/zod/inputTypeSchemas/ProjectCategorySchema"
+import dynamic from "next/dynamic"
+
+const TiptapEditor = dynamic(() => import("@/components/shared/TiptapEditor"), { ssr: false })
+const UploadManyImagesDropZone = dynamic(
+	() => import("@/components/shared/UploadImagesDropZone").then((mod) => mod.UploadManyImagesDropZone),
+	{ ssr: false },
+)
+const UploadOneImagesDropZone = dynamic(
+	() => import("@/components/shared/UploadImagesDropZone").then((mod) => mod.UploadOneImagesDropZone),
+	{ ssr: false },
+)
 
 type Props = {
 	projects: getAllProjectsForSelectType

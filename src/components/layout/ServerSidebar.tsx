@@ -11,6 +11,7 @@ import UserButton from "@/auth/UserButton"
 import ServerNavigation from "@/components/layout/ServerNavigation"
 import { ThemeButton } from "@/components/theme/ThemeButton"
 import LanguageButton from "@/locales/LanguageButton"
+import { Suspense } from "react"
 
 type Props = {
 	locale: "ar" | "en"
@@ -32,7 +33,9 @@ export function ServerSidebar({ locale }: Props) {
 			<SidebarFooter className="flex flex-row items-center justify-between">
 				<ThemeButton />
 				<LanguageButton />
-				<UserButton />
+				<Suspense fallback={<div className="size-8 rounded-full bg-muted animate-pulse" />}>
+					<UserButton />
+				</Suspense>
 			</SidebarFooter>
 		</Sidebar>
 	)

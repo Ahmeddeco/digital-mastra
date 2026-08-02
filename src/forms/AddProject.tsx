@@ -40,13 +40,13 @@ export default function AddProject({ clients, services }: Props) {
 	const formattedServices = services?.map((service) => ({ id: service.id, title: service.nameEn }))
 
 	// إدارة حالة الـ Metadata محلياً لضمان سرعة الاستجابة وعدم الاعتماد على الـ Form Intent
-	const [metadataFields, setMetadataFields] = useState<{ id: number; key: string; value: string }[]>([])
+	const [metadataFields, setMetadataFields] = useState<{ id: string; key: string; value: string }[]>([])
 
 	const addMetadataRow = () => {
-		setMetadataFields((prev) => [...prev, { id: Date.now(), key: "", value: "" }])
+		setMetadataFields((prev) => [...prev, { id: crypto.randomUUID(), key: "", value: "" }])
 	}
 
-	const removeMetadataRow = (id: number) => {
+	const removeMetadataRow = (id: string) => {
 		setMetadataFields((prev) => prev.filter((item) => item.id !== id))
 	}
 

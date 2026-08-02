@@ -11,6 +11,7 @@ import { getAllArticlesForPageType } from "@/types/article.type"
 import { getAllArticlesForPage } from "@/dl/article.data"
 import { deleteArticleAction } from "@/actions/article.action"
 import Image from "next/image"
+import { connection } from "next/server"
 
 export default async function ServicesServerPage({
 	searchParams,
@@ -19,6 +20,7 @@ export default async function ServicesServerPage({
 	searchParams: Promise<{ page: string; size: string }>
 	params: Promise<{ locale: "en" | "ar" }>
 }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
 	const locale = (await params).locale
 	const { page, size } = await searchParams

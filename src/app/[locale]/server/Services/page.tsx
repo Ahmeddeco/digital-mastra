@@ -10,6 +10,7 @@ import { getAllServicesForPageType } from "@/types/service.type"
 import { getAllServicesForPage } from "@/dl/service.data"
 import { deleteServiceAction } from "@/actions/service.action"
 import { Badge } from "@/components/ui/badge"
+import { connection } from "next/server"
 
 export default async function ServicesServerPage({
 	searchParams,
@@ -18,6 +19,7 @@ export default async function ServicesServerPage({
 	searchParams: Promise<{ page: string; size: string }>
 	params: Promise<{ locale: "en" | "ar" }>
 }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
 	const locale = (await params).locale
 	const { page, size } = await searchParams

@@ -1,10 +1,11 @@
 import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import BotChat from "@/components/shared/BotChat"
 import { Role } from "@/generated/prisma/enums"
+import { connection } from "next/server"
 
 export default async function BotPage() {
+	await connection()
 	await isAllowedRoles([Role.admin])
-
 	return (
 		<BotChat
 			apiRoute={"/api/chat/user"}

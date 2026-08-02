@@ -11,14 +11,15 @@ import { getAllMembersForPage } from "@/dl/member.data"
 import { deleteMemberAction } from "@/actions/member.action"
 import PaginationSection from "@/components/backend/Pagination"
 import Settings from "@/components/backend/Settings"
+import { connection } from "next/server"
 
 export default async function MembersServerPage({
 	searchParams,
 }: {
 	searchParams: Promise<{ page: string; size: string }>
 }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
-
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1
 	const pageSize = +size || 10

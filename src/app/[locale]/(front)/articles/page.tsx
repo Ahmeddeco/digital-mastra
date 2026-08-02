@@ -1,3 +1,9 @@
+import { Suspense } from "react"
+
 export default function ArticlesPage() {
-  return <h1>Welcome to Articlespage!</h1>;
+	return (
+		<Suspense fallback={<div>loading</div>}>
+			<h1>Welcome to Articlespage!</h1>;
+		</Suspense>
+	)
 }

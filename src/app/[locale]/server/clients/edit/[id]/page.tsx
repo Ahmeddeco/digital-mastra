@@ -6,8 +6,10 @@ import { Role } from "@/generated/prisma/enums"
 import EditClient from "@/forms/EditClient"
 import { getOneClient } from "@/dl/clients.data"
 import { getOneClientType } from "@/types/client.type"
+import { connection } from "next/server"
 
 export default async function EditClientPage({ params }: { params: Promise<{ id: string }> }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
 	const id = (await params).id
 	const client: getOneClientType = await getOneClient(id)

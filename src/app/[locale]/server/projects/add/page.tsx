@@ -6,10 +6,12 @@ import AddProject from "@/forms/AddProject"
 import { Role } from "@/generated/prisma/enums"
 import { getAllClientsForSelectType } from "@/types/client.type"
 import { getAllServicesForSelectType } from "@/types/service.type"
+import { connection } from "next/server"
 
 export default async function AddProjectPage() {
-	await isAllowedRoles([Role.admin])
+	await connection()
 	const clients: getAllClientsForSelectType = await getAllClientsForSelect()
+	await isAllowedRoles([Role.admin])
 	const services: getAllServicesForSelectType = await getAllServicesForSelect()
 
 	return (

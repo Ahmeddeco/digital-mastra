@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { getAllProjectsForPageType } from "@/types/project.type"
 import { getAllProjectsForPage } from "@/dl/project.data"
 import { dateFormate } from "@/logic/dateFormate"
+import { connection } from "next/server"
 
 export default async function ProjectsServerPage({
 	searchParams,
@@ -19,6 +20,7 @@ export default async function ProjectsServerPage({
 	searchParams: Promise<{ page: string; size: string }>
 	params: Promise<{ locale: "en" | "ar" }>
 }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
 	const locale = (await params).locale
 	const { page, size } = await searchParams

@@ -14,12 +14,11 @@ export default async function DevelopmentHero({ params }: { params: Promise<{ lo
 			{/* ---------------------------------- Text ---------------------------------- */}
 			<div className="flex flex-col gap-6 items-center ">
 				<h1 className={` text-center capitalize `}>
-					{dict.DevelopmentPage.developmentHero.h1} <br /> {dict.DevelopmentPage.developmentHero.h1Br}
+					{dict.marketingPage.marketingHero.h1} <br /> {dict.marketingPage.marketingHero.h1Br}
 				</h1>
-				<h4 className="text-center">
-					{dict.DevelopmentPage.developmentHero.p}
-					<br />
-					{dict.DevelopmentPage.developmentHero.pBr}
+				<h4 className="text-center max-w-2xl">
+					{dict.marketingPage.marketingHero.p}
+					{dict.marketingPage.marketingHero.pBr}
 				</h4>
 				<StartProjectBtn params={params} />
 			</div>

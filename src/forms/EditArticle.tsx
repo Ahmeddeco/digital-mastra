@@ -13,13 +13,22 @@ import ProjectCategorySchema from "@/generated/zod/inputTypeSchemas/ProjectCateg
 import { editArticleAction } from "@/actions/article.action"
 import ArticleSchema from "@/schemas/ArticleSchema"
 import TiptapEditor from "@/components/shared/TiptapEditor"
-import { UploadManyImagesDropZone, UploadOneImagesDropZone } from "@/components/shared/UploadImagesDropZone"
 import DynamicInputs from "@/components/shared/DynamicInputs"
 import { getOneArticleType } from "@/types/article.type"
+import dynamic from "next/dynamic"
 
 type Props = {
 	article: getOneArticleType
 }
+
+const UploadManyImagesDropZone = dynamic(
+	() => import("@/components/shared/UploadImagesDropZone").then((mod) => mod.UploadManyImagesDropZone),
+	{ ssr: false },
+)
+const UploadOneImagesDropZone = dynamic(
+	() => import("@/components/shared/UploadImagesDropZone").then((mod) => mod.UploadOneImagesDropZone),
+	{ ssr: false },
+)
 
 export default function EditArticle({ article }: Props) {
 	const [lastResult, action] = useActionState(editArticleAction, undefined)

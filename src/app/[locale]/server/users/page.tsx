@@ -29,10 +29,11 @@ import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import { Role } from "@/generated/prisma/enums"
 import { getAllUsers } from "@/dl/users.data"
 import { deleteUserAction } from "@/actions/user.action"
+import { connection } from "next/server"
 
 export default async function UsersPage({ searchParams }: { searchParams: Promise<{ page: string; size: string }> }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
-
 	const { page, size } = await searchParams
 	const pageNumber = +page > 1 ? +page : 1
 	const pageSize = +size || 10

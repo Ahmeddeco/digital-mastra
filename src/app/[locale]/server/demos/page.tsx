@@ -12,6 +12,7 @@ import { getAllDemosForPageType } from "@/types/demo.type"
 import { getAllDemosForPage } from "@/dl/demo.data"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
+import { connection } from "next/server"
 
 export default async function DemosServerPage({
 	searchParams,
@@ -20,6 +21,7 @@ export default async function DemosServerPage({
 	searchParams: Promise<{ page: string; size: string }>
 	params: Promise<{ locale: "en" | "ar" }>
 }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
 	const locale = (await params).locale
 	const { page, size } = await searchParams

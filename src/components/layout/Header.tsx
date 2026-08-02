@@ -4,6 +4,7 @@ import Logo from "@/components/layout/Logo"
 import MobileMenu from "@/components/layout/MobileMenu"
 import { ThemeButton } from "@/components/theme/ThemeButton"
 import LanguageButton from "@/locales/LanguageButton"
+import { Suspense } from "react"
 
 export default function Header() {
 	return (
@@ -23,7 +24,9 @@ export default function Header() {
 				<div className="lg:flex hidden items-center gap-4">
 					<ThemeButton />
 					<LanguageButton />
-					<UserButton />
+					<Suspense fallback={<div className="size-8 rounded-full bg-muted animate-pulse" />}>
+						<UserButton />
+					</Suspense>
 				</div>
 			</div>
 		</header>

@@ -8,8 +8,10 @@ import { Role } from "@/generated/prisma/enums"
 import { getAllClientsForSelectType } from "@/types/client.type"
 import { getOneMemberType } from "@/types/member.type"
 import { getAllUsersForSelectType } from "@/types/user.type"
+import { connection } from "next/server"
 
 export default async function AddMemberPage({ params }: { params: Promise<{ id: string }> }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
 	const id = (await params).id
 	const member: getOneMemberType = await getOneMember(id)

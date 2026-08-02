@@ -48,14 +48,13 @@ export default function EditProject({ clients, services, project }: Props) {
 				value,
 			}))
 		: []
-	const [metadataFields, setMetadataFields] =
-		useState<{ id: string | number; key: string; value: string }[]>(initialMetadata)
+	const [metadataFields, setMetadataFields] = useState<{ id: string; key: string; value: string }[]>(initialMetadata)
 
 	const addMetadataRow = () => {
-		setMetadataFields((prev) => [...prev, { id: Date.now(), key: "", value: "" }])
+		setMetadataFields((prev) => [...prev, { id: crypto.randomUUID(), key: "", value: "" }])
 	}
 
-	const removeMetadataRow = (id: string | number) => {
+	const removeMetadataRow = (id: string) => {
 		setMetadataFields((prev) => prev.filter((item) => item.id !== id))
 	}
 

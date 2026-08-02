@@ -8,8 +8,10 @@ import { Role } from "@/generated/prisma/enums"
 import { getAllClientsForSelectType } from "@/types/client.type"
 import { getOneProjectType } from "@/types/project.type"
 import { getAllServicesForSelectType } from "@/types/service.type"
+import { connection } from "next/server"
 
 export default async function EditProjectPage({ params }: { params: Promise<{ id: string }> }) {
+	await connection()
 	await isAllowedRoles([Role.admin])
 	const id = (await params).id
 	const clients: getAllClientsForSelectType = await getAllClientsForSelect()

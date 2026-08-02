@@ -2,10 +2,11 @@ import { isAllowedRoles } from "@/auth/isAllowedRoles"
 import ServerPageCard from "@/components/backend/ServerPageCard"
 import AddClient from "@/forms/AddClient"
 import { Role } from "@/generated/prisma/enums"
+import { connection } from "next/server"
 
 export default async function AddClientPage() {
+	await connection()
 	await isAllowedRoles([Role.admin])
-
 	return (
 		<ServerPageCard
 			title={"Add clients"}

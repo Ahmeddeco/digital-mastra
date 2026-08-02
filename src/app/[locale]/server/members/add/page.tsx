@@ -6,8 +6,10 @@ import AddMember from "@/forms/AddMember"
 import { Role } from "@/generated/prisma/enums"
 import { getAllClientsForSelectType } from "@/types/client.type"
 import { getAllNotMemberUsersForSelectType } from "@/types/user.type"
+import { connection } from "next/server"
 
 export default async function AddMemberPage() {
+	await connection()
 	await isAllowedRoles([Role.admin])
 	const allUsers: getAllNotMemberUsersForSelectType = await getAllNotMemberUsersForSelect()
 	const allClients: getAllClientsForSelectType = await getAllClientsForSelect()
