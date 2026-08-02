@@ -33,8 +33,8 @@ export default async function DevelopmentHero({ params }: { params: Promise<{ lo
 				/>
 
 				{/* ------------------------------ Image Circles ----------------------------- */}
-				<div className="size-8 lg:size-12 bg-chart-1 rounded-full absolute lg:inset-e-4 -inset-s-4 -bottom-4 -z-50 " />
-				<div className="size-8 lg:size-12 bg-chart-2 rounded-full lg:absolute hidden inset-e-4 lg:-inset-s-24 -bottom-8 lg:-bottom-2 -z-50" />
+				<div className="size-8 lg:size-12 bg-chart-1 rounded-full absolute lg:right-4 -left-4 -bottom-4 -z-50 " />
+				<div className="size-8 lg:size-12 bg-chart-2 rounded-full lg:absolute hidden right-4 lg:-left-24 -bottom-8 lg:-bottom-2 -z-50" />
 
 				{/* ------------------------------ Top Left Card ----------------------------- */}
 				<Card className="z-40 absolute w-fit -top-12 lg:top-12 -inset-s-4 lg:-inset-s-12">
@@ -73,13 +73,13 @@ export default async function DevelopmentHero({ params }: { params: Promise<{ lo
 			</div>
 
 			{/* -------------------------------- Top Dots -------------------------------- */}
-			<Dots color={"bg-chart-5"} rowNumber={4} className={" lg:block hidden -top-8 inset-e-3/4 rotate-6 "} />
+			<Dots color={"bg-chart-5"} rowNumber={4} className={" lg:block hidden -top-8 right-3/4 rotate-6 "} />
 			{/* ------------------------------- Bottom Dots ------------------------------ */}
-			<Dots color={"bg-chart-2"} rowNumber={4} className={" lg:block hidden -bottom-10 inset-e-1/4 -rotate-6"} />
+			<Dots color={"bg-chart-2"} rowNumber={4} className={" lg:block hidden -bottom-10 right-1/4 -rotate-6"} />
 			{/* ---------------------------- Circle Top Right ---------------------------- */}
-			<div className="size-8 lg:size-12 bg-chart-5 rounded-full hidden lg:absolute lg:inset-e-0 inset-e-1 lg:top-12 top-12 -z-50" />
+			<div className="size-8 lg:size-12 bg-chart-5 rounded-full hidden lg:absolute lg:right-0 right-1 lg:top-12 top-12 -z-50" />
 			{/* ----------------------------- Circle Top Left ---------------------------- */}
-			<div className="size-8 lg:size-12 bg-chart-3 rounded-full hidden lg:absolute lg:inset-s-0 inset-s-6 lg:top-72 top-72 -z-50" />
+			<div className="size-8 lg:size-12 bg-chart-3 rounded-full hidden lg:absolute lg:left-0 left-6 lg:top-72 top-72 -z-50" />
 		</section>
 	)
 }

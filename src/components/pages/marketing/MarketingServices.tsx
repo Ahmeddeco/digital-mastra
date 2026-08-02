@@ -25,17 +25,17 @@ export default async function MarketingServices({ params }: { params: Promise<{ 
 				{dict.marketingPage.marketingServices.accordion.map(({ image, p, title, value }) => (
 					<AccordionItem value={value} key={value}>
 						<AccordionTrigger>
-							<h3>{title}</h3>
+							<h4 className="text-start dark:text-primary text-secondary">{title}</h4>
 						</AccordionTrigger>
 						<AccordionContent>
-							<div className="flex flex-col gap-16 lg:flex-row items-center lg:justify-between w-auto h-fit py-12">
+							<div className="flex flex-col gap-6 ">
 								{/* ---------------------------------- Image --------------------------------- */}
-								<div className="relative size-full lg:max-w-2/3 aspect-video rounded-2xl overflow-hidden shadow-2xl">
+								<div className="relative size-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
 									<Image src={image} alt={title} fill className="object-cover rounded-2xl shadow-2xl" />
 								</div>
 
 								{/* ---------------------------------- Text ---------------------------------- */}
-								<div className="w-full lg:w-1/3 max-w-xl">
+								<div className="w-full  max-w-xl">
 									<h6 className="text-start">{p}</h6>
 								</div>
 							</div>
